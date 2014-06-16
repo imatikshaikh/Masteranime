@@ -19,6 +19,24 @@ class MasterAnime {
         return $episodes;
     }
 
+    public static function getNextEpisode($id, $current) {
+        $episodes = MasterAnime::getEpisodes($id);
+        $total = count($episodes);
+        if ($total > 1) {
+            return $current == $total ? 0 : $episodes[$current + 1];
+        } 
+        return 0;
+    }
+
+    public static function getPrevEpisode($id, $current) {
+        $episodes = MasterAnime::getEpisodes($id);
+        $total = count($episodes);
+        if ($total > 1) {
+            return $current == 1 ? 0 : $episodes[$current - 1];
+        } 
+        return 0;
+    }
+
     public static function getEpisode($id, $episode) {
         return Mirror::whereRaw('anime_id = ? and episode = ?', array($id, $episode))->orderBy('quality', 'DESC')->orderBy(DB::raw("field(host, 'MP4Upload','Arkvid', 'Masteranime') "), 'DESC')->get();
     }

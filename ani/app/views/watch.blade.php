@@ -32,7 +32,17 @@ $(document).ready(function() {
         if (isset($anime) && isset($mirrors) && isset($episode)) {
             echo '<div class="row-fluid"><div class="span9"><h3 class="met_big_title">'.$anime->name.' - episode '.$episode.'</h3>';
             echo '<div id="video"><iframe frameborder="0" scrolling="no" width="100%" height="510" src="'.$mirrors[0]->src.'" allowfullscreen></iframe></div>';
-            echo '</div>';
+            echo '<div class="row-fluid"><div class="span12">';
+                $prev = MasterAnime::getPrevEpisode($anime->id, $episode);
+                if (!empty($prev)) {
+                    echo '<a href="'.URL::to('/watch/anime/'.$anime->id.'/'.$anime->name.'/'.$prev).'" data-toggle="tooltip" title="Previous episode"><span class="icon-arrow-left icon-large"></span></a>';
+                }
+                echo '<a href="'.URL::to('/anime/'.$anime->id.'/'.$anime->name).'" data-toggle="tooltip" title="Episode list"><span><i class="icon-th icon-large"></i></span></a>';
+                $next = MasterAnime::getNextEpisode($anime->id, $episode);
+                if (!empty($next)) {
+                    echo '<a href="'.URL::to('/watch/anime/'.$anime->id.'/'.$anime->name.'/'.$next.').'" data-toggle="tooltip" title="Next episode"><span class="icon-arrow-right icon-large"></span></a>';
+                }
+            echo '</div></div></div>';
 
             echo '<div class="span3"><h3 class="met_big_title">Mirrors</h3><ul class="nav nav-tabs nav-stacked">';
                     foreach ($mirrors as $mirror) {
