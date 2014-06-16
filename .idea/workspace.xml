@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5defd6d9-4e6e-4d6f-add6-270af66954b7" name="Default" comment="" />
+    <ignored path="master.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="master" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="AnimeController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ani/app/controllers/AnimeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="58" column="26" selection-start="2574" selection-end="2574" vertical-scroll-proportion="-4.875" vertical-offset="753" max-vertical-offset="1380">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.blade.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ani/app/views/layout.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="60" column="43" selection-start="3876" selection-end="3876" vertical-scroll-proportion="0.6167247" vertical-offset="546" max-vertical-offset="2535">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ani/app/views/list.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="4" selection-start="78" selection-end="107" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="915">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="watch.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ani/app/views/watch.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="30" selection-start="322" selection-end="322" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="885">
+              <folding>
+                <marker date="1402869948000" expanded="true" signature="1381:1834" placeholder="..." />
+                <marker date="1402869948000" expanded="true" signature="1414:1829" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ani/app/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="47" selection-start="749" selection-end="749" vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="1215">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/../../conf/apache/httpd.conf" />
+        <option value="$PROJECT_DIR$/../../conf/apache/extra/httpd-vhosts.conf" />
+        <option value="$PROJECT_DIR$/ani/app/views/hello.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/users.blade.php" />
+        <option value="$PROJECT_DIR$/ani/app/config/database.php" />
+        <option value="$PROJECT_DIR$/ani/app/database/migrations/2014_05_23_152006_users.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/home.blade.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/mal.blade.php" />
+        <option value="$PROJECT_DIR$/ani/app/controllers/ScrapeController.php" />
+        <option value="$PROJECT_DIR$/ani/app/start/global.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/child/alerts.php" />
+        <option value="$PROJECT_DIR$/ani/app/config/app.php" />
+        <option value="$PROJECT_DIR$/ani/vendor/composer/autoload_classmap.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/account_form.blade.php" />
+        <option value="$PROJECT_DIR$/ani/public/js/custom.js" />
+        <option value="$PROJECT_DIR$/ani/app/config/packages/cartalyst/sentry/config.php" />
+        <option value="$PROJECT_DIR$/ani/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Users/Eloquent/User.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/child/register.blade.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/child/signin.blade.php" />
+        <option value="$PROJECT_DIR$/ani/app/controllers/AccountController.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/account.blade.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/child/alerts.blade.php" />
+        <option value="$PROJECT_DIR$/ani/public/css/custom.css" />
+        <option value="$PROJECT_DIR$/ani/app/mal/MALScraper.php" />
+        <option value="$PROJECT_DIR$/AnimeData.php" />
+        <option value="$PROJECT_DIR$/ani/app/database/migrations/2014_05_23_163055_series.php" />
+        <option value="$PROJECT_DIR$/ani/app/mal/MyAnimeList.php" />
+        <option value="$PROJECT_DIR$/ani/app/database/migrations/2014_06_05_195317_scrape_urls.php" />
+        <option value="$PROJECT_DIR$/ani/app/models/ScrapeUrls.php" />
+        <option value="$PROJECT_DIR$/ani/app/models/ScrapeUrl.php" />
+        <option value="$PROJECT_DIR$/ani/app/mal/AnimeData.php" />
+        <option value="$PROJECT_DIR$/ani/public/css/style.css" />
+        <option value="$PROJECT_DIR$/ani/public/css/bootstrap.css" />
+        <option value="$PROJECT_DIR$/ani/app/views/child/all_anime.blade.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/debug.blade.php" />
+        <option value="$PROJECT_DIR$/ani/app/models/Anime.php" />
+        <option value="$PROJECT_DIR$/ani/app/mal/EpisodeData.php" />
+        <option value="$PROJECT_DIR$/ani/app/database/migrations/2014_06_11_195211_mirrors.php" />
+        <option value="$PROJECT_DIR$/ani/app/models/Mirror.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/list.blade.php" />
+        <option value="$PROJECT_DIR$/ani/composer.json" />
+        <option value="$PROJECT_DIR$/ani/app/views/anime.blade.php" />
+        <option value="$PROJECT_DIR$/ani/app/controllers/AnimeController.php" />
+        <option value="$PROJECT_DIR$/ani/app/anime/MasterAnime.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/watch.blade.php" />
+        <option value="$PROJECT_DIR$/ani/app/routes.php" />
+        <option value="$PROJECT_DIR$/ani/app/views/layout.blade.php" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="MAMP" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="2" />
+    <option name="y" value="22" />
+    <option name="width" value="1245" />
+    <option name="height" value="852" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ani" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ani" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ani" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ani" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ani" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ani" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ani" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="anime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ani" />
+    <property name="options.lastSelected" value="web.server" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="FullScreen" value="false" />
+    <property name="SearchEverywhereHistory" value="-&gt;" />
+    <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ani/public/img" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ani/app/mal" />
+      <recent name="$PROJECT_DIR$/ani/app/views" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" port="8888">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5defd6d9-4e6e-4d6f-add6-270af66954b7" name="Default" comment="" />
+      <created>1400788214354</created>
+      <updated>1400788214354</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="2" y="22" width="1245" height="852" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15921053" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942554" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.09701493" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29592684" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2345815" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16629957" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ani/public/robots.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="0.045801528" vertical-offset="0" max-vertical-offset="655" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/start/artisan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="1" selection-start="195" selection-end="195" vertical-scroll-proportion="0.14263074" vertical-offset="0" max-vertical-offset="631" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/vendor/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="628" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="45" selection-start="639" selection-end="639" vertical-scroll-proportion="-5.4166665" vertical-offset="95" max-vertical-offset="750" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/config/auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.17269737" vertical-offset="105" max-vertical-offset="1155" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/start/local.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="608" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/start/global.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="39" selection-start="710" selection-end="710" vertical-scroll-proportion="0.39473686" vertical-offset="0" max-vertical-offset="1170" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/bootstrap/start.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/bootstrap/paths.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="945" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/artisan">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1050" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/filters.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="52" selection-start="743" selection-end="743" vertical-scroll-proportion="0.47543582" vertical-offset="0" max-vertical-offset="1155" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/bootstrap/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="34" selection-start="707" selection-end="707" vertical-scroll-proportion="-0.42630744" vertical-offset="584" max-vertical-offset="1215" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/database/seeds/DatabaseSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="632" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="5" selection-start="2843" selection-end="2843" vertical-scroll-proportion="2.6891448" vertical-offset="0" max-vertical-offset="5760" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/public/img/masteranime_logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/storage/views/fce314c535df03e2b75f874d19e0cfb3">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="17" selection-start="2757" selection-end="2757" vertical-scroll-proportion="0.97440946" vertical-offset="0" max-vertical-offset="1095" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="49" selection-start="5807" selection-end="5866" vertical-scroll-proportion="0.35434413" vertical-offset="2207" max-vertical-offset="2985" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/controllers/BaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="611" />
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/structural.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="23" selection-start="2585" selection-end="2585" vertical-scroll-proportion="0.33224222" vertical-offset="1417" max-vertical-offset="2115" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/public/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="170" column="32" selection-start="5659" selection-end="5659" vertical-scroll-proportion="0.22727273" vertical-offset="2420" max-vertical-offset="9585" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/views/child/register.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="38" selection-start="541" selection-end="541" vertical-scroll-proportion="0.28745645" vertical-offset="0" max-vertical-offset="574" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/config/packages/cartalyst/sentry/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="38" selection-start="3670" selection-end="3670" vertical-scroll-proportion="3.041237" vertical-offset="0" max-vertical-offset="3150" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Users/Eloquent/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="613" column="20" selection-start="12271" selection-end="12271" vertical-scroll-proportion="0.49560633" vertical-offset="8913" max-vertical-offset="14490" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/controllers/AccountController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="30" selection-start="127" selection-end="127" vertical-scroll-proportion="0.13181019" vertical-offset="0" max-vertical-offset="1500" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/views/child/alerts.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="56" selection-start="476" selection-end="476" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="240" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/public/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1282" column="0" selection-start="28625" selection-end="28625" vertical-scroll-proportion="0.43338954" vertical-offset="18973" max-vertical-offset="56835" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/views/account.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="26" selection-start="353" selection-end="353" vertical-scroll-proportion="0.4054054" vertical-offset="0" max-vertical-offset="555" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/views/child/signin.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="144" selection-end="176" vertical-scroll-proportion="0.115606934" vertical-offset="0" max-vertical-offset="519" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/vendor/composer/autoload_classmap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="43" selection-start="3143" selection-end="3143" vertical-scroll-proportion="0.5947867" vertical-offset="244" max-vertical-offset="690" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/vendor/symfony/dom-crawler/Symfony/Component/DomCrawler/Crawler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="695" column="20" selection-start="20249" selection-end="20249" vertical-scroll-proportion="0.46615088" vertical-offset="10079" max-vertical-offset="14910" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/database/migrations/2014_06_05_195317_scrape_urls.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="9" selection-start="222" selection-end="529" vertical-scroll-proportion="0.37366548" vertical-offset="0" max-vertical-offset="585" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/public/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4668" column="9" selection-start="111607" selection-end="111607" vertical-scroll-proportion="0.2547993" vertical-offset="69874" max-vertical-offset="93780">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="1" selection-start="901" selection-end="901" vertical-scroll-proportion="0.51194537" vertical-offset="405" max-vertical-offset="5880" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/mal/AnimeData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="152" column="0" selection-start="5267" selection-end="5267" vertical-scroll-proportion="3.9041095" vertical-offset="0" max-vertical-offset="2595" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/models/ScrapeUrl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="6" selection-start="13" selection-end="13" vertical-scroll-proportion="0.051369864" vertical-offset="0" max-vertical-offset="584" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/database/migrations/2014_05_23_163055_series.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="19" selection-start="276" selection-end="301" vertical-scroll-proportion="0.40106952" vertical-offset="0" max-vertical-offset="840" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/views/debug.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="163" selection-end="231" vertical-scroll-proportion="0.21390374" vertical-offset="0" max-vertical-offset="561" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/database/migrations/2014_06_11_195211_mirrors.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="37" selection-start="512" selection-end="512" vertical-scroll-proportion="0.457483" vertical-offset="31" max-vertical-offset="645" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/mal/EpisodeData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="15" selection-start="2014" selection-end="2014" vertical-scroll-proportion="-1.4347826" vertical-offset="1470" max-vertical-offset="2550" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="36" selection-start="212" selection-end="212" vertical-scroll-proportion="0.17857143" vertical-offset="0" max-vertical-offset="705" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/views/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="14" selection-start="0" selection-end="63" vertical-scroll-proportion="0.053097345" vertical-offset="0" max-vertical-offset="565">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/models/Anime.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="14" selection-start="86" selection-end="86" vertical-scroll-proportion="0.13274336" vertical-offset="0" max-vertical-offset="825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/views/child/all_anime.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="63" selection-start="852" selection-end="888" vertical-scroll-proportion="0.4355717" vertical-offset="0" max-vertical-offset="551">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/views/anime.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="0" selection-start="2386" selection-end="2386" vertical-scroll-proportion="-0.5679442" vertical-offset="1361" max-vertical-offset="1935">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+            <marker date="1402690584000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/models/Mirror.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="35" selection-start="3219" selection-end="3219" vertical-scroll-proportion="0.085365854" vertical-offset="896" max-vertical-offset="1470">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/anime/MasterAnime.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="19" selection-start="25" selection-end="25" vertical-scroll-proportion="0.026132405" vertical-offset="0" max-vertical-offset="574">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/views/list.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="4" selection-start="78" selection-end="107" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="915">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="47" selection-start="749" selection-end="749" vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="1215">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/views/watch.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="30" selection-start="322" selection-end="322" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="885">
+          <folding>
+            <marker date="1402869948000" expanded="true" signature="1381:1834" placeholder="..." />
+            <marker date="1402869948000" expanded="true" signature="1414:1829" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/controllers/AnimeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="26" selection-start="2574" selection-end="2574" vertical-scroll-proportion="-4.875" vertical-offset="753" max-vertical-offset="1380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ani/app/views/layout.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="43" selection-start="3876" selection-end="3876" vertical-scroll-proportion="0.6167247" vertical-offset="546" max-vertical-offset="2535">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+
