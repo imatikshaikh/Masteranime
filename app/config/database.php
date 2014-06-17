@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'anime',
-			'username'  => 'root',
-			'password'  => 'root',
+			'host'      => '' . ConnectDetails::$host,
+			'database'  => '' . ConnectDetails::$databae,
+			'username'  => '' . ConnectDetails::$username,
+			'password'  => '' . ConnectDetails::$password,
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

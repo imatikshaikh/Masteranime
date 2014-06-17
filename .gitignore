@@ -1,4 +1,5 @@
 .idea
+/app/connect_details.php
 /bootstrap/compiled.php
 /vendor
 composer.phar

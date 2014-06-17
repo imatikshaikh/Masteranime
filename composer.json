@@ -18,7 +18,8 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php",
             "app/mal",
-            "app/anime"
+            "app/anime",
+            "app/connect_details.php"
 		]
 	},
 	"scripts": {
