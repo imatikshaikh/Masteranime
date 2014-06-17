@@ -1,9 +1,9 @@
 <?php
 class ConnectDetails {
 
-    public static $host = 'localhost';
-    public static $databae = 'anime';
-    public static $username = 'root';
-    public static $password = 'root';
+    public static $host = '';
+    public static $databae = '';
+    public static $username = '';
+    public static $password = '';
 
 }
