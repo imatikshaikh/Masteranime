@@ -46,6 +46,25 @@ Route::post('/anime/scraper', function()
     }
     return 'AJAX requests only.';
 });
+Route::post('/anime/favorite', function()
+{
+    if (Request::ajax()) {
+        $user_id = Input::get('user_id');
+        $anime_id = Input::get('anime_id');
+        $result = AnimeFavorite::actionFavorite($user_id, $anime_id);
+        switch ($result['msg']) {
+            case 'success':
+                return $result["button"] . '<div class="pull-right alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Added!</strong></div>';
+
+            case 'deleted':
+                return $result["button"] . '<div class="pull-right alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Removed!</strong></div>';
+
+            case 'fail':
+                return $result["button"] . '<div class="pull-right alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Warning!</strong> You must sign-in to add anime to favorites.</div>';
+        }
+    }
+    return 'AJAX requests only.';
+});
 Route::post('/watch/anime/mirror', function()
 {
     if (Request::ajax()) {
