@@ -15,7 +15,17 @@
     <?php
     if (Sentry::check()) {
         $user = Sentry::getUser();
-        var_dump($user->isSuperUser());
+        if ($user->isSuperUser()) {
+            echo '<div class="center-text">' .
+                Form::open(array('action' => 'add_scrapeurl', 'class' => 'form-inline')) . '
+                    <label style="margin-right: 10px;">anime_id, suffix_animerush, suffix_rawranime & othername</label>' .
+                Form::text('anime_id', $value = null, array('class' => 'input-small', 'style' => 'margin-right: 10px;')) . '' .
+                Form::text('suffix_animerush', $value = null, array('class' => 'input-large', 'style' => 'margin-right: 10px;')) . '' .
+                Form::text('suffix_rawranime', $value = null, array('class' => 'input-large', 'style' => 'margin-right: 10px;')) . '' .
+                Form::text('othername', $value = null, array('class' => 'input-large', 'style' => 'margin-right: 10px;')) . '' .
+                Form::submit('update', array('class' => 'btn btn-success btn-lg', 'style' => 'margin-right: 10px;')) . '' .
+                Form::close() . '</div>';
+        }
     } else {
         Redirect::to('account');
     }

@@ -46,6 +46,7 @@ Route::post('/anime/scraper', function()
     }
     return 'AJAX requests only.';
 });
+Route::post('/anime/scraper/url', array('as' => 'add_scrapeurl', 'uses' => 'AccountController@updateScrapeUrl'));
 Route::post('/anime/favorite', function()
 {
     if (Request::ajax()) {

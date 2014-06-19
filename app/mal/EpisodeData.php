@@ -24,9 +24,9 @@ class EpisodeScraper
         while (count($crawler->filter('div.ep-next > a')) > 0) {
             $episode = $crawler->filter('div.bannerep > div.bannertit > h1')->extract('_text')[0];
             $episode = filter_var(explode(' Episode ', $episode)[1], FILTER_SANITIZE_NUMBER_FLOAT);
-            $mirrors = $crawler->filter('div#left-column > div#episodes')->each(function (\Symfony\Component\DomCrawler\Crawler $node) {
+            $mirrors = array();
+            $crawler->filter('div#left-column > div#episodes')->each(function (\Symfony\Component\DomCrawler\Crawler $node) use($mirrors) {
                 $links =  $node->filter('div.episode1 > div > div > h3 > a')->links();
-                $mirrors = array();
                 foreach ($links as $link) {
                     $crawler = $this->client->click($link);
                     $quality = 480;
@@ -40,7 +40,6 @@ class EpisodeScraper
                     $src = $crawler->filter('div#left-column > div.player-area > div > div > iframe')->first()->extract('src');
                     array_push($mirrors, array( "quality" => $quality, "subbed" => $subbed, "src" => $src));
                 }
-                return $mirrors;
             });
             if (!empty($mirrors) && !empty($episode)) {
                 array_push($this->mirrors, array(
@@ -80,14 +79,14 @@ class EpisodeScraper
                     $quality = 480;
                     break;
             }
-            array_push($mirrors, array( "quality" => $quality, "subbed" => $subbed, "src" => $src));
+            array_push($mirrors, array("quality" => $quality, "subbed" => $subbed, "src" => $src));
             $count++;
         }
         return $mirrors;
     }
 
     private function scrape_ra($suffix, $startep = 1) {
-        $url = $this->rawranime_base_url . $suffix . $startep;
+        $url = $this->rawranime_base_url . $suffix . '/'. $startep;
         $crawler = $this->client->request('GET', $url);
         while (count($crawler->filter($this->base_filter_ra . ' > div#nav_bar.nav_crumb_center > div#episode_nav > a > div#t_next')) > 0) {
             $episode = $crawler->filter($this->base_filter_ra . ' > div#nav_bar.nav_crumb_center > div#episode_nav > div#episode_header > div#episode_title')->extract('_text')[0];
@@ -136,7 +135,7 @@ class EpisodeScraper
                     $this->scrape_ar($urls->suffix_animerush);
                 }
                 if (!empty($urls->suffix_rawranime)) {
-                    $this->scrape_ra($urls->suffx_rawranime);
+                    $this->scrape_ra($urls->suffix_rawranime);
                 }
                 return $this->mirrors;
             } else if ($anime_platform == AnimePlatform::animerush) {

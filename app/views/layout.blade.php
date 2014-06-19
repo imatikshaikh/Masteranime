@@ -99,7 +99,7 @@
                                     <?php
                                     if (Sentry::check()) {
                                         $user = Sentry::getUser();
-                                        echo HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . $user->username), array("route" => 'account/logout', "text" => 'LOG OUT')));
+                                        echo HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . $user->username), array("route" => 'account', "text" => 'settings'), array("route" => 'account/logout', "text" => 'LOG OUT')));
                                     } else {
                                         echo  HTML::menu_link(array(array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account/register', "text" => 'SIGN UP')));
                                     }
@@ -127,7 +127,7 @@
                             <?php
                             if (Sentry::check()) {
                                 $user = Sentry::getUser();
-                                echo HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . $user->username), array("route" => 'account/logout', "text" => 'LOG OUT')));
+                                echo HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . $user->username), array("route" => 'account', "text" => 'settings'), array("route" => 'account/logout', "text" => 'LOG OUT')));
                             } else {
                                 echo  HTML::menu_link(array(array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account/register', "text" => 'SIGN UP')));
                             }

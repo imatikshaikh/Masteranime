@@ -11,26 +11,38 @@ class Mirror extends Eloquent {
                 $ep = $episode["episode"];
                 foreach ($episode["mirrors"] as $mirrors) {
                     foreach ($mirrors as $mirror) {
-                        if (isset($mirror["src"][0])) {
-                            $host = Mirror::getHost($mirror["src"][0]);
+                        if (isset($mirror["src"])) {
+                            if (is_array($mirror["src"]) && count($mirror["src"]) > 0) {
+                                $src = $mirror["src"][0];
+                                $host = Mirror::getHost($src);
+                                $quality = $mirror["quality"];
+                                $subbed = $mirror["subbed"];
+                            }
+                        } else {
+                            $src = $mirrors["src"];
+                            $host = Mirror::getHost($src);
+                            $quality = $mirrors["quality"];
+                            $subbed = $mirrors["subbed"];
+                        }
+                        if (isset($src) && isset($quality) && isset($subbed)) {
                             if ($host == "failed") {
-                                $txt .= '<p class="text-error">Episode '.$ep.' - '.$host.' - Quality'.$mirror["quality"].': <strong>host not found</strong>.</p>';
-                            } else if ($mirror["subbed"] == 0) {
-                                $txt .= '<p class="text-error">Episode '.$ep.' - '.$host.' - Quality'.$mirror["quality"].': is not <strong>subbed</strong>.</p>';
+                                $txt .= '<p class="text-error">Episode '.$ep.' - '.$host.' - Quality'.$quality.': <strong>host not found</strong>.</p>';
+                            } else if (!$subbed) {
+                                $txt .= '<p class="text-error">Episode '.$ep.' - '.$host.' - Quality'.$quality.': is not <strong>subbed</strong>.</p>';
                             } else {
-                                $exists = Mirror::mirror_exsists($anime_id, $ep, $host, $mirror["src"][0]);
+                                $exists = Mirror::mirror_exsists($anime_id, $ep, $host, $src);
                                 if (!$exists) {
                                     Mirror::create([
                                         "anime_id" => $anime_id,
                                         "episode" => $ep,
-                                        "src" => $mirror["src"][0],
+                                        "src" => $src,
                                         "host" => $host,
-                                        "quality" => $mirror["quality"],
-                                        "subbed" => $mirror["subbed"]
+                                        "quality" => $quality,
+                                        "subbed" => $subbed
                                     ]);
-                                    $txt .= '<p class="text-success">Episode '.$ep.' - '.$host.' - Quality'.$mirror["quality"].': has been <strong>added</strong>.</p>';
+                                    $txt .= '<p class="text-success">Episode '.$ep.' - '.$host.' - Quality'.$quality.': has been <strong>added</strong>.</p>';
                                 } else {
-                                    $txt .= '<p class="text-info">Episode '.$ep.' - '.$host.' - Quality'.$mirror["quality"].': this mirror already exists in our database!</p>';
+                                    $txt .= '<p class="text-info">Episode '.$ep.' - '.$host.' - Quality'.$quality.': this mirror already exists in our database!</p>';
                                 }
                             }
                         }
@@ -51,13 +63,14 @@ class Mirror extends Eloquent {
         $mirrors = $scraper->get();
         if (!empty($mirrors)) {
             $txt = Mirror::add_mirror($animeid, $mirrors);
-            return '<div class="span12"><p style="text-align: center;">Succes! Mirrors have been updated!</p><hr>'.$txt.'</div>';
+            return $txt;
+            return '<div class="span12"><p style="text-align: center;">Succes! Mirrors have been updated!</p>'.$txt.'<hr></div>';
         }
         return '<div class="span12" style="text-align: center;"><p>Failed! We could not find any mirrors!</p></div>';
     }
 
     public static function getHost($link) {
-        if (strlen($link) > 0) {
+        if (isset($link) && is_string($link) && strlen($link) > 0) {
             if (strpos($link, "auengine.com") !== false) {
                 return "AUEngine";
             } else if (strpos($link, "mp4upload.com") !== false) {
@@ -79,7 +92,7 @@ class Mirror extends Eloquent {
         return "failed";
     }
 
-    public static function mirror_exsists($anime_id, $ep, $host, $url){
+    public static function mirror_exsists($anime_id, $ep, $host, $url) {
         $mirrors = Mirror::whereRaw('anime_id = ? and episode = ? and host = ?', array($anime_id, $ep, $host))->get();
         if (!empty($mirrors)) {
             foreach ($mirrors as $mirror) {
