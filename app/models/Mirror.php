@@ -11,14 +11,12 @@ class Mirror extends Eloquent {
                 $ep = $episode["episode"];
                 foreach ($episode["mirrors"] as $mirrors) {
                     foreach ($mirrors as $mirror) {
-                        if (isset($mirror["src"])) {
-                            if (is_array($mirror["src"]) && count($mirror["src"]) > 0) {
-                                $src = $mirror["src"][0];
-                                $host = Mirror::getHost($src);
-                                $quality = $mirror["quality"];
-                                $subbed = $mirror["subbed"];
-                            }
-                        } else {
+                        if (isset($mirror["src"]) && is_array($mirror["src"]) && count($mirror["src"]) > 0) {
+                            $src = $mirror["src"][0];
+                            $host = Mirror::getHost($src);
+                            $quality = $mirror["quality"];
+                            $subbed = $mirror["subbed"];
+                        } else if (isset($mirrors["src"])) {
                             $src = $mirrors["src"];
                             $host = Mirror::getHost($src);
                             $quality = $mirrors["quality"];
@@ -63,7 +61,6 @@ class Mirror extends Eloquent {
         $mirrors = $scraper->get();
         if (!empty($mirrors)) {
             $txt = Mirror::add_mirror($animeid, $mirrors);
-            return $txt;
             return '<div class="span12"><p style="text-align: center;">Succes! Mirrors have been updated!</p>'.$txt.'<hr></div>';
         }
         return '<div class="span12" style="text-align: center;"><p>Failed! We could not find any mirrors!</p></div>';
