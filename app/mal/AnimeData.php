@@ -4,16 +4,13 @@ use Goutte\Client;
 class AnimeDataScraper {
 
     private $special_chars = array(":", ";", "!", "?", ".", "(", ")", ",");
-    protected $mashape_key = "h9VbGFgaOemDlC4dEH21KSnwWAJOk6jn";
-    protected $mal_username = "nexpb";
-    protected $mal_password = "powerbot";
     public $mal_base_url = "http://myanimelist.net/api/";
     public $hum_v2_base_url = "https://vikhyat-hummingbird-v2.p.mashape.com/anime/";
 
     private function getXML($query, $mal = true) {
         if ($mal) {
             $client = new Client();
-            $client->setAuth($this->mal_username, $this->mal_password);
+            $client->setAuth(ConnectDetails::$mal_username, ConnectDetails::$mal_password);
             $response = $client->request('GET', $this->mal_base_url . '' .$query);
             $xml = simplexml_load_string($response->html());
             return $xml;
@@ -27,7 +24,7 @@ class AnimeDataScraper {
                 $client = new Client();
                 $client = $client->getClient();
                 $response = $client->get($this->hum_v2_base_url . '' .$query, [
-                    'headers' => ['X-Mashape-Authorization' => $this->mashape_key]
+                    'headers' => ['X-Mashape-Authorization' => ConnectDetails::$mashape_key]
                 ]);
                 return $response->json();
             }
