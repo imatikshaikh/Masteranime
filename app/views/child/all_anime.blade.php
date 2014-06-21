@@ -8,7 +8,7 @@
                     echo '<li><a href="'.URL::to('anime/'. $serie->id .'/'.str_replace(" ", "_", $serie->name)).'">';
                     $synonyms = Anime::getSynonyms($serie);
                     if (!empty($synonyms)) {
-                        echo '<span data-toggle="tooltip" title="'.$synonyms.'">'.$serie->name.'</span>';
+                        echo '<span data-toggle="tooltip-right" title="'.$synonyms.'">'.$serie->name.'</span>';
                     } else {
                         echo '<span>'.$serie->name.'</span>';
                     }

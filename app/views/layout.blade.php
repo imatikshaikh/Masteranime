@@ -75,6 +75,7 @@
             $(document).ready(function() {
                 $("[data-toggle=popover]").popover();
                 $("[data-toggle=tooltip]").tooltip({ placement: 'top'});
+                $("[data-toggle=tooltip-right]").tooltip({ placement: 'right'});
                 $("[data-toggle=tooltip-bottom]").tooltip({ placement: 'bottom'});
             });
         </script>

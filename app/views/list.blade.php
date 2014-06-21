@@ -8,7 +8,7 @@
         $user = Sentry::getUser();
         if ($user->isSuperUser()) {
             echo '$(document).ready(function () {
-        $(\'#update_mirrors_button\').on(\'click\', function (e) {
+        $(\'button#update_mirrors_button\').on(\'click\', function (e) {
             e.preventDefault();
             $(\'section\').prepend(\'<div id="loading-scraper" class="row-fluid"><div class="span12" style="text-align: center;">'.HTML::image('img/ajax-loader.gif', 'loading...') .'</div></div>\');
             var anime_id = $(this).find("input[name=\'anime_id\']").val();

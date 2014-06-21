@@ -4,7 +4,7 @@ class Mirror extends Eloquent {
     protected $table = 'mirrors';
     protected $fillable = ['anime_id', 'episode', 'src', 'host', 'subbed', 'quality'];
 
-    public static function add_mirror($anime_id, $episodes) {
+    public static function add_mirror($anime_id, $episodes, $force = false) {
         $txt = '';
         if (is_array($episodes)) {
             foreach ($episodes as $episode) {
@@ -30,6 +30,7 @@ class Mirror extends Eloquent {
                             } else {
                                 $exists = Mirror::mirror_exsists($anime_id, $ep, $host, $src);
                                 if (!$exists) {
+                                    Latest::put($anime_id, $ep, $force);
                                     Mirror::create([
                                         "anime_id" => $anime_id,
                                         "episode" => $ep,
@@ -56,11 +57,11 @@ class Mirror extends Eloquent {
         return DB::delete('delete from mirrors where id = ?', array($mirrorid));
     }
 
-    public static function put($animeid) {
+    public static function put($animeid, $force = false) {
         $scraper = new EpisodeScraper($animeid);
         $mirrors = $scraper->get();
         if (!empty($mirrors)) {
-            $txt = Mirror::add_mirror($animeid, $mirrors);
+            $txt = Mirror::add_mirror($animeid, $mirrors, $force);
             return '<div class="span12"><p style="text-align: center;">Succes! Mirrors have been updated!</p>'.$txt.'<hr></div>';
         }
         return '<div class="span12" style="text-align: center;"><p>Failed! We could not find any mirrors!</p></div>';
