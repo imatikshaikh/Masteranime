@@ -90,7 +90,7 @@
                         <div class="span12">
                             <a target="_blank" href="https://www.facebook.com/masteranidotme" data-toggle="tooltip-bottom" title="Like us" class="pull-left met_color_transition met_header_head_link"><i class="icon-facebook"></i></a>
                             <a target="_blank" href="https://twitter.com/masteranidotme" data-toggle="tooltip-bottom" title="Follow us" class="pull-left met_color_transition met_header_head_link"><i class="icon-twitter"></i></a>
-                            <a href="#" data-toggle="tooltip-bottom" title="MyAnime" class="pull-left met_color_transition met_header_head_link"><i style="margin-left: -0.1em;" class="icon-heart"></i></a>
+                            <a href="#" data-toggle="tooltip-bottom" title="MyAnime" class="pull-left met_color_transition met_header_head_link"><i style="font-size: 18px; margin-left: -0.1em;" class="icon-heart"></i></a>
 
                             <div id="dl-menu" class="dl-menuwrapper">
                                 <button>Open Menu</button>

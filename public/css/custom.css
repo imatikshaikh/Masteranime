@@ -688,6 +688,7 @@ header + .met_content > .row-fluid:first-child .met_page_title{
     top             : -2px;
     font-family     : 'Roboto Condensed';
     color: #595959;
+    margin-left: 5px;
 }
 
 .met_carousel_pages {

@@ -17,7 +17,7 @@
         <div class="met_recent_works_carousel_wrap">
             <div class="met_recent_works_carousel clearfix scrolled met_mainpage_portfolio">
                 <?php
-
+                echo Latest::getLatest();
                 ?>
             </div>
         </div>

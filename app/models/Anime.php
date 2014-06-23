@@ -21,7 +21,7 @@ class Anime extends Eloquent {
 
     public static function getThumbnail($row) {
         if (empty($row->thumbnail)) {
-            return "default/thumbnail.png";
+            return Anime::getCover($row);
         }
         return $row->thumbnail;
     }

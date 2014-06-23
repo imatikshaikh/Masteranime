@@ -1,9 +1,11 @@
 body {
 	background-color: #171717;
 }
-
+.image-latest {
+    width: 293px;
+    height: 293px;
+}
 /*ANIME PAGE HEADER*/
-
 .anime-header {
     min-height: 200px;
     z-index: -1;

@@ -32,6 +32,17 @@ Route::get('/', function()
 });
 
 /*Update & manage routes*/
+Route::get('/anime/update/thumbnails', function()
+{
+    if (Sentry::check()) {
+        $user = Sentry::getUser();
+        if ($user->isSuperUser()) {
+            return Latest::updateThumbnails();
+        }
+        return 'must be super user';
+    }
+    return 'not logged in.';
+});
 Route::post('/anime/scraper', function()
 {
     if (Request::ajax()) {

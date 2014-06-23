@@ -41,8 +41,4 @@ class MasterAnime {
         return Mirror::whereRaw('anime_id = ? and episode = ?', array($id, $episode))->orderBy('quality', 'DESC')->orderBy(DB::raw("field(host, 'MP4Upload','Arkvid', 'Masteranime') "), 'DESC')->get();
     }
 
-    public static function getLatest($total, $gallery = true) {
-
-    }
-
 }
