@@ -1,28 +1,26 @@
 <div class="row-fluid">
     <div class="span12">
-        <ul class="nav nav-tabs nav-stacked">
+        <ul id="animelist" class="nav nav-tabs nav-stacked">
             <?php
-            $series = Anime::orderBy('name', 'ASC')->get();
-            if (!empty($series)) {
-                foreach ($series as $serie) {
-                    echo '<li><a href="'.URL::to('anime/'. $serie->id .'/'.str_replace(" ", "_", $serie->name)).'">';
-                    $synonyms = Anime::getSynonyms($serie);
-                    if (!empty($synonyms)) {
-                        echo '<span data-toggle="tooltip-right" title="'.$synonyms.'">'.$serie->name.'</span>';
+            if (!empty($search_display)) {
+                if ($search_display["view"]) {
+                    if (empty($search_display["series"])) {
+                        echo '<li><a href="#">Didn\'t find any anime mathing your keyword.</a></li>';
                     } else {
-                        echo '<span>'.$serie->name.'</span>';
+                        Anime::getAnimeList($search_display["series"]);
                     }
-                    echo '<div class="pull-right" style="margin-top: -3px;">';
-                    if ($serie->status == 1) {
-                        echo '<span class="tag-red">ongoing</span>';
-                    } else if ($serie->type == 2) {
-                        echo '<span class="tag-blue">movie</span>';
+                } else {
+                    if (empty($search_display["series"])) {
+                        echo '<li style="margin-bottom: 10px;">Didn\'t find any anime mathing your keyword. (Displaying ALL anime)</li>';
+                        $series = DB::table('series')->select('id', 'name', 'english_name', 'name_synonym_2', 'name_synonym_3', 'type', 'status')->orderBy('name', 'ASC')->get();
+                        Anime::getAnimeList($series);
+                    } else {
+                        Anime::getAnimeList($search_display["series"]);
                     }
-                    if (isset($is_admin) && $is_admin) {
-                        echo '<button style="margin-left: 5px;" id="update_mirrors_button" class="btn-small btn-success"><input type="hidden" name="anime_id" value="'.$serie->id.'"/><span class="icon-download-alt"></span></button>';
-                    }
-                    echo '</div></a></li>';
                 }
+            } else {
+                $series = DB::table('series')->select('id', 'name', 'english_name', 'name_synonym_2', 'name_synonym_3', 'type', 'status')->orderBy('name', 'ASC')->get();
+                Anime::getAnimeList($series);
             }
             ?>
         </ul>

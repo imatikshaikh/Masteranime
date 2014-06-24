@@ -115,13 +115,7 @@
                 <div class="row-fluid">
                     <div class="span12">
                         <a href="{{ URL::to('/') }}" class="met_logo_container pull-left scrolled">{{ HTML::image('img/masteranime_logo.png', 'masteranime Logo') }}</a>
-                        <div class="met_header_search_box">
-                            <form>
-                                <input type="text" name="anime_keyword" placeholder="search anime..">
-                                <input type="submit" value="">
-                                <i class="icon-search"></i>
-                            </form>
-                        </div>
+                        <div class="met_header_search_box"></div>
                         <ul class="met_main_menu pull-right scrolled">
                             {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
                             {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME LIST"))) }}

@@ -29,12 +29,34 @@
         }
     }
     ?>
+    var list;
+    $(document).ready(function() {
+        $('input#search').keyup(function(e) {
+            if (list == null) {
+                list = $("#animelist").html();
+            }
+            e.preventDefault();
+            var keyword = $(this).val();
+            if (keyword !== ' ' && keyword.length >= 3) {
+                $.ajax({
+                    type: "POST",
+                    url: "anime/search",
+                    data: { animelist: true, keyword: keyword },
+                    timeout: 2000,
+                    success: function(data) {
+                        $("#animelist").empty().append(data);
+                    }
+                });
+            } else {
+                $("#animelist").empty().append(list);
+            }
+        });
+    });
 </script>
 @stop
 @section('content')
-<div class="row-fluid">
-    <div class="span12">
-        {{ $update_msg or '' }}
+
+
         <?php
         if (Sentry::check()) {
             $user = Sentry::getUser();
@@ -50,7 +72,22 @@
             }
         }
         ?>
+
+    <div class="row-fluid " style="margin-bottom: 10px">
+        <div class="span12 met_small_block">
+            <div class="clearfix">
+                <form class="met_contact_form">
+                    <div class="met_long_container">
+                        <input autocomplete="off" id="search" type="text" size="50" class="met_input_text" placeholder="search anime (min. 3 characters)">
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    {{ $anime_list or ''}}
+<div class="row-fluid">
+    <div class="span12">
+        {{ $update_msg or '' }}
+        {{ $anime_list or ''}}
+    </div>
 </div>
 @stop

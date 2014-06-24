@@ -1,6 +1,42 @@
 @extends('layout')
 
+@section('custom-js')
+@parent
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('input#search').keyup(function(e) {
+            e.preventDefault();
+            var keyword = $(this).val();
+            if (keyword !== ' ' && keyword.length >= 3) {
+                $.ajax({
+                    type: "POST",
+                    url: "anime/search",
+                    data: { keyword: keyword },
+                    timeout: 2000,
+                    success: function(data) {
+                        $("#search-results").empty().append(data);
+                    }
+                });
+            } else {
+                $("#search-results").empty();
+            }
+        });
+    });
+</script>
+@stop
 @section('content')
+<div class="row-fluid " style="margin-bottom: 10px">
+    <div class="span12 met_small_block">
+        <div class="clearfix">
+            <form class="met_contact_form">
+                <div class="met_long_container">
+                    <input autocomplete="off" id="search" type="text" size="50" class="met_input_text" placeholder="search anime (min. 3 characters)">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="search-results"></div>
 <div class="row-fluid">
     <div class="span12">
         <div class="clearfix">

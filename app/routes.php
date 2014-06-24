@@ -43,6 +43,18 @@ Route::get('/anime/update/thumbnails', function()
     }
     return 'not logged in.';
 });
+Route::post('/anime/search', function()
+{
+    if (Request::ajax()) {
+        $animelist = Input::has('animelist');
+        $search_results = MasterAnime::searchAnime(Input::get('keyword'));
+        if ($animelist) {
+            return View::make('child.all_anime', array('search_display' => array('view' => false, 'series' => $search_results)));
+        }
+        return View::make('child.all_anime', array('search_display' => array('view' => true, 'series' => $search_results)));
+    }
+    return 'AJAX requests only';
+});
 Route::post('/anime/scraper', function()
 {
     if (Request::ajax()) {
