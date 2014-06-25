@@ -1,32 +1,37 @@
 <?php
 
-class Anime extends Eloquent {
+class Anime extends Eloquent
+{
 
     protected $table = 'series';
     protected $fillable = ['mal_id'];
 
-    public static function getScreencaps($row) {
+    public static function getScreencaps($row)
+    {
         if (!empty($row->screencaps)) {
             return explode(', ', $row->screencaps);
         }
         return null;
     }
 
-    public static function getCover($row) {
+    public static function getCover($row)
+    {
         if (empty($row->cover)) {
             return $row->mal_image;
         }
         return $row->cover;
     }
 
-    public static function getThumbnail($row) {
+    public static function getThumbnail($row)
+    {
         if (empty($row->thumbnail)) {
             return Anime::getCover($row);
         }
         return $row->thumbnail;
     }
 
-    public static function getSynonyms($row) {
+    public static function getSynonyms($row)
+    {
         $count = 0;
         $str = '';
         if (!empty($row->english_name)) {
@@ -47,14 +52,15 @@ class Anime extends Eloquent {
         return $str;
     }
 
-    public static function getAnimeList($series) {
+    public static function getAnimeList($series, $is_admin = false)
+    {
         foreach ($series as $serie) {
-            echo '<li><a href="'.URL::to('anime/'. $serie->id .'/'.str_replace(" ", "_", $serie->name)).'">';
+            echo '<li><a href="' . URL::to('anime/' . $serie->id . '/' . str_replace(" ", "_", $serie->name)) . '">';
             $synonyms = Anime::getSynonyms($serie);
             if (!empty($synonyms)) {
-                echo '<span data-toggle="tooltip-right" title="'.$synonyms.'">'.$serie->name.'</span>';
+                echo '<span data-toggle="tooltip-right" title="' . $synonyms . '">' . $serie->name . '</span>';
             } else {
-                echo '<span>'.$serie->name.'</span>';
+                echo '<span>' . $serie->name . '</span>';
             }
             echo '<div class="pull-right" style="margin-top: -3px;">';
             if ($serie->status == 1) {
@@ -62,8 +68,8 @@ class Anime extends Eloquent {
             } else if ($serie->type == 2) {
                 echo '<span class="tag-blue">movie</span>';
             }
-            if (isset($is_admin) && $is_admin) {
-                echo '<button style="margin-left: 5px;" id="update_mirrors_button" class="btn-small btn-success"><input type="hidden" name="anime_id" value="'.$serie->id.'"/><span class="icon-download-alt"></span></button>';
+            if ($is_admin) {
+                echo '<button style="margin-left: 5px;" id="update_mirrors_button" class="btn-small btn-success"><input type="hidden" name="anime_id" value="' . $serie->id . '"/><span class="icon-download-alt"></span></button>';
             }
             echo '</div></a></li>';
         }

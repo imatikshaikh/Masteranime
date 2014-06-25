@@ -20,9 +20,12 @@
                 }
             } else {
                 $series = DB::table('series')->select('id', 'name', 'english_name', 'name_synonym_2', 'name_synonym_3', 'type', 'status')->orderBy('name', 'ASC')->get();
-                Anime::getAnimeList($series);
+                Anime::getAnimeList($series, isset($is_admin));
             }
             ?>
         </ul>
+        <script type="text/javascript">
+            $("[data-toggle=tooltip-right]").tooltip({ placement: 'right'});
+        </script>
     </div>
 </div>

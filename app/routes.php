@@ -1,6 +1,6 @@
 <?php
 
-HTML::macro('menu_link', function($routes) {
+HTML::macro('menu_link', function ($routes) {
     /*$active = ''; if( Request::path() == $route ) {$active = ' class="active"';}*/
     $count = count($routes);
     if ($count > 1) {
@@ -26,14 +26,12 @@ HTML::macro('menu_link', function($routes) {
 */
 
 /*Home route*/
-Route::get('/', function()
-{
-	return View::make('home');
+Route::get('/', function () {
+    return View::make('home');
 });
 
 /*Update & manage routes*/
-Route::get('/anime/update/thumbnails', function()
-{
+Route::get('/anime/update/thumbnails', function () {
     if (Sentry::check()) {
         $user = Sentry::getUser();
         if ($user->isSuperUser()) {
@@ -43,8 +41,7 @@ Route::get('/anime/update/thumbnails', function()
     }
     return 'not logged in.';
 });
-Route::post('/anime/search', function()
-{
+Route::post('/anime/search', function () {
     if (Request::ajax()) {
         $animelist = Input::has('animelist');
         $search_results = MasterAnime::searchAnime(Input::get('keyword'));
@@ -55,8 +52,7 @@ Route::post('/anime/search', function()
     }
     return 'AJAX requests only';
 });
-Route::post('/anime/scraper', function()
-{
+Route::post('/anime/scraper', function () {
     if (Request::ajax()) {
         if (Sentry::check()) {
             $user = Sentry::getUser();
@@ -70,8 +66,7 @@ Route::post('/anime/scraper', function()
     return 'AJAX requests only.';
 });
 Route::post('/anime/scraper/url', array('as' => 'add_scrapeurl', 'uses' => 'AccountController@updateScrapeUrl'));
-Route::post('/anime/favorite', function()
-{
+Route::post('/anime/favorite', function () {
     if (Request::ajax()) {
         $user_id = Input::get('user_id');
         $anime_id = Input::get('anime_id');
@@ -89,12 +84,11 @@ Route::post('/anime/favorite', function()
     }
     return 'AJAX requests only.';
 });
-Route::post('/watch/anime/mirror', function()
-{
+Route::post('/watch/anime/mirror', function () {
     if (Request::ajax()) {
         $mirror = Mirror::find(Input::get('id'));
         if (!empty($mirror)) {
-            return '<iframe frameborder="0" scrolling="no" width="100%" height="510" src="'.$mirror->src.'" allowfullscreen></iframe>';
+            return '<iframe frameborder="0" scrolling="no" width="100%" height="510" src="' . $mirror->src . '" allowfullscreen></iframe>';
         }
         return 'Could not find the mirror in our database.';
     }
@@ -102,8 +96,11 @@ Route::post('/watch/anime/mirror', function()
 });
 Route::post('/anime/update', 'AnimeController@getUpdate');
 Route::get('/anime/scraper/{id}', 'AnimeController@getScraper');
+
+
 /*Anime routes*/
 Route::get('/anime', 'AnimeController@getIndex');
+Route::get('/anime/latest', 'AnimeController@getLatest');
 Route::get('/anime/{id}', 'AnimeController@getAnime');
 Route::get('/anime/{id}/{name}', 'AnimeController@getAnime');
 Route::get('/watch/anime/{id}/{name}/{episode}', 'AnimeController@getEpisode');

@@ -1,12 +1,14 @@
 <?php
 
-class Latest extends Eloquent {
+class Latest extends Eloquent
+{
 
     protected $table = 'latest_anime';
     protected $fillable = ['anime_id', 'episode', 'name', 'img'];
     protected $primaryKey = 'anime_id';
 
-    public static function put($anime_id, $episode, $force = false) {
+    public static function put($anime_id, $episode, $force = false)
+    {
         $anime = Anime::findOrFail($anime_id);
         if ($anime->status == 1 || $force) {
             $latest = Latest::whereRaw('anime_id = ? and episode = ?', array($anime->id, $episode))->get();
@@ -23,7 +25,8 @@ class Latest extends Eloquent {
         }
     }
 
-    public static function updateThumbnails($total = array("start" => 0, "end" => 12)) {
+    public static function updateThumbnails($total = array("start" => 0, "end" => 12))
+    {
         $eps = Latest::getLatestRows($total);
         if (!empty($eps)) {
             foreach ($eps as $ep) {
@@ -36,7 +39,8 @@ class Latest extends Eloquent {
         return 'latest episodes is empty!';
     }
 
-    public static function getLatestRows($total) {
+    public static function getLatestRows($total)
+    {
         if (isset($total["start"]) && isset($total["end"])) {
             return Latest::orderBy('updated_at', 'DESC')->orderby(DB::raw('CAST(episode AS SIGNED)'), 'DESC')->skip($total["start"])->take($total["end"])->get();
         } else if (isset($total["end"])) {
@@ -45,7 +49,8 @@ class Latest extends Eloquent {
         return null;
     }
 
-    public static function getLatest($total = array("start" => 0, "end" => 12), $galerry = true) {
+    public static function getLatest($total = array("start" => 0, "end" => 12), $galerry = true)
+    {
         $result = "";
         $eps = Latest::getLatestRows($total);
         if (!empty($eps)) {
@@ -53,23 +58,28 @@ class Latest extends Eloquent {
                 foreach ($eps as $ep) {
                     $result .= '<div class="met_recent_work scrolled__item';
                     $result .= ' threedcharacters">';
-                    $result .= '<a href="'.URL::to('/watch/anime/'.$ep->anime_id.'/'.str_replace( ' ', '_',$ep->name).'/'.$ep->episode).'" class="met_recent_work_picture_area">
-                    '.HTML::image($ep->img, 'thumbnail_'.$ep->name, array("class" => "image-latest")).'<span><span><i class="icon-film icon-large"></i></span></span></a><aside class="clearfix"></aside>
-                    <a href="'.URL::to('/watch/anime/'.$ep->anime_id.'/'.$ep->name.'/'.$ep->episode).'" class="met_recent_work_double_title">';
+                    $result .= '<a href="' . URL::to('/watch/anime/' . $ep->anime_id . '/' . str_replace(' ', '_', $ep->name) . '/' . $ep->episode) . '" class="met_recent_work_picture_area">
+                    ' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array("class" => "image-latest")) . '<span><span><i class="icon-film icon-large"></i></span></span></a><aside class="clearfix"></aside>
+                    <a href="' . URL::to('/watch/anime/' . $ep->anime_id . '/' . $ep->name . '/' . $ep->episode) . '" class="met_recent_work_double_title">';
                     if (strlen($ep->name) > 30) {
                         $name = substr($ep->name, 0, 30);
-                        $result .= '<h3 data-toggle="tooltip" title="'.$ep->name.'">'.$name.'.. - ep. '.$ep->episode.'</h3>';
+                        $result .= '<h3 data-toggle="tooltip" title="' . $ep->name . '">' . $name . '.. - ep. ' . $ep->episode . '</h3>';
                     } else {
-                        $result .= '<h3>'.$ep->name.' - ep. '.$ep->episode.'</h3>';
+                        $result .= '<h3>' . $ep->name . ' - ep. ' . $ep->episode . '</h3>';
                     }
-                    $result .= '<h4>'.Latest::time_elapsed_string($ep->updated_at).'</h4></a></div>';
+                    $result .= '<h4>' . Latest::time_elapsed_string($ep->created_at) . '</h4></a></div>';
+                }
+            } else {
+                foreach ($eps as $ep) {
+                    $result .= '<li class="item"><a href="' . URL::to('watch/anime/' . $ep->anime_id . '/' . str_replace(" ", "_", $ep->name)) . '/' . $ep->episode . '">' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p class="title">' . $ep->name . ' - ep. ' . $ep->episode . '<p><p class="time">' . Latest::time_elapsed_string($ep->created_at) . '</p></a></li>';
                 }
             }
         }
         return $result;
     }
 
-    public static function time_elapsed_string($datetime, $full = false) {
+    public static function time_elapsed_string($datetime, $full = false)
+    {
         $now = new DateTime;
         $ago = new DateTime($datetime);
         $diff = $now->diff($ago);

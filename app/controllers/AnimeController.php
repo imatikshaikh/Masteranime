@@ -1,8 +1,10 @@
 <?php
 
-class AnimeController extends BaseController {
+class AnimeController extends BaseController
+{
 
-    public function getIndex() {
+    public function getIndex()
+    {
         $is_admin = false;
         if (Sentry::check()) {
             $user = Sentry::getUser();
@@ -13,15 +15,22 @@ class AnimeController extends BaseController {
         return View::make('list', array('title' => 'Animelist'))->nest('anime_list', 'child.all_anime', array('is_admin' => $is_admin));
     }
 
-    public function getAnime($id) {
+    public function getLatest()
+    {
+        return View::make('latest', array('title' => 'Latest anime'));
+    }
+
+    public function getAnime($id)
+    {
         $anime = Anime::find($id);
         if (empty($anime)) {
             return View::make('anime', array('anime' => null))->nest('anime_list', 'child.all_anime');
         }
-        return View::make('anime', array('anime' => $anime, 'description' => 'All information you should know about ' . $anime->name, 'title' => $anime->name. ' : Watch in HD'));
+        return View::make('anime', array('anime' => $anime, 'description' => 'All information you should know about ' . $anime->name, 'title' => $anime->name . ' : Watch in HD'));
     }
 
-    public function getUpdate() {
+    public function getUpdate()
+    {
         $is_admin = false;
         if (Sentry::check()) {
             $user = Sentry::getUser();
@@ -55,7 +64,8 @@ class AnimeController extends BaseController {
             ->nest('update_msg', 'child.alerts', array('msg_type' => 'warning', 'msg' => 'Anime was not found.' . var_dump($result)));
     }
 
-    public function getScraper($id) {
+    public function getScraper($id)
+    {
         if (Sentry::check()) {
             $user = Sentry::getUser();
             if ($user->isSuperUser()) {
@@ -66,15 +76,16 @@ class AnimeController extends BaseController {
         return 'You must be a super user for this feature.';
     }
 
-    public function getEpisode($id, $name, $episode) {
+    public function getEpisode($id, $name, $episode)
+    {
         $anime = Anime::find($id);
         if (!empty($anime)) {
             $mirrors = MasterAnime::getEpisode($anime->id, $episode);
             if (!empty($mirrors) && count($mirrors) > 0) {
                 return View::make('watch', array(
-                    'title' => 'Watch ' .$anime->name. ' - episode ' . $episode,
-                    'anime' => $anime, 'mirrors' => $mirrors,
-                    'episode' => $episode)
+                        'title' => 'Watch ' . $anime->name . ' - episode ' . $episode,
+                        'anime' => $anime, 'mirrors' => $mirrors,
+                        'episode' => $episode)
                 );
             }
             return View::make('watch', array('title' => 'Episode not found'))
