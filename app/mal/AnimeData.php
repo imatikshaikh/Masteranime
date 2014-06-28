@@ -1,29 +1,32 @@
 <?php
 use Goutte\Client;
 
-class AnimeDataScraper {
+class AnimeDataScraper
+{
 
-    private $special_chars = array(":", ";", "!", "?", ".", "(", ")", ",");
+    private $special_chars = array(":", ";", "!", "?", ".", "(", ")", ",", "'");
     public $mal_base_url = "http://myanimelist.net/api/";
     public $hum_v2_base_url = "https://vikhyat-hummingbird-v2.p.mashape.com/anime/";
 
-    private function getXML($query, $mal = true) {
+    private function getXML($query, $mal = true)
+    {
         if ($mal) {
             $client = new Client();
             $client->setAuth(ConnectDetails::$mal_username, ConnectDetails::$mal_password);
-            $response = $client->request('GET', $this->mal_base_url . '' .$query);
+            $response = $client->request('GET', $this->mal_base_url . '' . $query);
             $xml = simplexml_load_string($response->html());
             return $xml;
         }
         return null;
     }
 
-    private function getJSON($query, $hum = true, $anime_data = true) {
+    private function getJSON($query, $hum = true, $anime_data = true)
+    {
         if ($hum) {
             if ($anime_data) {
                 $client = new Client();
                 $client = $client->getClient();
-                $response = $client->get($this->hum_v2_base_url . '' .$query, [
+                $response = $client->get($this->hum_v2_base_url . '' . $query, [
                     'headers' => ['X-Mashape-Authorization' => ConnectDetails::$mashape_key]
                 ]);
                 return $response->json();
@@ -32,8 +35,9 @@ class AnimeDataScraper {
         return null;
     }
 
-    public function get($id, $keyword, $humid = null) {
-        $xml = $this->getXML('anime/search.xml?q=' .$keyword);
+    public function get($id, $keyword, $humid = null)
+    {
+        $xml = $this->getXML('anime/search.xml?q=' . $keyword);
         if (!empty($xml)) {
             foreach ($xml->anime->entry as $entry) {
                 if ($entry->id == $id) {
@@ -50,17 +54,17 @@ class AnimeDataScraper {
                 }
                 if (!empty($json)) {
                     $data = array(
-                        "mal-id" => (int) $final_entry->id,
+                        "mal-id" => (int)$final_entry->id,
                         "hum-id" => $json["id"],
-                        "title" => (string) $final_entry->title,
-                        "english_title" => (string) $final_entry->english,
-                        "synonyms" => (string) $final_entry->synonyms,
-                        "total_eps" => (int) $final_entry->episodes,
-                        "type" => (string) $final_entry->type,
-                        "status" => (string) $final_entry->status,
-                        "start_date" => (string) $final_entry->start_date,
-                        "end_date" => (string) $final_entry->end_date,
-                        "synopsis" => (string) $final_entry->synopsis,
+                        "title" => (string)$final_entry->title,
+                        "english_title" => (string)$final_entry->english,
+                        "synonyms" => (string)$final_entry->synonyms,
+                        "total_eps" => (int)$final_entry->episodes,
+                        "type" => (string)$final_entry->type,
+                        "status" => (string)$final_entry->status,
+                        "start_date" => (string)$final_entry->start_date,
+                        "end_date" => (string)$final_entry->end_date,
+                        "synopsis" => (string)$final_entry->synopsis,
                         "genres" => implode(', ', $json["genres"]),
                         "screencaps" => implode(', ', $json["screencaps"]),
                         "youtube_trailer_id" => $json["youtube_trailer_id"],
@@ -73,7 +77,8 @@ class AnimeDataScraper {
         return null;
     }
 
-    public function save($data) {
+    public function save($data)
+    {
         $anime = Anime::firstOrNew(array('mal_id' => $data["mal-id"]));
         $anime->mal_id = $data["mal-id"];
         $anime->hum_id = $data["hum-id"];
@@ -102,9 +107,11 @@ class AnimeDataScraper {
 
 }
 
-class AnimeMisc {
+class AnimeMisc
+{
 
-    public static function  getStatus($status) {
+    public static function  getStatus($status)
+    {
         switch ($status) {
             case 1:
                 return 'Ongoing';
@@ -114,7 +121,8 @@ class AnimeMisc {
         }
     }
 
-    public static function getType($type) {
+    public static function getType($type)
+    {
         switch ($type) {
             case 3:
                 return 'Special';
@@ -130,7 +138,8 @@ class AnimeMisc {
         }
     }
 
-    public static function  setStatus($status) {
+    public static function  setStatus($status)
+    {
         switch ($status) {
             case 'Finished Airing':
                 return 0;
@@ -143,7 +152,8 @@ class AnimeMisc {
         }
     }
 
-    public static function setType($type) {
+    public static function setType($type)
+    {
         switch ($type) {
             case 'Special':
                 return 3;

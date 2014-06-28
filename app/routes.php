@@ -26,8 +26,14 @@ HTML::macro('menu_link', function ($routes) {
 */
 
 /*Home route*/
+
 Route::get('/', function () {
     return View::make('home');
+});
+
+Route::get('/debug', function () {
+    RecentAnime::scrape();
+    return "done";
 });
 
 /*Update & manage routes*/
