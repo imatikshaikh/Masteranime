@@ -16,38 +16,6 @@
     });
 </script>
 @stop
-@section('custom-css')
-@parent
-<style type="text/css">
-    .latest-list li {
-        max-width: 1170px;
-        width: 100%;
-    }
-
-    .latest-list li a {
-        height: 44px;
-        width: auto;
-    }
-
-    .latest-list li img {
-        float: left;
-        margin: -8px -12px;
-        width: 60px;
-        height: 60px;
-        padding-right: 20px;
-    }
-
-    .title {
-        float: left;
-        margin-top: 13px;
-    }
-
-    .time {
-        float: right;
-        margin-top: 5px;
-    }
-</style>
-@stop
 @section('content')
 <div class="row-fluid">
     <div class="span12">
@@ -62,12 +30,9 @@
                         <li><a href="#" data-filter="*" class="met_color3">SHOW ALL</a></li>
                     </ul>
                 </div>
-
-                <ul class="nav nav-tabs nav-stacked latest-list">
-                    <?php
-                    echo Latest::getLatest(array("start" => 0, "end" => 80), false);
-                    ?>
-                </ul>
+                <?php
+                echo Latest::getLatest(array("start" => 0, "end" => 80), false);
+                ?>
             </div>
         </div>
     </div>

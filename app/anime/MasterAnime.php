@@ -1,11 +1,16 @@
 <?php
-class MasterAnime {
 
-    public static function getEpisodes($id) {
+class MasterAnime
+{
+
+    public static $cookie_recent_layout = "recent_layout_masteranime";
+
+    public static function getEpisodes($id)
+    {
         $episodes = array();
         foreach (Mirror::where('anime_id', '=', $id)->orderBy(DB::raw('CAST(episode AS SIGNED)'), 'DESC')->get() as $mirror) {
             if (empty($episodes)) {
-                array_push($episodes, (int) $mirror->episode);
+                array_push($episodes, (int)$mirror->episode);
             } else {
                 $found = false;
                 foreach ($episodes as $episode) {
@@ -13,42 +18,51 @@ class MasterAnime {
                         $found = true;
                 }
                 if (!$found)
-                    array_push($episodes, (int) $mirror->episode);
+                    array_push($episodes, (int)$mirror->episode);
             }
         }
         return $episodes;
     }
 
-    public static function getNextEpisode($id, $current) {
+    public static function getNextEpisode($id, $current)
+    {
         $episodes = MasterAnime::getEpisodes($id);
         $total = count($episodes);
         if ($total > 1) {
-            return $current == $total ? 0 : $episodes[array_search($current+1, $episodes)];
-        } 
+            return $current == $total ? 0 : $episodes[array_search($current + 1, $episodes)];
+        }
         return 0;
     }
 
-    public static function getPrevEpisode($id, $current) {
+    public static function getPrevEpisode($id, $current)
+    {
         $episodes = MasterAnime::getEpisodes($id);
         $total = count($episodes);
         if ($total > 1) {
-            return $current == 1 ? 0 : $episodes[array_search($current-1, $episodes)];
-        } 
+            return $current == 1 ? 0 : $episodes[array_search($current - 1, $episodes)];
+        }
         return 0;
     }
 
-    public static function getEpisode($id, $episode) {
+    public static function getEpisode($id, $episode)
+    {
         return Mirror::whereRaw('anime_id = ? and episode = ?', array($id, $episode))->orderBy('quality', 'DESC')->orderBy(DB::raw("field(host, 'MP4Upload','Arkvid', 'Masteranime') "), 'DESC')->get();
     }
 
-    public static function searchAnime($keyword) {
+    public static function searchAnime($keyword)
+    {
         if (strlen($keyword) >= 3 && $keyword !== ' ') {
-            $animes = DB::table('series')->select('id', 'name', 'english_name', 'name_synonym_2', 'name_synonym_3', 'type', 'status')->whereRaw('name LIKE ? or english_name LIKE ? or name_synonym_2 LIKE ? or name_synonym_3 LIKE ?', array('%'.$keyword.'%', '%'.$keyword.'%', '%'.$keyword.'%', '%'.$keyword.'%'))->get();
+            $animes = DB::table('series')->select('id', 'name', 'english_name', 'name_synonym_2', 'name_synonym_3', 'type', 'status')->whereRaw('name LIKE ? or english_name LIKE ? or name_synonym_2 LIKE ? or name_synonym_3 LIKE ?', array('%' . $keyword . '%', '%' . $keyword . '%', '%' . $keyword . '%', '%' . $keyword . '%'))->get();
             if (count($animes) > 0) {
                 return $animes;
             }
         }
         return null;
+    }
+
+    public static function createRecentLayoutCookie($gallery)
+    {
+        Cookie::queue(MasterAnime::$cookie_recent_layout, $gallery, 43200);
     }
 
 }

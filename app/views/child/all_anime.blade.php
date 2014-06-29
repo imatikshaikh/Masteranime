@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div class="row-fluid" style="margin-bottom: 0;">
     <div class="span12">
         <ul id="animelist" class="nav nav-tabs nav-stacked">
             <?php

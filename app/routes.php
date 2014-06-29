@@ -32,8 +32,15 @@ Route::get('/', function () {
 });
 
 Route::get('/debug', function () {
-    RecentAnime::scrape();
-    return "done";
+    if (Sentry::check()) {
+        $user = Sentry::getUser();
+        if ($user->isSuperUser()) {
+            RecentAnime::scrape();
+            return '<br/>DONE SCRAPING';
+        }
+        return 'must be super user';
+    }
+    return 'not logged in.';
 });
 
 /*Update & manage routes*/
@@ -46,6 +53,16 @@ Route::get('/anime/update/thumbnails', function () {
         return 'must be super user';
     }
     return 'not logged in.';
+});
+Route::post('/anime/recent', function () {
+    if (Request::ajax()) {
+        if (Input::has('type')) {
+            $gallery = Input::get('type') === 'gallery';
+            MasterAnime::createRecentLayoutCookie($gallery);
+            return Latest::getLatest(array("start" => 0, "end" => 12), $gallery);
+        }
+    }
+    return 'AJAX requests only';
 });
 Route::post('/anime/search', function () {
     if (Request::ajax()) {

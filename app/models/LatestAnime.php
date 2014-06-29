@@ -55,6 +55,8 @@ class Latest extends Eloquent
         $eps = Latest::getLatestRows($total);
         if (!empty($eps)) {
             if ($galerry) {
+                $result .= '<div class="met_recent_works_carousel_wrap">
+            <div class="met_recent_works_carousel clearfix scrolled met_mainpage_portfolio">';
                 foreach ($eps as $ep) {
                     $result .= '<div class="met_recent_work scrolled__item';
                     $result .= ' threedcharacters">';
@@ -69,10 +71,15 @@ class Latest extends Eloquent
                     }
                     $result .= '<h4>' . Latest::time_elapsed_string($ep->created_at) . '</h4></a></div>';
                 }
+                $result .= '</div></div>';
+                $result .= HTML::script('js/caroufredsel.js') . HTML::script('js/custom.js') . HTML::script('js/jquery.onecarousel.min.js') . HTML::script('js/isotope.js');
             } else {
+                $result .= '<ul class="nav nav-tabs nav-stacked latest-list">';
                 foreach ($eps as $ep) {
-                    $result .= '<li class="item"><a href="' . URL::to('watch/anime/' . $ep->anime_id . '/' . str_replace(" ", "_", $ep->name)) . '/' . $ep->episode . '">' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p class="title">' . $ep->name . ' - ep. ' . $ep->episode . '<p><p class="time">' . Latest::time_elapsed_string($ep->created_at) . '</p></a></li>';
+                    $result .= '<li class="item"><a href="' . URL::to('watch/anime/' . $ep->anime_id . '/' . str_replace(" ", "_", $ep->name)) . '/' . $ep->episode . '">' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p>' . $ep->name . ' - ep. ' . $ep->episode . '<p><h4>' . Latest::time_elapsed_string($ep->created_at) . '</h4></a></li>';
                 }
+                $result .= '</ul>';
+                $result .= HTML::script('js/custom.js') . HTML::script('js/jquery.onecarousel.min.js') . HTML::script('js/isotope.js');
             }
         }
         return $result;

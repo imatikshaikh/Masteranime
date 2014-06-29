@@ -75,15 +75,12 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     {{ HTML::script('js/modernizr.custom.65274.js') }}
     {{ HTML::script('js/jquery.migrate.js') }}
-    {{ HTML::script('js/jquery.onecarousel.min.js') }}
     <!--[if (gte IE 6)&(lte IE 8)]>
     {{ HTML::script('js/selectivizr-min.js') }}
     <![endif]-->
     {{ HTML::script('js/min/bootstrap.js') }}
     {{ HTML::script('js/retina.js') }}
-    {{ HTML::script('js/caroufredsel.js') }}
     {{ HTML::script('js/masonry2108.js') }}
-    {{ HTML::script('js/isotope.js') }}
     {{ HTML::script('js/mobile_detector.js') }}
     {{ HTML::script('js/jquery.prettyPhoto.js') }}
     {{ HTML::script('js/klass.min.js') }}
@@ -95,12 +92,10 @@
     <!--[if lte IE 10]>
     {{ HTML::script('js/jquery.color.js') }}
     <![endif]-->
-    {{ HTML::script('js/custom.js') }}
     <script type="text/javascript">
         $(document).ready(function () {
             $("[data-toggle=popover]").popover();
             $("[data-toggle=tooltip]").tooltip({ placement: 'top'});
-
             $("[data-toggle=tooltip-bottom]").tooltip({ placement: 'bottom'});
         });
     </script>
