@@ -31,7 +31,7 @@ class Mirror extends Eloquent
                             } else if (!$subbed) {
                                 $txt .= '<p class="text-error">Episode ' . $ep . ' - ' . $host . ' - Quality' . $quality . ': is not <strong>subbed</strong>.</p>';
                             } else {
-                                $exists = Mirror::mirror_exsists($anime_id, $ep, $host, $src);
+                                $exists = Mirror::mirror_exsists($anime_id, $ep, $host, $quality);
                                 if (!$exists) {
                                     Latest::put($anime_id, $ep, $force);
                                     Mirror::create([
@@ -96,12 +96,12 @@ class Mirror extends Eloquent
         return "failed";
     }
 
-    public static function mirror_exsists($anime_id, $ep, $host, $url)
+    public static function mirror_exsists($anime_id, $ep, $host, $quality)
     {
-        $mirrors = Mirror::whereRaw('anime_id = ? and episode = ? and host = ?', array($anime_id, $ep, $host))->get();
+        $mirrors = Mirror::whereRaw('anime_id = ? and episode = ?', array($anime_id, $ep))->select('quality', 'host')->get();
         if (!empty($mirrors)) {
             foreach ($mirrors as $mirror) {
-                if ($mirror->src == $url)
+                if ($mirror->quality == $quality && $mirror->host == $host)
                     return true;
             }
         }

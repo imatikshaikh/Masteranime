@@ -1,21 +1,5 @@
 @extends('layout')
 
-@section('custom-js')
-@parent
-<script type="text/javascript">
-    $(document).ready(function () {
-        // init Isotope
-        var $container = $('.latest-list').isotope({
-            itemSelector: '.item'
-        });
-        // filter items on button click
-        $('.met_filters a').click(function () {
-            var filterValue = $(this).attr('data-filter');
-            $container.isotope({ filter: filterValue });
-        });
-    });
-</script>
-@stop
 @section('content')
 <div class="row-fluid">
     <div class="span12">

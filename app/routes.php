@@ -89,6 +89,14 @@ Route::post('/anime/scraper', function () {
     return 'AJAX requests only.';
 });
 Route::post('/anime/scraper/url', array('as' => 'add_scrapeurl', 'uses' => 'AccountController@updateScrapeUrl'));
+Route::post('/anime/lastwatched', function () {
+    if (Request::ajax()) {
+        $anime_id = Input::get('anime_id');
+        $episode = Input::get('episode');
+        return MasterAnime::addLastwatchedAnime($anime_id, $episode);
+    }
+    return 'AJAX request only';
+});
 Route::post('/anime/favorite', function () {
     if (Request::ajax()) {
         $user_id = Input::get('user_id');
