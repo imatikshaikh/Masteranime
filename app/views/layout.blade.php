@@ -114,7 +114,7 @@
                         <a target="_blank" href="https://twitter.com/masteranidotme" data-toggle="tooltip-bottom"
                            title="Follow us" class="pull-left met_color_transition met_header_head_link"><i
                                 class="icon-twitter"></i></a>
-                        <a href="#" data-toggle="tooltip-bottom" title="MyAnime"
+                        <a href="{{ URL::to('account/myanime') }}" data-toggle="tooltip-bottom" title="MyAnime"
                            class="pull-left met_color_transition met_header_head_link"><i
                                 style="font-size: 18px; margin-left: -0.1em;" class="icon-heart"></i></a>
 
@@ -127,9 +127,9 @@
                                 <?php
                                 if (Sentry::check()) {
                                     $user = Sentry::getUser();
-                                    echo HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . $user->username), array("route" => 'account', "text" => 'settings'), array("route" => 'account/logout', "text" => 'LOG OUT')));
+                                    echo HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . $user->username), array("route" => 'account', "text" => 'settings'), array("route" => 'account/myanime', "text" => 'myanime'), array("route" => 'account/logout', "text" => 'LOG OUT')), true);
                                 } else {
-                                    echo HTML::menu_link(array(array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account/register', "text" => 'SIGN UP')));
+                                    echo HTML::menu_link(array(array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account/register', "text" => 'SIGN UP')), true);
                                 }
                                 ?>
                             </ul>
@@ -153,7 +153,7 @@
                         <?php
                         if (Sentry::check()) {
                             $user = Sentry::getUser();
-                            echo HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . $user->username), array("route" => 'account', "text" => 'settings'), array("route" => 'account/logout', "text" => 'LOG OUT')));
+                            echo HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . $user->username), array("route" => 'account', "text" => 'settings'), array("route" => 'account/myanime', "text" => 'myanime'), array("route" => 'account/logout', "text" => 'LOG OUT')));
                         } else {
                             echo HTML::menu_link(array(array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account/register', "text" => 'SIGN UP')));
                         }

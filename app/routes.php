@@ -1,10 +1,11 @@
 <?php
 
-HTML::macro('menu_link', function ($routes) {
+HTML::macro('menu_link', function ($routes, $phone = false) {
     /*$active = ''; if( Request::path() == $route ) {$active = ' class="active"';}*/
     $count = count($routes);
     if ($count > 1) {
-        $list = '<li>' . link_to($routes[0]["route"], $routes[0]["text"]) . '<ul style="left: 0;" class="met_menu_to_left">';
+        $list = '<li>' . link_to($routes[0]["route"], $routes[0]["text"]) . '<ul style="left: 0;" class="met_menu_to_left';
+        $phone ? $list .= ' dl-submenu"><li class="dl-back"><a href="#">back</a></li>' : $list .= '">';
         for ($i = 1; $i < $count; $i++) {
             $list .= '<li>' . link_to($routes[$i]["route"], $routes[$i]["text"]) . '</li>';
         }
@@ -137,6 +138,8 @@ Route::get('/anime/{id}/{name}', 'AnimeController@getAnime');
 Route::get('/watch/anime/{id}/{name}/{episode}', 'AnimeController@getEpisode');
 /*Account routes*/
 Route::any('/account', 'AccountController@getIndex');
+Route::any('/account/settings', 'AccountController@getIndex');
+Route::get('/account/myanime', 'AccountController@getMyanime');
 Route::get('/account/logout', 'AccountController@getLogout');
 Route::any('/account/register', 'AccountController@getRegister');
 

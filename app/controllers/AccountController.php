@@ -1,8 +1,10 @@
 <?php
 
-class AccountController extends BaseController {
+class AccountController extends BaseController
+{
 
-    public static function getIndex() {
+    public static function getIndex()
+    {
         if (Sentry::check()) {
             return View::make('account', ['title' => 'Settings']);
         } else {
@@ -14,40 +16,29 @@ class AccountController extends BaseController {
                 if (isset($input_remember) && $input_remember == true) {
                     $remember = true;
                 }
-                try
-                {
+                try {
                     // Login credentials
                     $credentials = array(
-                        'username'    => $username,
+                        'username' => $username,
                         'password' => $password,
                     );
 
                     // Authenticate the user
                     $user = Sentry::authenticate($credentials, $remember);
                     return Redirect::to('account');
-                }
-                catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
-                {
+                } catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
                     return View::make('account')->nest('sign_in_form', 'child.signin')
                         ->nest('update_msg', 'child.alerts', array('msg_type' => 'warning', 'msg' => 'Wrong password, try again.'));
-                }
-                catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-                {
+                } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
                     return View::make('account')->nest('sign_in_form', 'child.signin')
                         ->nest('update_msg', 'child.alerts', array('msg_type' => 'warning', 'msg' => 'User was not found.'));
-                }
-                catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
-                {
+                } catch (Cartalyst\Sentry\Users\UserNotActivatedException $e) {
                     return View::make('account')->nest('sign_in_form', 'child.signin')
                         ->nest('update_msg', 'child.alerts', array('msg_type' => 'warning', 'msg' => 'User is not activated.'));
-                }
-                catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
-                {
+                } catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e) {
                     return View::make('account')->nest('sign_in_form', 'child.signin')
                         ->nest('update_msg', 'child.alerts', array('msg_type' => 'warning', 'msg' => 'User is suspended.'));
-                }
-                catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
-                {
+                } catch (Cartalyst\Sentry\Throttling\UserBannedException $e) {
                     return View::make('account')->nest('sign_in_form', 'child.signin')
                         ->nest('update_msg', 'child.alerts', array('msg_type' => 'warning', 'msg' => 'User is banned!'));
                 }
@@ -57,27 +48,33 @@ class AccountController extends BaseController {
         }
     }
 
-    public static function getRegister() {
+    public static function getMyanime()
+    {
+        if (Sentry::check()) {
+
+        }
+        return Redirect::to('account');
+    }
+
+    public static function getRegister()
+    {
         if (Sentry::check()) {
             return Redirect::to('account');
         } else {
             if (Input::has('username') && Input::has('password') && Input::has('email')) {
-                try
-                {
+                try {
                     $username = Input::get('username');
                     $email = Input::get('email');
                     $password = Input::get('password');
                     $user = Sentry::register(array(
                         'username' => $username,
-                        'email'    => $email,
+                        'email' => $email,
                         'password' => $password,
                         'activated' => true,
                     ));
                     return View::make('account', ['title' => 'Sign up'])->nest('register_form', 'child.register')
-                        ->nest('update_msg', 'child.alerts', array('msg_type' => 'success', 'msg' => 'You have been registered as <strong>'.$username.'</strong>, feel free to sign in'.link_to('account', 'here').'.'));
-                }
-                catch (Cartalyst\Sentry\Users\UserExistsException $e)
-                {
+                        ->nest('update_msg', 'child.alerts', array('msg_type' => 'success', 'msg' => 'You have been registered as <strong>' . $username . '</strong>, feel free to sign in' . link_to('account', 'here') . '.'));
+                } catch (Cartalyst\Sentry\Users\UserExistsException $e) {
                     return View::make('account', ['title' => 'Sign up'])->nest('register_form', 'child.register')
                         ->nest('update_msg', 'child.alerts', array('msg_type' => 'warning', 'msg' => 'Username already exists!'));
                 }
@@ -87,12 +84,14 @@ class AccountController extends BaseController {
         }
     }
 
-    public static function getLogout() {
+    public static function getLogout()
+    {
         Sentry::logout();
         return Redirect::to('account');
     }
 
-    public static function updateScrapeUrl() {
+    public static function updateScrapeUrl()
+    {
         if (Input::has('anime_id')) {
             $url = ScrapeUrl::firstOrNew(array('anime_id' => Input::get('anime_id')));
             if (Input::has('suffix_animerush'))
