@@ -50,10 +50,7 @@ class AccountController extends BaseController
 
     public static function getMyanime()
     {
-        if (Sentry::check()) {
-
-        }
-        return Redirect::to('account');
+        return View::make('myanime', ['title' => 'Myanime']);
     }
 
     public static function getRegister()

@@ -20,27 +20,29 @@ class RecentAnime
                 $subbed = $episodes[0][0][$i];
                 $h3 = $episodes[0][1][$i];
                 $name_and_ep = explode(" - Episode ", $h3);
-                $name = $name_and_ep[0];
-                $episode = filter_var($name_and_ep[1], FILTER_SANITIZE_NUMBER_FLOAT);
-                $anime = DB::table('series')->select('id', 'name')->where('name', '=', $name)->take(1)->get();
-                $anime_id = 0;
-                if (isset($anime[0]) && is_object($anime[0])) {
-                    $anime_id = $anime[0]->id;
-                } else {
-                    $anime = DB::table('scrape_urls')->select('anime_id')->where('othername', '=', $name)->take(1)->get();
+                if (count($name_and_ep) === 2) {
+                    $name = $name_and_ep[0];
+                    $episode = filter_var($name_and_ep[1], FILTER_SANITIZE_NUMBER_FLOAT);
+                    $anime = DB::table('series')->select('id', 'name')->where('name', '=', $name)->take(1)->get();
+                    $anime_id = 0;
                     if (isset($anime[0]) && is_object($anime[0])) {
-                        $anime_id = $anime[0]->anime_id;
+                        $anime_id = $anime[0]->id;
+                    } else {
+                        $anime = DB::table('scrape_urls')->select('anime_id')->where('othername', '=', $name)->take(1)->get();
+                        if (isset($anime[0]) && is_object($anime[0])) {
+                            $anime_id = $anime[0]->anime_id;
+                        }
                     }
-                }
-                if (!empty($anime_id)) {
-                    $r = new PrepareAnime(array(
-                        "id" => $anime_id,
-                        "episode" => $episode,
-                        "subbed" => $subbed
-                    ));
-                    array_push($details, $r);
-                } else {
-                    echo 'DOESN\'T EXIST -> ' . $name . '<br/>';
+                    if (!empty($anime_id)) {
+                        $r = new PrepareAnime(array(
+                            "id" => $anime_id,
+                            "episode" => $episode,
+                            "subbed" => $subbed
+                        ));
+                        array_push($details, $r);
+                    } else {
+                        echo 'DOESN\'T EXIST -> ' . $name . '<br/>';
+                    }
                 }
             }
         }
