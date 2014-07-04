@@ -41,7 +41,7 @@
     <meta name="twitter:description" content=<?php if (isset($description)) {
         echo '"' . $description . '"';
     } else {
-        echo '"Masteranime allows you to stream anime at high quality for desktop, tablet and mobile users! We also offer cool features like auto-updating your own MyAnimeList!"';
+        echo '"Masteranime allows you to stream anime at high quality for desktop, tablet and mobile users! We also offer cool features like auto-updating your anime List on popular sites like Myanimelist and Hummingbird!"';
     } ?>/>
     <meta name="twitter:image" content={{
     $social_image or asset('img/masteranime_logo.png') }} />

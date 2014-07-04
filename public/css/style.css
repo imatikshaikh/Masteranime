@@ -2,6 +2,11 @@ body {
     background-color: #171717;
 }
 
+#disqus_thread {
+    color: #d8d8d8;
+    text-shadow: none;
+}
+
 .latest-list li {
     max-width: 1170px;
     width: 100%;

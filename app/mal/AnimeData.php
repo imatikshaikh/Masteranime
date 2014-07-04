@@ -8,11 +8,15 @@ class AnimeDataScraper
     public $mal_base_url = "http://myanimelist.net/api/";
     public $hum_v2_base_url = "https://vikhyat-hummingbird-v2.p.mashape.com/anime/";
 
-    private function getXML($query, $mal = true)
+    private function getXML($query, $mal = true, $account = null)
     {
         if ($mal) {
             $client = new Client();
-            $client->setAuth(ConnectDetails::$mal_username, ConnectDetails::$mal_password);
+            if (empty($account)) {
+                $client->setAuth(ConnectDetails::$mal_username, ConnectDetails::$mal_password);
+            } else {
+                $client->setAuth($account["username"], $account["password"]);
+            }
             $response = $client->request('GET', $this->mal_base_url . '' . $query);
             $xml = simplexml_load_string($response->html());
             return $xml;
@@ -33,6 +37,109 @@ class AnimeDataScraper
             }
         }
         return null;
+    }
+
+    public function authMAL($username, $password)
+    {
+        if (isset($username) && isset($password)) {
+            if (Sentry::check()) {
+                $u = Sentry::getUser();
+                $xml = $this->getXML('account/verify_credentials.xml', true, array("username" => $username, "password" => $password));
+                if (!empty($xml)) {
+                    if (isset($xml->user->username) && $username == $xml->user->username) {
+                        $u->mal_username = $username;
+                        $u->mal_password = $password;
+                        return $u->save();
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public function addMAL($user, $anime, $episode, $status = 1)
+    {
+        if (is_object($user)) {
+            $xml = '<entry><episode>' . $episode . '</episode><status>' . $status . '</status></entry>';
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->mal_base_url . 'animelist/add/' . $anime->mal_id . '.xml');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+            curl_setopt($ch, CURLOPT_USERPWD, $user->mal_username . ':' . $user->mal_password);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, ["data" => $xml]);
+            $response = curl_exec($ch);
+            curl_close($ch);
+            switch ($response) {
+                case 'This anime is already on your list.':
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $this->mal_base_url . 'animelist/update/' . $anime->mal_id . '.xml');
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+                    curl_setopt($ch, CURLOPT_USERPWD, $user->mal_username . ':' . $user->mal_password);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, ["data" => $xml]);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+                    return '- Myanimelist: Anime has been added to your list.';
+                case 'Invalid credentials':
+                    return '- Myanimelist: Failed adding anime to your list (could be wrong MAL username, password or server is down)';
+                default:
+                    return '- Myanimelist: Anime has been added to your list.';
+            }
+        }
+        return '';
+    }
+
+    public function authHummingbird($username, $password)
+    {
+        if (isset($username) && isset($password)) {
+            if (Sentry::check()) {
+                $u = Sentry::getUser();
+                $client = new Client();
+                $client = $client->getClient();
+                $response = $client->post('https://hummingbirdv1.p.mashape.com/users/authenticate', [
+                    'headers' => ['X-Mashape-Authorization' => ConnectDetails::$mashape_key],
+                    'query' => ['username' => $username, 'password' => $password]
+                ]);
+                if ($response->getStatusCode() === "201" || $response->getStatusCode() === "200") {
+                    $auth = $response->json();
+                    if (!empty($auth) && strlen($auth) >= 20) {
+                        $u->hum_username = $username;
+                        $u->hum_auth = $auth;
+                        return $u->save();
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public function addHummingbird($user, $anime, $episode, $status = 1)
+    {
+        if (is_object($user)) {
+            try {
+                $client = new Client();
+                $client = $client->getClient();
+                $status = $status == 1 ? "currently-watching" : "completed";
+                $response = $client->post('https://hummingbirdv1.p.mashape.com/libraries/' . $anime->hum_id, [
+                    'headers' => ['X-Mashape-Authorization' => ConnectDetails::$mashape_key],
+                    'query' => ['auth_token' => $user->hum_auth, 'episodes_watched' => $episode, 'status' => $status, 'notes' => 'Added by http://www.masterani.me/']
+                ]);
+                if ($response->getStatusCode() === "201" || $response->getStatusCode() === "200") {
+                    if ($response->json())
+                        return '- Hummingbird: Added anime to your list.';
+                }
+            } catch (\GuzzleHttp\Exception\ClientException $e) {
+                if ($e->hasResponse()) {
+                    switch ($e->getResponse()->getStatusCode()) {
+                        case "401":
+                            return "- Hummingbird: Wrong auth token (check username or password changes)";
+                        default:
+                            return '- Hummingbird: uknown error server might be down.';
+                    }
+                }
+            }
+        }
+        return '';
     }
 
     public function get($id, $keyword, $humid = null)

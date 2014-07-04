@@ -119,49 +119,8 @@
     </div>
 </div>
 <hr>
-<div class="row-fluid">
-    <div class="span3 scrolled__item">
-        <h3 class="met_title_with_childs clearfix">NEWS
-            <span class="met_subtitle">WHAT IS GOING ON WITH MASTERANI.ME</span>
-        </h3>
-
-        <div class="met_blog_posts_shorts" style="width: 100%;">
-            <div class="met_short_blog_post_block">
-                <aside>
-                    <span>27</span>
-                    <span>April</span>
-                </aside>
-                <div>
-                    <a href="blog_detail.html"><h4>SEO Optimized</h4></a>
-
-                    <p>Lorem ipsum dolor sit amet, coasar aser sectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="met_short_blog_post_block">
-                <aside>
-                    <span>28</span>
-                    <span>April</span>
-                </aside>
-                <div>
-                    <a href="blog_detail.html"><h4>jQuery Carousel</h4></a>
-
-                    <p>Lorem ipsum dolor sit amet, coasar aser sectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="met_short_blog_post_block">
-                <aside>
-                    <span>28</span>
-                    <span>April</span>
-                </aside>
-                <div>
-                    <a href="blog_detail.html"><h4>Documented Code</h4></a>
-
-                    <p>Lorem ipsum dolor sit amet, coasar aser sectetur adipiscing elit.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="span9">
+<div class="row-fluid hidden-phone" style="margin-bottom: 20px;">
+    <div class="span12">
         <h3 class="met_title_with_childs pull-left">RECOMMENDED ANIME
             <span class="met_subtitle">POPULAR/ONGOING ANIME</span>
         </h3>
@@ -173,6 +132,33 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<hr class="hidden-phone">
+<div class="row-fluid scrolled">
+    <div class="span12">
+        <h3 class="met_title_with_childs clearfix">DISQUS
+            <span class="met_subtitle">TALK ABOUT THE SERIES AND EPISODES</span>
+        </h3>
+
+        <div style="margin: 1em;" id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'masteranime'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments
+                powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span
+                class="logo-disqus">Disqus</span></a>
     </div>
 </div>
 @stop

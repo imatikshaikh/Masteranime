@@ -101,12 +101,44 @@
             }
             echo '</ul></div>';
             echo '</div>';
+        } else {
+            Redirect::to('anime');
         }
         ?>
+        <div class="row-fluid scrolled">
+            <div class="span9">
+                <h3 class="met_title_with_childs clearfix">DISQUS
+                    <span class="met_subtitle">TALK ABOUT THE SERIES AND EPISODES</span>
+                </h3>
+
+                <div style="margin: 1em;" id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'masteranime'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function () {
+                        var dsq = document.createElement('script');
+                        dsq.type = 'text/javascript';
+                        dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments
+                        powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span
+                        class="logo-disqus">Disqus</span></a>
+            </div>
+        </div>
     </div>
 </div>
 <?php
 if (Sentry::check()) {
+    $end = 1;
+    if (empty($next) && $anime->status != 1) {
+        $end = 2;
+    }
     echo '
 <script type="text/javascript">
     $(document).ready(function() {
@@ -114,13 +146,13 @@ if (Sentry::check()) {
             $.ajax({
                 type: "POST",
                 url: "../../../../anime/lastwatched",
-                data: {  anime_id: ' . $anime->id . ', episode: ' . $episode . ' },
+                data: {  anime_id: ' . $anime->id . ', episode: ' . $episode . ', completed: ' . $end . ' },
                 timeout: 10000,
                 success: function (data) {
                     $("#video").prepend(data);
                 }
             });
-        }, 180000);
+        }, 300000);
     });
 </script>';
 }

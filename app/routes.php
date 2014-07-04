@@ -55,6 +55,12 @@ Route::get('/anime/update/thumbnails', function () {
     }
     return 'not logged in.';
 });
+Route::post('/anime/managelistaccount', function () {
+    if (Request::ajax()) {
+        return MasterAnime::manageListAccount(Input::get("site"), Input::get("username"), Input::get("password"));
+    }
+    return 'AJAX requests only';
+});
 Route::post('/anime/recent', function () {
     if (Request::ajax()) {
         if (Input::has('type')) {
@@ -92,9 +98,7 @@ Route::post('/anime/scraper', function () {
 Route::post('/anime/scraper/url', array('as' => 'add_scrapeurl', 'uses' => 'AccountController@updateScrapeUrl'));
 Route::post('/anime/lastwatched', function () {
     if (Request::ajax()) {
-        $anime_id = Input::get('anime_id');
-        $episode = Input::get('episode');
-        return MasterAnime::addLastwatchedAnime($anime_id, $episode);
+        return MasterAnime::addLastwatchedAnime(Input::get('anime_id'), Input::get('episode'), Input::get('completed'));
     }
     return 'AJAX request only';
 });
