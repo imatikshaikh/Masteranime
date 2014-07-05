@@ -20,7 +20,11 @@
                 }
             } else {
                 $series = DB::table('series')->select('id', 'name', 'english_name', 'name_synonym_2', 'name_synonym_3', 'type', 'status')->orderBy('name', 'ASC')->get();
-                Anime::getAnimeList($series, isset($is_admin));
+                if (isset($is_admin) && $is_admin) {
+                    Anime::getAnimeList($series, true);
+                } else {
+                    Anime::getAnimeList($series);
+                }
             }
             ?>
         </ul>
