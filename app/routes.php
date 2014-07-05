@@ -95,6 +95,15 @@ Route::post('/anime/scraper', function () {
     }
     return 'AJAX requests only.';
 });
+Route::get('/anime/scraper/{id}', function ($id) {
+    if (Sentry::check()) {
+        $user = Sentry::getUser();
+        if ($user->isSuperUser()) {
+            return Mirror::put($id);
+        }
+    }
+    return 'Not allowed!';
+});
 Route::post('/anime/scraper/url', array('as' => 'add_scrapeurl', 'uses' => 'AccountController@updateScrapeUrl'));
 Route::post('/anime/lastwatched', function () {
     if (Request::ajax()) {

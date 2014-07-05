@@ -91,6 +91,10 @@ class Mirror extends Eloquent
                 return "Vidbull";
             } else if (strpos($link, "arkvid.tv") !== false) {
                 return "Arkvid";
+            } else if (strpos($link, "video44.net") !== false) {
+                return "Goplayer";
+            } else if (strpos($link, "embed.videoweed") !== false) {
+                return "Videoweed";
             }
         }
         return "failed";

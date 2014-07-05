@@ -1,11 +1,11 @@
 <?php
-set_time_limit(360);
+set_time_limit(600);
 use Goutte\Client;
 
 class EpisodeScraper
 {
 
-    private $special_chars = array(":", ";", "!", "?", ".", "(", ")", ",", "'");
+    private $special_chars = array(":", ";", "!", "?", ".", "(", ")", ",", "'", "[", "]");
     protected $animerush_base_url = "http://www.animerush.tv/";
     protected $rawranime_base_url = "http://rawranime.tv/";
     protected $base_filter_ra = "div#rawr_wrapper > div#ipbwrapper > div#content.clearfix";
