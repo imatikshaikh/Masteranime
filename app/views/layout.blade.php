@@ -88,6 +88,8 @@
     {{ HTML::script('js/min/jquery.dlmenu.js') }}
     {{ HTML::script('js/fullscreenr.js') }}
     {{ HTML::script('js/jquery.easyticker.js') }}
+    {{ HTML::script('js/custom.js') }}
+    {{ HTML::script('js/jquery.onecarousel.min.js') }}
     <!--[if lte IE 10]>
     {{ HTML::script('js/jquery.color.js') }}
     <![endif]-->
