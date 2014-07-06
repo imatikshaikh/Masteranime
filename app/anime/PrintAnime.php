@@ -1,8 +1,5 @@
 <?php
-ini_set('output_buffering', 0);
-ini_set('zlib.output_compression', 0);
 ini_set('implicit_flush', 1);
-
 set_time_limit(0);
 
 class PrintAnime

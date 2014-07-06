@@ -9,7 +9,8 @@ class MasterAnime
     public static function getEpisodes($id)
     {
         $episodes = array();
-        foreach (Mirror::where('anime_id', '=', $id)->orderBy(DB::raw('CAST(episode AS SIGNED)'), 'DESC')->get() as $mirror) {
+        $mirrors = DB::table('mirrors')->where('anime_id', '=', $id)->select('episode')->orderBy(DB::raw('CAST(episode AS SIGNED)'), 'DESC')->get();
+        foreach ($mirrors as $mirror) {
             if (empty($episodes)) {
                 array_push($episodes, (int)$mirror->episode);
             } else {
