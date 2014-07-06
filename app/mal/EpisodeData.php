@@ -1,5 +1,6 @@
 <?php
-set_time_limit(600);
+set_time_limit(0);
+
 use Goutte\Client;
 
 class EpisodeScraper

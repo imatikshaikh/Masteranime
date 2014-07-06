@@ -99,7 +99,7 @@ Route::get('/anime/scraper/all', function () {
     if (Sentry::check()) {
         $user = Sentry::getUser();
         if ($user->isSuperUser()) {
-            return MasterAnime::scrapeAllAnimeWithNoEpisodes();
+            return PrintAnime::scrapeAllAnimeWithNoEpisodes();
         }
     }
     return 'Not allowed!';
