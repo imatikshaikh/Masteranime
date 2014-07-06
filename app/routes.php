@@ -104,6 +104,24 @@ Route::get('/anime/scraper/all', function () {
     }
     return 'Not allowed!';
 });
+Route::get('/anime/scraper/{id}/{startep}/{endep}', function ($id, $startep, $endep) {
+    if (Sentry::check()) {
+        $user = Sentry::getUser();
+        if ($user->isSuperUser()) {
+            return Mirror::put($id, false, $startep, $endep);
+        }
+    }
+    return 'Not allowed!';
+});
+Route::get('/anime/scraper/{id}/{startep}', function ($id, $startep) {
+    if (Sentry::check()) {
+        $user = Sentry::getUser();
+        if ($user->isSuperUser()) {
+            return Mirror::put($id, false, $startep);
+        }
+    }
+    return 'Not allowed!';
+});
 Route::get('/anime/scraper/{id}', function ($id) {
     if (Sentry::check()) {
         $user = Sentry::getUser();

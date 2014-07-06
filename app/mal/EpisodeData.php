@@ -21,7 +21,7 @@ class EpisodeScraper
         $this->client = new Client();
     }
 
-    private function scrape_ar($suffix, $startep = 1)
+    private function scrape_ar($suffix, $startep = 1, $endep = -1)
     {
         $url = $this->animerush_base_url . $suffix . '-episode-' . $startep;
         $crawler = $this->client->request('GET', $url);
@@ -33,6 +33,11 @@ class EpisodeScraper
             }
             if (is_string($episode)) {
                 $episode = filter_var(explode(' Episode ', $episode)[1], FILTER_SANITIZE_NUMBER_FLOAT);
+                if ((int)$endep + 1 == $episode) {
+                    $this->loop = false;
+                    echo 'Reached end ep: ' . $endep . '<br/>';
+                    break;
+                }
                 $mirrors = $crawler->filter('div#left-column > div#episodes')->each(function (\Symfony\Component\DomCrawler\Crawler $node) {
                     $mirrors = array();
                     $links = $node->filter('div.episode1 > div > div > h3 > a')->links();
@@ -107,7 +112,7 @@ class EpisodeScraper
         return $mirrors;
     }
 
-    private function scrape_ra($suffix, $startep = 1)
+    private function scrape_ra($suffix, $startep = 1, $endep = -1)
     {
         $url = $this->rawranime_base_url . $suffix . '/' . $startep;
         $crawler = $this->client->request('GET', $url);
@@ -119,6 +124,11 @@ class EpisodeScraper
                 $episode = filter_var($episode[1], FILTER_SANITIZE_NUMBER_FLOAT);
             } else {
                 $episode = filter_var($episode[0], FILTER_SANITIZE_NUMBER_FLOAT);
+            }
+            if ((int)$endep + 1 == $episode) {
+                $this->loop = false;
+                echo 'Reached end ep: ' . $endep . '<br/>';
+                break;
             }
             $mirror_details = $crawler->filter($this->base_filter_ra . ' > div#sidebar > div#mirror_container > if')->each(function (\Symfony\Component\DomCrawler\Crawler $node) {
                 $details = $node->filter('div.mirror > div.mirror_traits > div')->extract('class');
@@ -147,7 +157,7 @@ class EpisodeScraper
         return $this->mirrors;
     }
 
-    public function get($episode = 1, $anime_platform = AnimePlatform::all)
+    public function get($episode = 1, $anime_platform = AnimePlatform::all, $endep = -1)
     {
         $this->mirrors = array();
         $anime = Anime::find($this->anime_id);
@@ -156,26 +166,26 @@ class EpisodeScraper
         }
         $urls = ScrapeUrl::find($this->anime_id);
         if (empty($urls)) {
-            return $this->scrape_ar($this->getUrlSuffix($anime->name), $episode);
+            return $this->scrape_ar($this->getUrlSuffix($anime->name), $episode, $endep);
         } else {
             if ($anime_platform == AnimePlatform::all) {
                 if (empty($urls->suffix_animerush)) {
-                    $this->scrape_ar($this->getUrlSuffix($anime->name), $episode);
+                    $this->scrape_ar($this->getUrlSuffix($anime->name), $episode, $endep);
                 } else {
-                    $this->scrape_ar($urls->suffix_animerush, $episode);
+                    $this->scrape_ar($urls->suffix_animerush, $episode, $endep);
                 }
                 if (!empty($urls->suffix_rawranime)) {
-                    $this->scrape_ra($urls->suffix_rawranime, $episode);
+                    $this->scrape_ra($urls->suffix_rawranime, $episode, $endep);
                 }
                 return $this->mirrors;
             } else if ($anime_platform == AnimePlatform::animerush) {
                 if (empty($urls->suffix_animerush)) {
-                    return $this->scrape_ar($this->getUrlSuffix($anime->name), $episode);
+                    return $this->scrape_ar($this->getUrlSuffix($anime->name), $episode, $endep);
                 }
-                return $this->scrape_ar($urls->suffix_animerush, $episode);
+                return $this->scrape_ar($urls->suffix_animerush, $episode, $endep);
             } else if ($anime_platform == AnimePlatform::rawranime) {
                 if (!empty($urls->suffix_rawranime)) {
-                    return $this->scrape_ra($urls->suffx_rawranime, $episode);
+                    return $this->scrape_ra($urls->suffx_rawranime, $episode, $endep);
                 }
                 return null;
             }

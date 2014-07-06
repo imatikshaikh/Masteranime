@@ -1,4 +1,5 @@
 <?php
+set_time_limit(0);
 
 class Mirror extends Eloquent
 {
@@ -61,10 +62,10 @@ class Mirror extends Eloquent
         return DB::delete('delete from mirrors where id = ?', array($mirrorid));
     }
 
-    public static function put($animeid, $force = false, $episode = 1)
+    public static function put($animeid, $force = false, $episode = 1, $endep = -1)
     {
         $scraper = new EpisodeScraper($animeid);
-        $mirrors = $scraper->get($episode);
+        $mirrors = $scraper->get($episode, AnimePlatform::all, $endep);
         if (!empty($mirrors)) {
             $txt = Mirror::add_mirror($animeid, $mirrors, $force);
             return '<div class="span12"><p style="text-align: center;">Succes! Mirrors have been updated!</p>' . $txt . '<hr></div>';
