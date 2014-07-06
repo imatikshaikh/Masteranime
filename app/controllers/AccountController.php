@@ -103,4 +103,13 @@ class AccountController extends BaseController
         return 'anime_id not set';
     }
 
+    public static function updateThumbnail()
+    {
+        if (Input::has('anime_id')) {
+            $anime = Anime::findOrFail(Input::get('anime_id'));
+            $anime->thumbnail = Input::get('thumbnail');
+        }
+        return 'anime_id not set';
+    }
+
 }

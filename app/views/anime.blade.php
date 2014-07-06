@@ -108,7 +108,7 @@ echo 'background-size: cover;
                 echo '<li><a href="#">No episodes available for this anime, try again later!</a></li>';
             } else {
                 foreach ($episodes as $episode) {
-                    echo '<li><a href="' . URL::to('watch/anime/' . $anime->id . '/' . str_replace(" ", "_", $anime->name)) . '/' . $episode . '">' . $episode . '</a></li>';
+                    echo '<li><a href="' . URL::to('watch/anime/' . $anime->id . '/' . str_replace(array(" ", "/"), "_", $anime->name)) . '/' . $episode . '">' . $episode . '</a></li>';
                 }
             }
             echo '</ul>';

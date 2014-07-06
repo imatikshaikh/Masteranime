@@ -95,6 +95,15 @@ Route::post('/anime/scraper', function () {
     }
     return 'AJAX requests only.';
 });
+Route::get('/anime/scraper/all', function () {
+    if (Sentry::check()) {
+        $user = Sentry::getUser();
+        if ($user->isSuperUser()) {
+            return MasterAnime::scrapeAllAnimeWithNoEpisodes();
+        }
+    }
+    return 'Not allowed!';
+});
 Route::get('/anime/scraper/{id}', function ($id) {
     if (Sentry::check()) {
         $user = Sentry::getUser();
@@ -105,6 +114,7 @@ Route::get('/anime/scraper/{id}', function ($id) {
     return 'Not allowed!';
 });
 Route::post('/anime/scraper/url', array('as' => 'add_scrapeurl', 'uses' => 'AccountController@updateScrapeUrl'));
+Route::post('/anime/update/thumbnail', array('as' => 'add_thumb', 'uses' => 'AccountController@updateThumbnail'));
 Route::post('/anime/lastwatched', function () {
     if (Request::ajax()) {
         return MasterAnime::addLastwatchedAnime(Input::get('anime_id'), Input::get('episode'), Input::get('completed'));

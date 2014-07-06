@@ -34,8 +34,16 @@
                 Form::text('othername', $value = null, array('class' => 'input-large', 'placeholder' => 'othername', 'style' => 'margin-right: 10px;')) . '' .
                 Form::submit('update', array('class' => 'btn btn-success btn-lg', 'style' => 'margin-right: 10px;')) . '' .
                 Form::close() . '</div>';
-            echo '<div class="met_splitter"></div><div class="btn-group">
+            echo '' .
+                Form::open(array('action' => 'add_thumb', 'class' => 'form-inline')) . '
+                    <label style="margin-right: 10px;">add thumbnail</label>' .
+                Form::text('anime_id', $value = null, array('class' => 'input-large', 'placeholder' => 'anime id', 'style' => 'margin-right: 10px;')) . '' .
+                Form::text('thumbnail', $value = null, array('class' => 'input-large', 'placeholder' => 'path', 'style' => 'margin-right: 10px;')) . '' .
+                Form::submit('update', array('class' => 'btn btn-success btn-lg', 'style' => 'margin-right: 10px;')) . '' .
+                Form::close() . '</div>';
+            echo '<div class="btn-group">
                     <a href="' . URL::to('anime/update/thumbnails') . '" type="button" data-toggle="tooltip" title="update thumbnails" class="met_button border-radius-right border-radius-left"><span class="icon-picture"></span></a>
+                    <a href="' . URL::to('anime/scraper/all') . '" type="button" data-toggle="tooltip" title="scrape anime with no eps" class="met_button border-radius-right border-radius-left"><span class="icon-download-alt"></span></a>
                 </div></div>';
         }
         echo '<div class="row-fluid"><div class="span12"><h3 class="met_title_with_childs">ANIMELIST ACCOUNTS<span class="met_subtitle">MYANIMELIST/HUMMINGBIRD</span></h3><hr></div>

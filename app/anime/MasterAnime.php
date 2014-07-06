@@ -72,7 +72,7 @@ class MasterAnime
         for ($i = 0; $i < 1; $i++) {
             $serie = Anime::find(MasterAnime::$popular_anime[$i]);
             echo '<div class="span2 scrolled__item clearfix">
-                        <a href="' . URL::to('anime/' . $serie->id . '/' . str_replace(" ", "_", $serie->name)) . '" class="met_our_team_photo">' . HTML::image(Anime::getCover($serie), $serie->name . '_thumbnail') . '</a>
+                        <a href="' . URL::to('anime/' . $serie->id . '/' . str_replace(array(" ", "/"), "_", $serie->name)) . '" class="met_our_team_photo">' . HTML::image(Anime::getCover($serie), $serie->name . '_thumbnail') . '</a>
 
                         <div class="met_our_team_name met_color clearfix" style="font-size: 12px;">
                             ' . $serie->name . '
@@ -155,6 +155,25 @@ class MasterAnime
             }
         }
         return 'Must be logged in.';
+    }
+
+    public static function scrapeAllAnimeWithNoEpisodes()
+    {
+        ini_set('output_buffering', 0);
+        ini_set('zlib.output_compression', 0);
+        ini_set('implicit_flush', 1);
+
+        set_time_limit(0);
+        $animes = DB::table('series')->select('id', 'name')->get();
+        ob_implicit_flush(1);
+        foreach ($animes as $anime) {
+            $mirrors = DB::table('mirrors')->where("anime_id", "=", $anime->id)->select('id')->get();
+            if (empty($mirrors) && count($mirrors) === 0) {
+                echo 'Started scraping anime: ' . $anime->name . '<br>';
+                echo Mirror::put($anime->id);
+            }
+        }
+        return "<br> Scraped anime!";
     }
 
 }
