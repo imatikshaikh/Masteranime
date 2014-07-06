@@ -69,7 +69,7 @@ class Anime extends Eloquent
                 echo '<span class="tag-blue">movie</span>';
             }
             if ($is_admin) {
-                echo '<button style="margin-left: 5px;" id="update_mirrors_button" class="btn-small btn-success"><input type="hidden" name="anime_id" value="' . $serie->id . '"/><span class="icon-download-alt"></span></button>';
+                echo '<button style="margin-left: 5px;" id="update_mirrors_button" class="btn-small btn-success"><input type="hidden" name="anime_id" value="' . $serie->id . '"/><span class="icon-download-alt"></span>' . $serie->id . '</button>';
             }
             echo '</div></a></li>';
         }

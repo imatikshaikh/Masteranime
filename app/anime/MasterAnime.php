@@ -29,7 +29,7 @@ class MasterAnime
     public static function getNextEpisode($id, $current)
     {
         $episodes = MasterAnime::getEpisodes($id);
-        $total = count($episodes);
+        $total = $episodes[0];
         if ($total > 1) {
             return $current == $total ? 0 : $episodes[array_search($current + 1, $episodes)];
         }
