@@ -105,7 +105,7 @@ echo 'background-size: cover;
             $episodes = MasterAnime::getEpisodes($anime->id);
             echo '<ul class="nav nav-tabs nav-stacked">';
             if (empty($episodes)) {
-                echo '<li><a href="#">No episodes available for this anime, try again later!</a></li>';
+                echo '<li><a href="#">No episodes for this anime has been realeased!</a></li>';
             } else {
                 foreach ($episodes as $episode) {
                     echo '<li><a href="' . URL::to('watch/anime/' . $anime->id . '/' . str_replace(array(" ", "/"), "_", $anime->name)) . '/' . $episode . '">' . $episode . '</a></li>';

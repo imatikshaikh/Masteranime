@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Masteranime - {{ $title or 'Stream anime in HD'}}</title>
-    <link rel="icon" type="image/ico" href="favicon.ico"/>
+    <link rel="icon" type="image/ico" href="{{ URL::to('favicon.ico') }}"/>
     <meta name="description" content=<?php if (isset($description)) {
         echo '"' . $description . '"';
     } else {

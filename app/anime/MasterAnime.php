@@ -12,7 +12,7 @@ class MasterAnime
         $mirrors = DB::table('mirrors')->where('anime_id', '=', $id)->select('episode')->orderBy(DB::raw('CAST(episode AS SIGNED)'), 'DESC')->get();
         foreach ($mirrors as $mirror) {
             if (empty($episodes)) {
-                array_push($episodes, (int)$mirror->episode);
+                array_push($episodes, $mirror->episode);
             } else {
                 $found = false;
                 foreach ($episodes as $episode) {
@@ -20,7 +20,7 @@ class MasterAnime
                         $found = true;
                 }
                 if (!$found)
-                    array_push($episodes, (int)$mirror->episode);
+                    array_push($episodes, $mirror->episode);
             }
         }
         return $episodes;
@@ -29,9 +29,11 @@ class MasterAnime
     public static function getNextEpisode($id, $current)
     {
         $episodes = MasterAnime::getEpisodes($id);
-        $total = $episodes[0];
+        $total = count($episodes);
         if ($total > 1) {
-            return $current == $total ? 0 : $episodes[array_search($current + 1, $episodes)];
+            $search = array_search($current, $episodes);
+            if ($search - 1 >= 0)
+                return $episodes[$search - 1];
         }
         return 0;
     }
@@ -41,7 +43,9 @@ class MasterAnime
         $episodes = MasterAnime::getEpisodes($id);
         $total = count($episodes);
         if ($total > 1) {
-            return $current == 1 ? 0 : $episodes[array_search($current - 1, $episodes)];
+            $search = array_search($current, $episodes);
+            if ($search + 1 < $total)
+                return $episodes[$search + 1];
         }
         return 0;
     }
