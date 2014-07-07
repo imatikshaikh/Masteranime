@@ -144,7 +144,7 @@
         <div style="margin: 1em;" id="disqus_thread"></div>
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'masteranime'; // required: replace example with your forum shortname
+            var disqus_shortname = 'masterani'; // required: replace example with your forum shortname
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
             (function () {

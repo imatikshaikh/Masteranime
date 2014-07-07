@@ -77,6 +77,7 @@ class AnimeController extends BaseController
             if (!empty($mirrors) && count($mirrors) > 0) {
                 return View::make('watch', array(
                         'title' => 'Watch ' . $anime->name . ' - episode ' . $episode,
+                        'description' => 'Watch ' . $anime->name . ' episode ' . $episode . ' online in HD on desktop, tablet and mobile.',
                         'anime' => $anime, 'mirrors' => $mirrors,
                         'episode' => $episode)
                 );

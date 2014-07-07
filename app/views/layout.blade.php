@@ -11,7 +11,7 @@
         echo '"Masteranime allows you to stream anime at high quality for desktop, tablet and mobile users! We also offer cool features like auto-updating your own MyAnimeList!"';
     } ?>>
     <meta name="keywords"
-          content="masteranime, watch, anime, online, hd, high quality, stream, mobile, tablet, 720p, anime videos, watch subbed anime, english subs, animelist, ongoing, completed">
+          content="{{ $keywords or 'masterani, masteranime, watch, anime, online, hd, high quality, stream, mobile, tablet, 720p, anime videos, watch subbed anime, english subs, animelist, ongoing, completed' }}">
 
     <!-- for Facebook -->
     <meta property="og:image" content={{
