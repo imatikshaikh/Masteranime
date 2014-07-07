@@ -152,7 +152,7 @@ if (Sentry::check()) {
                     $("#video").prepend(data);
                 }
             });
-        }, 300000);
+        }, 420000);
     });
 </script>';
 }

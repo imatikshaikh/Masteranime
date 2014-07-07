@@ -106,8 +106,12 @@ class AccountController extends BaseController
     public static function updateThumbnail()
     {
         if (Input::has('anime_id')) {
-            $anime = Anime::findOrFail(Input::get('anime_id'));
-            $anime->thumbnail = Input::get('thumbnail');
+            $id = Input::get('anime_id');
+            $anime = Anime::findOrFail($id);
+            $path = Input::get('thumbnail');
+            $anime->thumbnail = $path;
+            $anime->save();
+            return 'Updated ' . $id . ': ' . $path;
         }
         return 'anime_id not set';
     }
