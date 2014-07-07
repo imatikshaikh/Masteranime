@@ -72,7 +72,7 @@
         <div id="recent-released">
             <?php
             $value = Cookie::get(MasterAnime::$cookie_recent_layout);
-            if (!$value) {
+            if (isset($value) && $value != 'list') {
                 echo Latest::getLatest(array("start" => 0, "end" => 12), false);
             } else {
                 echo Latest::getLatest();
