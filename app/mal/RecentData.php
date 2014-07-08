@@ -4,6 +4,7 @@ use Goutte\Client;
 
 class RecentAnime
 {
+
     public static $url = "http://www.animerush.tv/";
 
     public static function get()
@@ -13,15 +14,17 @@ class RecentAnime
         $episodes = $crawler->filter('div#episodes')->each(function (\Symfony\Component\DomCrawler\Crawler $node) {
             $subbed = $node->filter('div.episode > div > div > span.episode-sub')->extract('_text');
             $name = $node->filter('div.episode > div > h3 > a')->extract('_text');
-            return array($subbed, $name);
+            $time = $node->filter('div.episode > div > div > span.episode-meta')->extract('_text');
+            return array($subbed, $name, $time);
         });
         $details = array();
         if (isset($episodes[0][0]) && isset($episodes[0][1])) {
             for ($i = 0; $i < count($episodes[0][0]); $i++) {
                 $subbed = $episodes[0][0][$i];
                 $h3 = $episodes[0][1][$i];
+                $time = $episodes[0][2][$i];
                 $name_and_ep = explode(" - Episode ", $h3);
-                if (count($name_and_ep) === 2) {
+                if (count($name_and_ep) === 2 && strpos($time, 'days ago') === false && strpos($time, 'day ago') === false) {
                     $name = $name_and_ep[0];
                     $episode = filter_var($name_and_ep[1], FILTER_SANITIZE_NUMBER_FLOAT);
                     $anime = DB::table('series')->select('id', 'name')->where('name', '=', $name)->take(1)->get();

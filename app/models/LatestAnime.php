@@ -42,9 +42,9 @@ class Latest extends Eloquent
     public static function getLatestRows($total)
     {
         if (isset($total["start"]) && isset($total["end"])) {
-            return Latest::orderBy('updated_at', 'DESC')->orderby(DB::raw('CAST(episode AS SIGNED)'), 'DESC')->skip($total["start"])->take($total["end"])->get();
+            return Latest::orderBy('created_at', 'DESC')->orderby(DB::raw('CAST(episode AS SIGNED)'), 'DESC')->skip($total["start"])->take($total["end"])->get();
         } else if (isset($total["end"])) {
-            return Latest::orderBy('updated_at', 'DESC')->orderby(DB::raw('CAST(episode AS SIGNED)'), 'DESC')->take($total["end"])->get();
+            return Latest::orderBy('created_at', 'DESC')->orderby(DB::raw('CAST(episode AS SIGNED)'), 'DESC')->take($total["end"])->get();
         }
         return null;
     }

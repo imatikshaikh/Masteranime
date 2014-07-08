@@ -3,7 +3,6 @@
 class MasterAnime
 {
 
-    private static $popular_anime = array(11, 13, 53, 63, 64, 72, 24, 364, 268, 260, 236, 326);
     public static $cookie_recent_layout = "recent_layout_masteranime";
 
     public static function getEpisodes($id)
@@ -73,9 +72,9 @@ class MasterAnime
 
     public static function printPopularAnime()
     {
-        shuffle(MasterAnime::$popular_anime);
-        for ($i = 0; $i < 6; $i++) {
-            $serie = Anime::find(MasterAnime::$popular_anime[$i]);
+        shuffle(ConnectDetails::$popular_anime);
+        for ($i = 0; $i < ConnectDetails::$popular_amount; $i++) {
+            $serie = Anime::find(ConnectDetails::$popular_anime[$i]);
             echo '<div class="span2 scrolled__item clearfix">
                         <a href="' . URL::to('anime/' . $serie->id . '/' . str_replace(array(" ", "/"), "_", $serie->name)) . '" class="met_our_team_photo">' . HTML::image(Anime::getCover($serie), $serie->name . '_thumbnail') . '</a>
 
