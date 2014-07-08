@@ -30,8 +30,19 @@ HTML::macro('menu_link', function ($routes, $phone = false) {
 Route::get('/', function () {
     return View::make('home');
 });
-Route::get('/sitemap.xml', function () {
-    return View::make('child.sitemap');
+Route::get('sitemap', function () {
+    $sitemap = App::make("sitemap");
+
+    $sitemap->add('http://www.masterani.me/', '2014-07-09T20:10:00+02:00', '1.0', 'daily');
+    $sitemap->add('http://www.masterani.me/latest', '2014-07-09T12:30:00+02:00', '0.9', 'daily');
+    $sitemap->add('http://www.masterani.me/anime', '2014-07-09T12:30:00+02:00', '0.9', 'daily');
+
+    $animes = Anime::all();
+    foreach ($animes as $anime) {
+        $name = htmlspecialchars($anime->name, ENT_QUOTES, 'UTF-8');
+        $sitemap->add('http://www.masterani.me/' . $anime->id . '/' . str_replace(array(' ', '/'), '_', $name), $anime->date_updated, '0.9', 'weekly');
+    }
+    return $sitemap->render();
 });
 Route::get('/debug', function () {
     if (Sentry::check()) {
