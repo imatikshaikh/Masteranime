@@ -1,5 +1,4 @@
 <?php
-
 HTML::macro('menu_link', function ($routes, $phone = false) {
     /*$active = ''; if( Request::path() == $route ) {$active = ' class="active"';}*/
     $count = count($routes);
@@ -31,7 +30,9 @@ HTML::macro('menu_link', function ($routes, $phone = false) {
 Route::get('/', function () {
     return View::make('home');
 });
-
+Route::get('/sitemap.xml', function () {
+    return View::make('child.sitemap');
+});
 Route::get('/debug', function () {
     if (Sentry::check()) {
         $user = Sentry::getUser();

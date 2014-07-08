@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Masteranime - {{ $title or 'Stream anime in HD'}}</title>
+    <title>Masterani - {{ $title or 'Stream anime in HD'}}</title>
     <link rel="icon" type="image/ico" href="{{ URL::to('favicon.ico') }}"/>
     <meta name="description" content=<?php if (isset($description)) {
         echo '"' . $description . '"';
     } else {
-        echo '"Masteranime allows you to stream anime at high quality for desktop, tablet and mobile users! We also offer cool features like auto-updating your own MyAnimeList!"';
+        echo '"Masterani allows you to stream anime at high quality for desktop, tablet and mobile users! We also offer cool features like auto-updating your own MyAnimeList or Hummingbird library!"';
     } ?>>
     <meta name="keywords"
           content="{{ $keywords or 'masterani, masteranime, watch, anime, online, hd, high quality, stream, mobile, tablet, 720p, anime videos, watch subbed anime, english subs, animelist, ongoing, completed' }}">
@@ -19,12 +19,12 @@
     <meta property="og:title" content=<?php if (isset($title)) {
         echo '"' . $title . '"';
     } else {
-        '"MasterAnime - Stream anime in HD"';
+        '"Masterani - Stream anime in HD"';
     } ?>/>
     <meta property="og:description" content=<?php if (isset($description)) {
         echo '"' . $description . '"';
     } else {
-        echo '"Masteranime allows you to stream anime at high quality for desktop, tablet and mobile users! We also offer cool features like auto-updating your own MyAnimeList!"';
+        echo '"Masterani allows you to stream anime at high quality for desktop, tablet and mobile users! We also offer cool features like auto-updating your own MyAnimeList or Hummingbird library!"';
     } ?>/>
     <meta property="og:url" content=<?php echo '"' . URL::current() . '"' ?>/>
     <meta property="og:site_name" content="Masteranime"/>
@@ -35,12 +35,12 @@
     <meta name="twitter:title" content=<?php if (isset($title)) {
         echo '"' . $title . '"';
     } else {
-        '"MasterAnime - Stream anime in HD"';
+        '"Masterani - Stream anime in HD"';
     } ?>/>
     <meta name="twitter:description" content=<?php if (isset($description)) {
         echo '"' . $description . '"';
     } else {
-        echo '"Masteranime allows you to stream anime at high quality for desktop, tablet and mobile users! We also offer cool features like auto-updating your anime List on popular sites like Myanimelist and Hummingbird!"';
+        echo '"Masterani allows you to stream anime at high quality for desktop, tablet and mobile users! We also offer cool features like auto-updating your own MyAnimeList or Hummingbird library!"';
     } ?>/>
     <meta name="twitter:image" content={{
     $social_image or asset('img/masteranime_logo.png') }} />
@@ -178,7 +178,7 @@
             <a href="{{ URL::to('/') }}" class="pull-left">{{ HTML::image('img/masteranime_logo.png', 'masteranime
                 Logo') }}</a>
 
-            <p class="pull-left">© 2014 MASTERANIME by Nex. All Rights Reserved.</p>
+            <p class="pull-left">© 2014 MASTERANI by Nex. All Rights Reserved.</p>
             <ul class="met_footer_menu pull-right">
                 {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
                 {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME LIST"))) }}

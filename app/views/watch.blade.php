@@ -88,7 +88,7 @@
             }
             echo '</div></div></div></div>';
 
-            echo '<div class="span3"><h3 class="met_big_title">Mirrors</h3><ul class="nav nav-tabs nav-stacked">';
+            echo '<div class="span3"><h3 class="met_big_title">Mirrors</h3><div class="row-fluid"><div class="span12"><ul class="nav nav-tabs nav-stacked">';
             foreach ($mirrors as $mirror) {
                 echo '<li><a href="#" data-toggle="mirror"><input type="hidden" name="id" value="' . $mirror->id . '">
                         ' . $mirror->host . '<div class="pull-right">';
@@ -99,8 +99,14 @@
                 }
                 echo '</div></a></li>';
             }
-            echo '</ul></div>';
-            echo '</div>';
+            echo '</ul></div><div class="span12">
+<script language="javascript" type="text/javascript" charset="utf-8">
+cpxcenter_width = 250;
+cpxcenter_height = 250;
+</script>
+<script language="JavaScript" type="text/javascript" src="http://ads.cpxcenter.com/cpxcenter/showAd.php?nid=4&amp;zone=69784&amp;type=banner&amp;sid=52113&amp;pid=50729&amp;subid=&amp;opt1=&amp;opt2=">
+</script></div></div>';
+            echo '</div></div>';
         } else {
             Redirect::to('anime');
         }

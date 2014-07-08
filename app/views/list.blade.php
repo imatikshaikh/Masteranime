@@ -1,4 +1,4 @@
-@extends('layout', ['description' => 'All anime available at masteranime!'])
+@extends('layout', ['description' => 'All anime available at Masterani!'])
 
 @section('custom-js')
 @parent
