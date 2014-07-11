@@ -40,7 +40,7 @@ Route::get('sitemap', function () {
     $animes = Anime::all();
     foreach ($animes as $anime) {
         $name = htmlspecialchars($anime->name, ENT_QUOTES, 'UTF-8');
-        $sitemap->add('http://www.masterani.me/anime/' . $anime->id . '/' . str_replace(array(' ', '/'), '_', $name), $anime->date_updated, '0.9', 'weekly');
+        $sitemap->add('http://www.masterani.me/anime/' . $anime->id . '/' . str_replace(array(" ", "/", "?"), '_', $name), $anime->date_updated, '0.9', 'weekly');
     }
     return $sitemap->render();
 });

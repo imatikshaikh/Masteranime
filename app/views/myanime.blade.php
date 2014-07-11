@@ -19,9 +19,9 @@
                         $img = Anime::getThumbnail($ep);
                         $next = MasterAnime::getNextEpisode($anime->anime_id, $anime->episode);
                         if ($next > 0) {
-                            echo '<a href="' . URL::to('/watch/anime/' . $anime->anime_id . '/' . str_replace(' ', '_', $ep->name) . '/' . $next) . '" data-toggle="tooltip" title="next episode: ' . $next . '"><li class="item">' . HTML::image($img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p>' . $ep->name . ' - ep. ' . $anime->episode . '<p><h4>seen ' . Latest::time_elapsed_string($anime->updated_at) . '</h4></a></li>';
+                            echo '<a href="' . URL::to('/watch/anime/' . $anime->anime_id . '/' . str_replace(array(" ", "/", "?"), '_', $ep->name) . '/' . $next) . '" data-toggle="tooltip" title="next episode: ' . $next . '"><li class="item">' . HTML::image($img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p>' . $ep->name . ' - ep. ' . $anime->episode . '<p><h4>seen ' . Latest::time_elapsed_string($anime->updated_at) . '</h4></a></li>';
                         } else {
-                            echo '<a href="' . URL::to('/anime/' . $anime->anime_id . '/' . str_replace(' ', '_', $ep->name)) . '" data-toggle="tooltip" title="View episode index, at final episode."><li class="item">' . HTML::image($img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p>' . $ep->name . ' - ep. ' . $anime->episode . '<p><h4>seen ' . Latest::time_elapsed_string($anime->updated_at) . '</h4></a></li>';
+                            echo '<a href="' . URL::to('/anime/' . $anime->anime_id . '/' . str_replace(array(" ", "/", "?"), '_', $ep->name)) . '" data-toggle="tooltip" title="View episode index, at final episode."><li class="item">' . HTML::image($img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p>' . $ep->name . ' - ep. ' . $anime->episode . '<p><h4>seen ' . Latest::time_elapsed_string($anime->updated_at) . '</h4></a></li>';
                         }
                     }
                 }

@@ -60,7 +60,7 @@ class Latest extends Eloquent
                 foreach ($eps as $ep) {
                     $result .= '<div class="met_recent_work scrolled__item';
                     $result .= ' threedcharacters">';
-                    $result .= '<a href="' . URL::to('/watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", "/"), '_', $ep->name) . '/' . $ep->episode) . '" class="met_recent_work_picture_area">
+                    $result .= '<a href="' . URL::to('/watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", "/", "?"), '_', $ep->name) . '/' . $ep->episode) . '" class="met_recent_work_picture_area">
                     ' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array("class" => "image-latest")) . '<span><span><i class="icon-film icon-large"></i></span></span></a><aside class="clearfix"></aside>
                     <a href="' . URL::to('/watch/anime/' . $ep->anime_id . '/' . $ep->name . '/' . $ep->episode) . '" class="met_recent_work_double_title">';
                     if (strlen($ep->name) > 30) {
@@ -76,7 +76,7 @@ class Latest extends Eloquent
             } else {
                 $result .= '<ul class="nav nav-tabs nav-stacked latest-list" style="overflow: visible;">';
                 foreach ($eps as $ep) {
-                    $result .= '<li class="item"><a href="' . URL::to('watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", "/"), "_", $ep->name)) . '/' . $ep->episode . '">' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p>' . $ep->name . ' - ep. ' . $ep->episode . '<p><h4>' . Latest::time_elapsed_string($ep->created_at) . '</h4></a></li>';
+                    $result .= '<li class="item"><a href="' . URL::to('watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", "/", "?"), "_", $ep->name)) . '/' . $ep->episode . '">' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p>' . $ep->name . ' - ep. ' . $ep->episode . '<p><h4>' . Latest::time_elapsed_string($ep->created_at) . '</h4></a></li>';
                 }
                 $result .= '</ul>';
                 $result .= HTML::script('js/custom.js') . HTML::script('js/jquery.onecarousel.min.js') . HTML::script('js/isotope.js');

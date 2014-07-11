@@ -79,12 +79,12 @@
             echo '</div><div class="pull-right">';
             $prev = MasterAnime::getPrevEpisode($anime->id, $episode);
             if (!empty($prev)) {
-                echo '<a href="' . URL::to('/watch/anime/' . $anime->id . '/' . str_replace(' ', '_', $anime->name) . '/' . $prev) . '" data-toggle="tooltip" title="previous episode"><span class="icon-arrow-left icon-large"></span></a>';
+                echo '<a href="' . URL::to('/watch/anime/' . $anime->id . '/' . str_replace(array(" ", "/", "?"), '_', $anime->name) . '/' . $prev) . '" data-toggle="tooltip" title="previous episode"><span class="icon-arrow-left icon-large"></span></a>';
             }
-            echo '<a href="' . URL::to('/anime/' . $anime->id . '/' . str_replace(' ', '_', $anime->name)) . '" data-toggle="tooltip" title="episode list"><span><i class="icon-th icon-large"></i></span></a>';
+            echo '<a href="' . URL::to('/anime/' . $anime->id . '/' . str_replace(array(" ", "/", "?"), '_', $anime->name)) . '" data-toggle="tooltip" title="episode list"><span><i class="icon-th icon-large"></i></span></a>';
             $next = MasterAnime::getNextEpisode($anime->id, $episode);
             if (!empty($next)) {
-                echo '<a href="' . URL::to('/watch/anime/' . $anime->id . '/' . str_replace(' ', '_', $anime->name) . '/' . $next) . '" data-toggle="tooltip" title="next episode"><span class="icon-arrow-right icon-large"></span></a>';
+                echo '<a href="' . URL::to('/watch/anime/' . $anime->id . '/' . str_replace(array(" ", "/", "?"), '_', $anime->name) . '/' . $next) . '" data-toggle="tooltip" title="next episode"><span class="icon-arrow-right icon-large"></span></a>';
             }
             echo '</div></div></div></div>';
 
