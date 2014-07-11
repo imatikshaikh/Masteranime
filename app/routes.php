@@ -40,7 +40,7 @@ Route::get('sitemap', function () {
     $animes = Anime::all();
     foreach ($animes as $anime) {
         $name = htmlspecialchars($anime->name, ENT_QUOTES, 'UTF-8');
-        $sitemap->add('http://www.masterani.me/' . $anime->id . '/' . str_replace(array(' ', '/'), '_', $name), $anime->date_updated, '0.9', 'weekly');
+        $sitemap->add('http://www.masterani.me/anime/' . $anime->id . '/' . str_replace(array(' ', '/'), '_', $name), $anime->date_updated, '0.9', 'weekly');
     }
     return $sitemap->render();
 });
@@ -151,6 +151,9 @@ Route::post('/anime/lastwatched', function () {
     }
     return 'AJAX request only';
 });
+/*Route::get('/anime/lastwatched/{id}/{ep}', function ($id, $ep) {
+    return MasterAnime::addLastwatchedAnime($id, $ep, 1);
+});*/
 Route::post('/anime/favorite', function () {
     if (Request::ajax()) {
         $user_id = Input::get('user_id');

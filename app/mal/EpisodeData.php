@@ -118,8 +118,13 @@ class EpisodeScraper
         $crawler = $this->client->request('GET', $url);
         $this->loop = true;
         while ($this->loop) {
-            $episode = $crawler->filter($this->base_filter_ra . ' > div#nav_bar.nav_crumb_center > div#episode_nav > div#episode_header > div#episode_title')->extract('_text')[0];
-            $episode = explode('Episode ', $episode);
+            $episode = $crawler->filter($this->base_filter_ra . ' > div#nav_bar.nav_crumb_center > div#episode_nav > div#episode_header > div#episode_title')->extract('_text');
+            if (count($episode) === 0) {
+                echo 'Anime page does not exist';
+                $this->loop = false;
+                break;
+            }
+            $episode = explode('Episode ', $episode[0]);
             if (count($episode) > 1) {
                 $episode = filter_var($episode[1], FILTER_SANITIZE_NUMBER_FLOAT);
             } else {
