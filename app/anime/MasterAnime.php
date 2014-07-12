@@ -54,6 +54,11 @@ class MasterAnime
         return Mirror::whereRaw('anime_id = ? and episode = ?', array($id, $episode))->orderBy('quality', 'DESC')->orderBy(DB::raw("field(host, 'MP4Upload','Arkvid', 'Masteranime') "), 'DESC')->get();
     }
 
+    public static function getApiEpisode($id, $episode)
+    {
+        return DB::table('mirrors')->whereRaw('anime_id = ? and episode = ? and (host = ? or host = ?)', array($id, $episode, 'MP4Upload', 'Arkvid'))->select('src', 'host', 'quality')->orderBy('quality', 'DESC')->orderBy(DB::raw("field(host, 'MP4Upload','Arkvid') "), 'DESC')->get();
+    }
+
     public static function searchAnime($keyword)
     {
         if (strlen($keyword) >= 3 && $keyword !== ' ') {

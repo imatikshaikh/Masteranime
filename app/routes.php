@@ -198,6 +198,11 @@ Route::any('/account/settings', 'AccountController@getIndex');
 Route::get('/account/myanime', 'AccountController@getMyanime');
 Route::get('/account/logout', 'AccountController@getLogout');
 Route::any('/account/register', 'AccountController@getRegister');
+/*API ROUTES*/
+Route::get('/api/anime', 'ApiController@getAll');
+Route::get('/api/anime/{id}', 'ApiController@getAnime');
+Route::get('/api/anime/{id}/{episode}', 'ApiController@getEpisode');
+
 
 
 
