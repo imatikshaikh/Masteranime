@@ -1,5 +1,5 @@
 <?php
-if (empty($content) || empty($display)) {
+if (empty($content) || empty($display) || count($content) <= 0) {
     echo 'empty';
 } else {
     Header('Content-type: text/xml');

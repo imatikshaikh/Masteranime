@@ -201,6 +201,8 @@ Route::get('/account/logout', 'AccountController@getLogout');
 Route::any('/account/register', 'AccountController@getRegister');
 /*API ROUTES*/
 Route::get('/api/anime', 'ApiController@getAll');
+Route::get('/api/anime/ongoing', 'ApiController@getOngoing');
+Route::get('/api/anime/search/{keyword}', 'ApiController@getSearch');
 Route::get('/api/anime/latest', 'ApiController@getLatest');
 Route::get('/api/anime/{id}', 'ApiController@getAnime');
 Route::get('/api/anime/{id}/{episode}', 'ApiController@getEpisode');
