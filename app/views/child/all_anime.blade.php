@@ -1,6 +1,6 @@
 <div class="row-fluid" style="margin-bottom: 0;">
     <div class="span12">
-        <ul id="animelist" class="nav nav-tabs nav-stacked">
+        <ul id="animelist" class="nav nav-tabs nav-stacked anime-list" style="overflow: visible;">
             <?php
             function print_anime($series)
             {
@@ -35,6 +35,13 @@
         </ul>
         <script type="text/javascript">
             $("[data-toggle=tooltip-right]").tooltip({ placement: 'right'});
+            var $container = $('.anime-list').isotope({
+                itemSelector: '.item'
+            });
+            $('.met_filters a').click(function () {
+                var filterValue = $(this).attr('data-filter');
+                $container.isotope({ filter: filterValue });
+            });
         </script>
     </div>
 </div>

@@ -3,8 +3,8 @@ HTML::macro('menu_link', function ($routes, $phone = false) {
     /*$active = ''; if( Request::path() == $route ) {$active = ' class="active"';}*/
     $count = count($routes);
     if ($count > 1) {
-        $list = '<li>' . link_to($routes[0]["route"], $routes[0]["text"]) . '<ul style="left: 0;" class="met_menu_to_left';
-        $phone ? $list .= ' dl-submenu"><li class="dl-back"><a href="#">back</a></li>' : $list .= '">';
+        $list = '<li>' . link_to($routes[0]["route"], $routes[0]["text"]) . '<ul style="left: 0;" class="';
+        $phone ? $list .= 'dl-submenu"><li class="dl-back"><a href="#">back</a></li>' : $list .= 'dl-submenu">';
         for ($i = 1; $i < $count; $i++) {
             $list .= '<li>' . link_to($routes[$i]["route"], $routes[$i]["text"]) . '</li>';
         }
@@ -189,6 +189,7 @@ Route::get('/anime/scraper/{id}', 'AnimeController@getScraper');
 /*Anime routes*/
 Route::get('/anime', 'AnimeController@getIndex');
 Route::get('/anime/latest', 'AnimeController@getLatest');
+Route::get('/anime/chart', 'AnimeController@getChart');
 Route::get('/anime/{id}', 'AnimeController@getAnime');
 Route::get('/anime/{id}/{name}', 'AnimeController@getAnime');
 Route::get('/watch/anime/{id}/{name}/{episode}', 'AnimeController@getEpisode');

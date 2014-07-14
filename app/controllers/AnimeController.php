@@ -15,6 +15,11 @@ class AnimeController extends BaseController
         return View::make('list', array('title' => 'Animelist'))->nest('anime_list', 'child.all_anime', array('is_admin' => $is_admin));
     }
 
+    public function getChart()
+    {
+        return View::make('chart', array('title' => 'Anime chart', 'description' => 'Masterani anime chart shows all timers when ongoing anime will be released.'));
+    }
+
     public function getLatest()
     {
         return View::make('latest', array('title' => 'Latest anime'));

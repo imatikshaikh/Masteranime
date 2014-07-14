@@ -7,6 +7,15 @@ body {
     text-shadow: none;
 }
 
+.anime-list li {
+    max-width: 1170px;
+    width: 100%;
+}
+
+.anime-list li a {
+    width: auto;
+}
+
 .latest-list li {
     max-width: 1170px;
     width: 100%;

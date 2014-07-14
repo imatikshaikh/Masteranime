@@ -54,8 +54,16 @@ class Anime extends Eloquent
 
     public static function getAnimeList($series, $is_admin = false)
     {
+        $id = 0;
+        if (Sentry::check()) {
+            $id = Sentry::getUser()->id;
+        }
         foreach ($series as $serie) {
-            echo '<li><a href="' . URL::to('anime/' . $serie->id . '/' . str_replace(array(" ", "/", "?"), "_", $serie->name)) . '">';
+            echo '<li class="item';
+            if (AnimeFavorite::isFavorite($id, $serie->id)) {
+                echo ' favorite';
+            }
+            echo '"><a href="' . URL::to('anime/' . $serie->id . '/' . str_replace(array(" ", "/", "?"), "_", $serie->name)) . '">';
             $synonyms = Anime::getSynonyms($serie);
             if (!empty($synonyms)) {
                 echo '<span data-toggle="tooltip-right" title="' . $synonyms . '">' . $serie->name . '</span>';

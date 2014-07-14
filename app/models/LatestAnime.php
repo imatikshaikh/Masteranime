@@ -54,11 +54,18 @@ class Latest extends Eloquent
         $result = "";
         $eps = Latest::getLatestRows($total);
         if (!empty($eps)) {
+            $id = 0;
+            if (Sentry::check()) {
+                $id = Sentry::getUser()->id;
+            }
             if ($galerry) {
                 $result .= '<div class="met_recent_works_carousel_wrap">
             <div class="met_recent_works_carousel clearfix scrolled met_mainpage_portfolio">';
                 foreach ($eps as $ep) {
                     $result .= '<div class="met_recent_work scrolled__item';
+                    if (AnimeFavorite::isFavorite($id, $ep->anime_id)) {
+                        $result .= ' favorite';
+                    }
                     $result .= ' threedcharacters">';
                     $result .= '<a href="' . URL::to('/watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", "/", "?"), '_', $ep->name) . '/' . $ep->episode) . '" class="met_recent_work_picture_area">
                     ' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array("class" => "image-latest")) . '<span><span><i class="icon-film icon-large"></i></span></span></a><aside class="clearfix"></aside>
@@ -72,25 +79,27 @@ class Latest extends Eloquent
                     $result .= '<h4>' . Latest::time_elapsed_string($ep->created_at) . '</h4></a></div>';
                 }
                 $result .= '</div></div>';
-                $result .= HTML::script('js/caroufredsel.js') . HTML::script('js/custom.js') . HTML::script('js/jquery.onecarousel.min.js') . HTML::script('js/isotope.js');
             } else {
                 $result .= '<ul class="nav nav-tabs nav-stacked latest-list" style="overflow: visible;">';
                 foreach ($eps as $ep) {
-                    $result .= '<li class="item"><a href="' . URL::to('watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", "/", "?"), "_", $ep->name)) . '/' . $ep->episode . '">' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p>' . $ep->name . ' - ep. ' . $ep->episode . '<p><h4>' . Latest::time_elapsed_string($ep->created_at) . '</h4></a></li>';
+                    $result .= '<li class="item';
+                    if (AnimeFavorite::isFavorite($id, $ep->anime_id)) {
+                        $result .= ' favorite';
+                    }
+                    $result .= '"><a href="' . URL::to('watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", "/", "?"), "_", $ep->name)) . '/' . $ep->episode . '">' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p>' . $ep->name . ' - ep. ' . $ep->episode . '<p><h4>' . Latest::time_elapsed_string($ep->created_at) . '</h4></a></li>';
                 }
                 $result .= '</ul>';
-                $result .= HTML::script('js/custom.js') . HTML::script('js/jquery.onecarousel.min.js') . HTML::script('js/isotope.js');
                 $result .= '<script type="text/javascript">
-    $(document).ready(function () {
-        var $container = $(\'.latest-list\').isotope({
-            itemSelector: \'.item\'
-        });
-        $(\'.met_filters a\').click(function () {
-            var filterValue = $(this).attr(\'data-filter\');
-            $container.isotope({ filter: filterValue });
-        });
-    });
-</script>';
+                            $(document).ready(function () {
+                                var $container = $(\'.latest-list\').isotope({
+                                    itemSelector: \'.item\'
+                                });
+                                $(\'.met_filters a\').click(function () {
+                                    var filterValue = $(this).attr(\'data-filter\');
+                                    $container.isotope({ filter: filterValue });
+                                });
+                            });
+                        </script>';
             }
         }
         return $result;

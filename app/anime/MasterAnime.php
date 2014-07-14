@@ -59,6 +59,11 @@ class MasterAnime
         return DB::table('mirrors')->whereRaw('anime_id = ? and episode = ? and (host = ? or host = ?)', array($id, $episode, 'MP4Upload', 'Arkvid'))->select('src', 'host', 'quality')->orderBy('quality', 'DESC')->orderBy(DB::raw("field(host, 'MP4Upload','Arkvid') "), 'DESC')->get();
     }
 
+    public static function getOngoingAnime()
+    {
+        return DB::table('series')->whereRaw('status = ? and type = ?', array(1, 0))->select('id', 'name', 'mal_image', 'cover')->get();
+    }
+
     public static function searchAnime($keyword)
     {
         if (strlen($keyword) >= 3 && $keyword !== ' ') {
