@@ -88,30 +88,25 @@
     </div>
     <div class="row-fluid">
         <div class="span6">
-            {{ HTML::image('img/animeoftheweek/hunter_x_hunter.png', 'anime of the week: hunter x hunter', ["class" =>
+            {{ HTML::image('img/animeoftheweek/steins_gate.png', 'anime of the week: Steins;Gate', ["class" =>
             "met_br_tl met_br_tr met_br_bl met_br_br"]) }}
         </div>
         <div class="span6">
-            <a href="{{ URL::to("/anime/3/Hunter_x_Hunter_(2011)") }}"><h3 class="met_big_title">Hunter X Hunter
-                (2011)</h3>
+            <a href="{{ URL::to("/anime/231/Steins;Gate") }}"><h3 class="met_big_title">Steins;Gate</h3>
             </a>
 
-            <p>A new adaptation of the the manga series by Togashi Yoshihiro.
-
-                A Hunter is one who travels the world doing all sorts of dangerous tasks. From capturing criminals to
-                searching deep within uncharted lands for any lost treasures. Gon is a young boy whose father
-                disappeared long ago, being a Hunter. He believes if he could also follow his father's path, he could
-                one day reunite with him.
-
-                After becoming 12, Gon leaves his home and takes on the task of entering the Hunter exam, notorious for
-                its low success rate and high probability of death to become an official Hunter. He befriends the
-                revenge-driven Kurapika, the doctor-to-be Leorio and the rebellious ex-assassin Killua in the exam, with
-                their friendship prevailing throughout the many trials and threats they come upon taking on the
-                dangerous career of a Hunter.
+            <p>The eccentric mad scientist Okabe, his childhood friend Mayuri, and the otaku hacker Daru have banded
+                together to form the "Future Gadget Research Laboratory," and spend their days in a ramshackle
+                laboratory hanging out and occasionally attempting to invent incredible futuristic gadgets. However,
+                their claymore is a hydrator and their hair dryer flips breakers, and the only invention that's even
+                remotely interesting is their Phone Microwave, which transforms bananas into oozing green gel. But when
+                an experiment goes awry, the gang discovers that the Phone Microwave can also send text messages to the
+                past. And what's more, the words they send can affect the flow of time and have unforeseen, far-reaching
+                consequences—consequences that Okabe may not be able to handle...
                 <br><br>
-                <span class="met_color"><a href="{{ URL::to("/anime/3/Hunter_x_Hunter_(2011)") }}">All episodes</a> <a
+                <span class="met_color"><a href="{{ URL::to("/anime/231/Steins;Gate") }}">All episodes</a> <a
                         class="pull-right"
-                        href="http://myanimelist.net/anime/11061/Hunter_x_Hunter_(2011)/reviews">Hunter X Hunter (2011)
+                        href="http://myanimelist.net/anime/9253/Steins;Gate/reviews">Steins;Gate
                         reviews</a></span>
                 <br><br>
             </p>

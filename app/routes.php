@@ -24,11 +24,14 @@ HTML::macro('menu_link', function ($routes, $phone = false) {
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
-/*Home route*/
-
+App::missing(function ($exception) {
+    return View::make('child.404');
+});
 Route::get('/', function () {
     return View::make('home');
+});
+Route::get('/xbmc', function () {
+    return View::make('animehd');
 });
 Route::get('sitemap', function () {
     $sitemap = App::make("sitemap");
@@ -36,6 +39,8 @@ Route::get('sitemap', function () {
     $sitemap->add('http://www.masterani.me/', '2014-07-09T20:10:00+02:00', '1.0', 'daily');
     $sitemap->add('http://www.masterani.me/latest', '2014-07-09T12:30:00+02:00', '0.9', 'daily');
     $sitemap->add('http://www.masterani.me/anime', '2014-07-09T12:30:00+02:00', '0.9', 'daily');
+    $sitemap->add('http://www.masterani.me/anime/chart', '2014-07-09T12:30:00+02:00', '0.9', 'daily');
+    $sitemap->add('http://www.masterani.me/xbmc', '2014-07-09T12:30:00+02:00', '0.9', 'weekly');
 
     $animes = Anime::all();
     foreach ($animes as $anime) {

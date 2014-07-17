@@ -121,6 +121,7 @@
                             <button>Open Menu</button>
                             <ul class="dl-menu">
                                 {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
+                                {{ HTML::menu_link (array( array("route" => "/xbmc", "text" => "XBMC"))) }}
                                 {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME"), array("route" =>
                                 "anime",
                                 "text" => "ANIME LIST"), array("route" =>
@@ -151,6 +152,7 @@
                     <div class="met_header_search_box"></div>
                     <ul class="met_main_menu pull-right scrolled">
                         {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
+                        {{ HTML::menu_link (array( array("route" => "/xbmc", "text" => "XBMC"))) }}
                         {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME"), array("route" => "anime",
                         "text" => "ANIME LIST"), array("route" =>
                         "anime/latest", "text" => "LATEST ANIME"), array("route" => "anime/chart", "text" => "ANIME

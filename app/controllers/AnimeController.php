@@ -17,7 +17,7 @@ class AnimeController extends BaseController
 
     public function getChart()
     {
-        return View::make('chart', array('title' => 'Anime chart', 'description' => 'Masterani anime chart shows all timers when ongoing anime will be released.'));
+        return View::make('chart', array('title' => 'Anime chart', 'description' => 'Masterani chart shows estimated time when ongoing animes will be released.'));
     }
 
     public function getLatest()
@@ -29,7 +29,7 @@ class AnimeController extends BaseController
     {
         $anime = Anime::find($id);
         if (empty($anime)) {
-            return View::make('anime', array('anime' => null))->nest('anime_list', 'child.all_anime');
+            return App::abort(404);
         }
         return View::make('anime', array('anime' => $anime, 'description' => 'All information you should know about ' . $anime->name, 'title' => $anime->name . ' : Watch in HD'));
     }
@@ -87,11 +87,9 @@ class AnimeController extends BaseController
                         'episode' => $episode)
                 );
             }
-            return View::make('watch', array('title' => 'Episode not found'))
-                ->nest('update_msg', 'child.alerts', array('msg_type' => 'warning', 'msg' => $anime->name . ' episode ' . $episode . ' not found in our database.'));
+            return App::abort(404);
         }
-        return View::make('watch', array('title' => 'Anime not found'))
-            ->nest('update_msg', 'child.alerts', array('msg_type' => 'warning', 'msg' => 'Anime not found in our database.'));
+        return App::abort(404);
     }
 
 }
