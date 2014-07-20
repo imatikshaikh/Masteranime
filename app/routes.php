@@ -30,7 +30,7 @@ App::missing(function ($exception) {
 Route::get('/', function () {
     return View::make('home');
 });
-Route::get('/xbmc', function () {
+Route::get('/animehd', function () {
     return View::make('animehd');
 });
 Route::get('sitemap', function () {
@@ -40,7 +40,7 @@ Route::get('sitemap', function () {
     $sitemap->add('http://www.masterani.me/latest', '2014-07-09T12:30:00+02:00', '0.9', 'daily');
     $sitemap->add('http://www.masterani.me/anime', '2014-07-09T12:30:00+02:00', '0.9', 'daily');
     $sitemap->add('http://www.masterani.me/anime/chart', '2014-07-09T12:30:00+02:00', '0.9', 'daily');
-    $sitemap->add('http://www.masterani.me/xbmc', '2014-07-09T12:30:00+02:00', '0.9', 'weekly');
+    $sitemap->add('http://www.masterani.me/animehd', '2014-07-09T12:30:00+02:00', '0.9', 'weekly');
 
     $animes = Anime::all();
     foreach ($animes as $anime) {

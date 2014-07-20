@@ -8,7 +8,7 @@
     <meta name="description" content=<?php if (isset($description)) {
         echo '"' . $description . '"';
     } else {
-        echo '"Masterani allows you to stream anime at high quality for desktop, tablet and mobile users! We also offer cool features like auto-updating your own MyAnimeList or Hummingbird library!"';
+        echo '"Masterani allows you to stream anime at HD and SD! Features XBMC, Plex & auto-updating MyAnimeList or Hummingbird library!"';
     } ?>>
     <meta name="keywords"
           content="{{ $keywords or 'masterani, masteranime, watch, anime, online, hd, high quality, stream, mobile, tablet, 720p, anime videos, watch subbed anime, english subs, animelist, ongoing, completed' }}">
@@ -121,7 +121,7 @@
                             <button>Open Menu</button>
                             <ul class="dl-menu">
                                 {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
-                                {{ HTML::menu_link (array( array("route" => "/xbmc", "text" => "XBMC"))) }}
+                                {{ HTML::menu_link (array( array("route" => "/animehd", "text" => "XBMC / Plex"))) }}
                                 {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME"), array("route" =>
                                 "anime",
                                 "text" => "ANIME LIST"), array("route" =>
@@ -133,7 +133,7 @@
                                     $user = Sentry::getUser();
                                     echo HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . $user->username), array("route" => 'account', "text" => 'settings'), array("route" => 'account/myanime', "text" => 'myanime'), array("route" => 'account/logout', "text" => 'LOG OUT')), true);
                                 } else {
-                                    echo HTML::menu_link(array(array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account/register', "text" => 'SIGN UP')), true);
+                                    echo HTML::menu_link(array(array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account/register', "text" => 'SIGN UP')), true);
                                 }
                                 ?>
                             </ul>
@@ -152,7 +152,7 @@
                     <div class="met_header_search_box"></div>
                     <ul class="met_main_menu pull-right scrolled">
                         {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
-                        {{ HTML::menu_link (array( array("route" => "/xbmc", "text" => "XBMC"))) }}
+                        {{ HTML::menu_link (array( array("route" => "/animehd", "text" => "XBMC / Plex"))) }}
                         {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME"), array("route" => "anime",
                         "text" => "ANIME LIST"), array("route" =>
                         "anime/latest", "text" => "LATEST ANIME"), array("route" => "anime/chart", "text" => "ANIME
