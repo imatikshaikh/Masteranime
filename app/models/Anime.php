@@ -27,7 +27,7 @@ class Anime extends Eloquent
         if (empty($row->thumbnail)) {
             return Anime::getCover($row);
         }
-        return $row->thumbnail;
+        return str_replace(" ", "-", $row->thumbnail);
     }
 
     public static function getSynonyms($row)
