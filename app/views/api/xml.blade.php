@@ -35,10 +35,10 @@ if (empty($content) || empty($display) || count($content) <= 0) {
         case 'latest':
             $xml = new SimpleXMLElement('<xml/>');
             foreach ($content as $c) {
-                $track = $xml->addChild('episode');
-                $track->addChild('id', $c->anime_id);
+                $track = $xml->addChild('latest');
+                $track->addChild('anime_id', $c->anime_id);
+                $track->addChild('episode_id', $c->episode);
                 $track->addChild('name', htmlspecialchars($c->name));
-                $track->addChild('episode', $c->episode);
                 if (strpos($c->img, "hummingbird.me") !== false) {
                     $track->addChild('host', 'hummingbird');
                 } else {
