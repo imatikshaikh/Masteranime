@@ -77,7 +77,6 @@
     {{ HTML::script('js/jquery.onecarousel.min.js') }}
     <!--[if (gte IE 6)&(lte IE 8)]> {{ HTML::script('js/selectivizr-min.js') }}<![endif]-->
     {{ HTML::script('js/min/bootstrap.js') }}
-    {{ HTML::script('js/retina.js') }}
     {{ HTML::script('js/caroufredsel.js') }}
     {{ HTML::script('js/masonry2108.js') }}
     {{ HTML::script('js/mobile_detector.js') }}
