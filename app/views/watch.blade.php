@@ -52,6 +52,11 @@
     #controls-watch a {
         margin-right: 20px;
     }
+
+    .alert-info a {
+        color: #3a87ad;
+        text-decoration: underline;
+    }
 </style>
 @stop
 
@@ -65,7 +70,7 @@
         }
         if (isset($anime) && isset($mirrors) && isset($episode)) {
             echo '<div class="row-fluid"><div class="span9"><h3 class="met_big_title">' . $anime->name . ' - episode ' . $episode . '</h3>';
-            echo '<div id="video"><iframe frameborder="0" scrolling="no" width="100%" height="510" src="' . $mirrors[0]->src . '" allowfullscreen></iframe></div>';
+            echo '<div id="video"><iframe frameborder="0" scrolling="no" width="100%" height="510px" src="' . $mirrors[0]->src . '" allowfullscreen></iframe></div>';
             echo '<div class="row-fluid"><div class="span12" id="controls-watch"><div id="favorite-anime" class="pull-left">';
             if (!empty($user)) {
                 if (AnimeFavorite::isFavorite($user->id, $anime->id)) {
@@ -99,14 +104,14 @@
                 }
                 echo '</div></a></li>';
             }
-            echo '</ul></div><div class="span12"></div></div>';
+            echo '</ul></div></div>';
             echo '</div></div>';
         } else {
             Redirect::to('anime');
         }
         ?>
-        <div class="row-fluid scrolled">
-            <div class="span9">
+        <div class="row-fluid">
+            <div class="span12">
                 <h3 class="met_title_with_childs clearfix">DISQUS
                     <span class="met_subtitle">TALK ABOUT THE SERIES AND EPISODES</span>
                 </h3>
@@ -134,28 +139,33 @@
         </div>
     </div>
 </div>
+@if (Sentry::check())
 <?php
-if (Sentry::check()) {
-    $end = 1;
-    if (empty($next) && $anime->status != 1) {
-        $end = 2;
-    }
-    echo '
+$end = 1;
+if (empty($next) && $anime->status != 1) {
+    $end = 2;
+}
+echo '
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setTimeout(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "../../../../anime/lastwatched",
+                    data: {  anime_id: ' . $anime->id . ', episode: ' . $episode . ', completed: ' . $end . ' },
+                    timeout: 10000
+                });
+            }, 420000);
+        });
+    </script>';
+?>
+@else
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         setTimeout(function () {
-            $.ajax({
-                type: "POST",
-                url: "../../../../anime/lastwatched",
-                data: {  anime_id: ' . $anime->id . ', episode: ' . $episode . ', completed: ' . $end . ' },
-                timeout: 10000,
-                success: function (data) {
-                    $("#video").prepend(data);
-                }
-            });
+            $("#video").prepend('<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><a href="http://www.masterani.me/account">Sign-in</a> or <a href="http://www.masterani.me/account/register">Sign-up</a></strong> to track up to 10 last watched animes! (supports updating MAL/hummingbird)</div>');
         }, 420000);
     });
-</script>';
-}
-?>
+</script>
+@endif
 @stop

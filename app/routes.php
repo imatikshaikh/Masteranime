@@ -33,6 +33,9 @@ Route::get('/', function () {
 Route::get('/animehd', function () {
     return View::make('animehd');
 });
+Route::get('/xbmc', function () {
+    return View::make('animehd');
+});
 Route::get('sitemap', function () {
     $sitemap = App::make("sitemap");
 
