@@ -35,23 +35,21 @@
             }
             echo '</ul>';
         } else {
-            echo '<p>You haven\'t seen any anime yet. (Anime will be add to this list after being 7 minutes on the video page)</p>';
+            echo '<p>You haven\'t seen any anime yet. (Anime will be added to the list after being on the video page for 7 mins.)</p>';
         }
         ?>
         @else
-        <h3 class="gray_title">Masteranie features are only available for people that have an
-            account <a
-                href="' . URL::to('account') . '">Sign
-                in</a>/<a href="' . URL::to('account/register') . '">Sign
+        <h3 class="gray_title">Masterani features are only available for registered
+            users <a
+                href="http://www.masterani.me/account">Sign
+                in</a>/<a href="http://www.masterani.me/account/register">Sign
                 up</a> it's completely free and only takes a few seconds.</h3>
         <hr>
 
         <div class="row-fluid">
             <div class="span12">
-                <h3 class="met_big_title">Masterani features</h3>
+                <h3 class="met_big_title">Masterani features (with account)</h3>
                 <ul class="met_list">
-                    <li>Stream anime in HD or SD</li>
-                    <li>We have all airing series available for free</li>
                     <li>Autoupdating animelists services like MAL or Hummingbird</li>
                     <li>Saves up to 10 last watched anime series</li>
                     <li>Favorite anime for easy filtering</li>

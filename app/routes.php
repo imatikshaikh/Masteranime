@@ -157,7 +157,7 @@ Route::post('/anime/lastwatched', function () {
     if (Request::ajax()) {
         return MasterAnime::addLastwatchedAnime(Input::get('anime_id'), Input::get('episode'), Input::get('completed'));
     }
-    return 'AJAX request only';
+    return 'AJAX requests only.';
 });
 /*Route::get('/anime/lastwatched/{id}/{ep}', function ($id, $ep) {
     return MasterAnime::addLastwatchedAnime($id, $ep, 1);
@@ -214,6 +214,8 @@ Route::get('/api/anime/search/{keyword}', 'ApiController@getSearch');
 Route::get('/api/anime/latest', 'ApiController@getLatest');
 Route::get('/api/anime/{id}', 'ApiController@getAnime');
 Route::get('/api/anime/{id}/{episode}', 'ApiController@getEpisode');
+Route::post('/api/anime/account/lastwatched', 'ApiController@setLastwatched');
+Route::post('/api/anime/account/validate', 'ApiController@getValidate');
 
 
 
