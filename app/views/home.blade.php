@@ -88,27 +88,42 @@
     </div>
     <div class="row-fluid">
         <div class="span6">
-            {{ HTML::image('img/animeoftheweek/steins_gate.png', 'anime of the week: Steins;Gate', ["class" =>
+            {{ HTML::image('img/animeoftheweek/Fullmetal_Alchemist_Brotherhood.png', 'anime of the week: Fullmetal
+            Alchemist: Brotherhood',
+            ["class" =>
             "met_br_tl met_br_tr met_br_bl met_br_br"]) }}
         </div>
         <div class="span6">
-            <a href="{{ URL::to("/anime/231/Steins;Gate") }}"><h3 class="met_big_title">Steins;Gate</h3>
+            <a href="{{ URL::to("/anime/226/Fullmetal_Alchemist:_Brotherhood") }}"><h3 class="met_big_title">Fullmetal
+                Alchemist: Brotherhood</h3>
             </a>
 
-            <p>The eccentric mad scientist Okabe, his childhood friend Mayuri, and the otaku hacker Daru have banded
-                together to form the "Future Gadget Research Laboratory," and spend their days in a ramshackle
-                laboratory hanging out and occasionally attempting to invent incredible futuristic gadgets. However,
-                their claymore is a hydrator and their hair dryer flips breakers, and the only invention that's even
-                remotely interesting is their Phone Microwave, which transforms bananas into oozing green gel. But when
-                an experiment goes awry, the gang discovers that the Phone Microwave can also send text messages to the
-                past. And what's more, the words they send can affect the flow of time and have unforeseen, far-reaching
-                consequences—consequences that Okabe may not be able to handle...
-                <br><br>
-                <span class="met_color"><a href="{{ URL::to("/anime/231/Steins;Gate") }}">All episodes</a> <a
+            <p>
+
+            <p>In this world there exist alchemists, people who study and perform the art of alchemical transmutation—to
+                manipulate objects and transform one object into another. They are bounded by the basic law of alchemy:
+                in order to gain something you have to sacrifice something of the same value.
+            </p>
+
+            <p>
+                The main character is the famous alchemist Edward Elric—also known as the Fullmetal Alchemist—who almost
+                lost his little brother, Alphonse, in an alchemical accident. Edward managed to attach his brother's
+                soul to a large suit of armor. While he did manage to save his brother's life, he paid the terrible
+                price of his limbs.
+            </p>
+
+            <p>
+                To get back what they've lost, the brothers embark on a journey to find the Philosopher's Stone that is
+                said to amplify the powers of an alchemist enormously. However on the way, they start uncovering a
+                conspiracy that could endanger the entire nation, and they realize the misfortunes brought upon by the
+                Philosopher's Stone.
+            </p>
+                <span class="met_color"><a href="{{ URL::to("/anime/226/Fullmetal_Alchemist:_Brotherhood") }}">All episodes</a>
+                    <a
                         class="pull-right"
-                        href="http://myanimelist.net/anime/9253/Steins;Gate/reviews">Steins;Gate
+                        href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist:_Brotherhood/reviews">Steins;Gate
                         reviews</a></span>
-                <br><br>
+            <br><br>
             </p>
         </div>
     </div>
