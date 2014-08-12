@@ -14,13 +14,13 @@
             if (!empty($search_display)) {
                 if ($search_display["view"]) {
                     if (empty($search_display["series"])) {
-                        echo '<li><a href="#">Didn\'t find any anime mathing your keyword.</a></li>';
+                        echo '<li><a href="#">Didn\'t find any anime mathing your keyword. (Displaying ALL anime)</a></li>';
                     } else {
                         print_anime($search_display["series"]);
                     }
                 } else {
                     if (empty($search_display["series"])) {
-                        echo '<li style="margin-bottom: 10px;">Didn\'t find any anime mathing your keyword. (Displaying ALL anime)</li>';
+                        echo '<li style="margin-bottom: 20px;"><a href="#">Didn\'t find any anime mathing your keyword. (Displaying ALL anime)</a></li>';
                         $series = DB::table('series')->select('id', 'name', 'english_name', 'name_synonym_2', 'name_synonym_3', 'type', 'status')->orderBy('name', 'ASC')->get();
                         print_anime($series);
                     } else {

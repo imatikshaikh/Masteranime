@@ -85,9 +85,11 @@ if (Sentry::check()) {
 </div>
 <div class="clearfix">
     <h3 class="met_title_with_childs pull-left">ANIME LIST
-        <span class="met_subtitle">ALL SERIES AVAILABLE AT MASTERANI</span>
+        <span class="met_subtitle">ALL SERIES AND MOVIES AVAILABLE AT MASTERANI</span>
     </h3>
     <ul class="met_filters pull-right">
+        <li><a href="#" data-filter=".ongoing">ONGOING</a></li>
+        <li><a href="#" data-filter=".movie">MOVIES</a></li>
         <li><a href="#" data-filter=".favorite">FAVORITE</a></li>
         <li><a href="#" data-filter="*" class="met_color3">SHOW ALL</a></li>
     </ul>

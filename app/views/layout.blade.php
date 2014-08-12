@@ -8,7 +8,7 @@
     <meta name="description" content=<?php if (isset($description)) {
         echo '"' . $description . '"';
     } else {
-        echo '"Masterani allows you to watch anime in HD and SD! Features XBMC, Plex & auto-updating MyAnimeList or Hummingbird library!"';
+        echo '"Masterani allows you to watch anime in HD (720p) and SD (480p)! Features XBMC, Plex and auto-updating MyAnimeList or Hummingbird library!"';
     } ?>>
     <!-- for Facebook -->
     <meta property="og:image" content={{

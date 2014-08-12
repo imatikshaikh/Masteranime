@@ -63,6 +63,12 @@ class Anime extends Eloquent
             if (AnimeFavorite::isFavorite($id, $serie->id)) {
                 echo ' favorite';
             }
+            if ($serie->status == 1) {
+                echo ' ongoing';
+            }
+            if ($serie->type == 2) {
+                echo ' movie';
+            }
             echo '"><a href="' . URL::to('anime/' . $serie->id . '/' . str_replace(array(" ", "/", "?"), "_", $serie->name)) . '">';
             $synonyms = Anime::getSynonyms($serie);
             if (!empty($synonyms)) {
