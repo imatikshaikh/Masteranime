@@ -36,15 +36,13 @@ Route::get('/animehd', function () {
 Route::get('/xbmc', function () {
     return View::make('animehd');
 });
-Route::get('sitemap', function () {
+Route::get('/sitemap', function () {
     $sitemap = App::make("sitemap");
-
     $sitemap->add('http://www.masterani.me/', '2014-07-09T20:10:00+02:00', '1.0', 'daily');
     $sitemap->add('http://www.masterani.me/latest', '2014-07-09T12:30:00+02:00', '0.9', 'daily');
     $sitemap->add('http://www.masterani.me/anime', '2014-07-09T12:30:00+02:00', '0.9', 'daily');
     $sitemap->add('http://www.masterani.me/anime/chart', '2014-07-09T12:30:00+02:00', '0.9', 'daily');
     $sitemap->add('http://www.masterani.me/animehd', '2014-07-09T12:30:00+02:00', '0.9', 'weekly');
-
     $animes = Anime::all();
     foreach ($animes as $anime) {
         $name = htmlspecialchars($anime->name, ENT_QUOTES, 'UTF-8');
@@ -159,27 +157,7 @@ Route::post('/anime/lastwatched', function () {
     }
     return 'AJAX requests only.';
 });
-/*Route::get('/anime/lastwatched/{id}/{ep}', function ($id, $ep) {
-    return MasterAnime::addLastwatchedAnime($id, $ep, 1);
-});*/
-Route::post('/anime/favorite', function () {
-    if (Request::ajax()) {
-        $user_id = Input::get('user_id');
-        $anime_id = Input::get('anime_id');
-        $result = AnimeFavorite::actionFavorite($user_id, $anime_id);
-        switch ($result['msg']) {
-            case 'success':
-                return $result["button"] . '<div class="pull-right alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Added!</strong></div>';
-
-            case 'deleted':
-                return $result["button"] . '<div class="pull-right alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Removed!</strong></div>';
-
-            case 'fail':
-                return $result["button"] . '<div class="pull-right alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Warning!</strong> You must sign-in to add anime to favorites.</div>';
-        }
-    }
-    return 'AJAX requests only.';
-});
+Route::post('/anime/favorite', 'UserLibraryController@actionFavorite');
 Route::post('/watch/anime/mirror', function () {
     if (Request::ajax()) {
         $mirror = Mirror::find(Input::get('id'));
@@ -192,7 +170,6 @@ Route::post('/watch/anime/mirror', function () {
 });
 Route::post('/anime/update', 'AnimeController@getUpdate');
 Route::get('/anime/scraper/{id}', 'AnimeController@getScraper');
-
 
 /*Anime routes*/
 Route::get('/anime', 'AnimeController@getIndex');
