@@ -151,13 +151,6 @@ Route::get('/anime/scraper/{id}', function ($id) {
 });
 Route::post('/anime/scraper/url', array('as' => 'add_scrapeurl', 'uses' => 'AccountController@updateScrapeUrl'));
 Route::post('/anime/update/thumbnail', array('as' => 'add_thumb', 'uses' => 'AccountController@updateThumbnail'));
-Route::post('/anime/lastwatched', function () {
-    if (Request::ajax()) {
-        return MasterAnime::addLastwatchedAnime(Input::get('anime_id'), Input::get('episode'), Input::get('completed'));
-    }
-    return 'AJAX requests only.';
-});
-Route::post('/anime/favorite', 'UserLibraryController@actionFavorite');
 Route::post('/watch/anime/mirror', function () {
     if (Request::ajax()) {
         $mirror = Mirror::find(Input::get('id'));
@@ -178,6 +171,9 @@ Route::get('/anime/chart', 'AnimeController@getChart');
 Route::get('/anime/{id}', 'AnimeController@getAnime');
 Route::get('/anime/{id}/{name}', 'AnimeController@getAnime');
 Route::get('/watch/anime/{id}/{name}/{episode}', 'AnimeController@getEpisode');
+/*User library routes*/
+Route::post('/userlib/favorite', 'UserLibraryController@addFavorite');
+Route::post('/userlib/watched', 'UserLibraryController@addWatched');
 /*Account routes*/
 Route::any('/account', 'AccountController@getIndex');
 Route::any('/account/settings', 'AccountController@getIndex');

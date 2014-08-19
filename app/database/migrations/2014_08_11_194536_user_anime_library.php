@@ -19,7 +19,7 @@ class UserAnimeLibrary extends Migration
             $table->boolean('is_fav')->default(false);
             $table->tinyInteger('library_status')->default(0);
             $table->string('last_watched_episode', 11)->nullable();
-            $table->date('last_watched_time')->nullable();
+            $table->timestamp('last_watched_time')->nullable();
             $table->timestamps();
         });
     }

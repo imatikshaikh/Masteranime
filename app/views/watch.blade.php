@@ -26,7 +26,7 @@
             var anime_id = $(this).find("input[name='anime_id']").val();
             $.ajax({
                 type: "POST",
-                url: "../../../../anime/favorite",
+                url: "../../../../userlib/favorite",
                 data: { user_id: user_id, anime_id: anime_id },
                 timeout: 10000,
                 success: function (data) {
@@ -139,33 +139,24 @@
         </div>
     </div>
 </div>
-@if (Sentry::check())
 <?php
 $end = 1;
 if (empty($next) && $anime->status != 1) {
     $end = 2;
 }
-echo '
-    <script type="text/javascript">
+echo '<script type="text/javascript">
         $(document).ready(function() {
             setTimeout(function () {
                 $.ajax({
                     type: "POST",
-                    url: "../../../../anime/lastwatched",
-                    data: {  anime_id: ' . $anime->id . ', episode: ' . $episode . ', completed: ' . $end . ' },
+                    url: "../../../../userlib/watched",
+                    data: {  anime_id: ' . $anime->id . ', episode_id: ' . $episode . ', completed: ' . $end . ' },
                     timeout: 10000
+                }).done(function(data) {
+                    $("#video").prepend(data);
                 });
             }, 420000);
         });
     </script>';
 ?>
-@else
-<script type="text/javascript">
-    $(document).ready(function () {
-        setTimeout(function () {
-            $("#video").prepend('<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><a href="http://www.masterani.me/account">Sign-in</a> or <a href="http://www.masterani.me/account/register">Sign-up</a></strong> to track up to 10 last watched animes! (supports updating MAL/hummingbird)</div>');
-        }, 420000);
-    });
-</script>
-@endif
 @stop

@@ -60,7 +60,7 @@ class Anime extends Eloquent
         }
         foreach ($series as $serie) {
             echo '<li class="item';
-            if (AnimeFavorite::isFavorite($id, $serie->id)) {
+            if (UserLibrary::getFavorite($serie->id, $id)) {
                 echo ' favorite';
             }
             if ($serie->status == 1) {
