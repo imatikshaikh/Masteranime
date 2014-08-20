@@ -60,8 +60,14 @@ class Anime extends Eloquent
         }
         foreach ($series as $serie) {
             echo '<li class="item';
-            if (AnimeFavorite::isFavorite($id, $serie->id)) {
+            if (UserLibrary::getFavorite($serie->id, $id)) {
                 echo ' favorite';
+            }
+            if ($serie->status == 1) {
+                echo ' ongoing';
+            }
+            if ($serie->type == 2) {
+                echo ' movie';
             }
             echo '"><a href="' . URL::to('anime/' . $serie->id . '/' . str_replace(array(" ", "/", "?"), "_", $serie->name)) . '">';
             $synonyms = Anime::getSynonyms($serie);

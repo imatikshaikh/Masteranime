@@ -115,26 +115,6 @@ class MasterAnime
         return '';
     }
 
-    public static function addLastwatchedAnime($id, $episode, $completed)
-    {
-        if (Sentry::check()) {
-            $user_id = Sentry::getUser()->id;
-            $mirrors = MasterAnime::getEpisode($id, $episode);
-            if (!empty($mirrors) && count($mirrors) > 0 && !empty($id) && !empty($episode)) {
-                $lastwatch = LastWatched::firstOrNew(array('user_id' => $user_id, 'anime_id' => $id));
-                if (empty($lastwatch->episode) || $lastwatch->episode < $episode) {
-                    $mal_msg = MasterAnime::addToMAL($id, $episode, $completed);
-                    $hum_msg = MasterAnime::addToHummingbird($id, $episode, $completed);
-                    $lastwatch->user_id = $user_id;
-                    $lastwatch->anime_id = $id;
-                    $lastwatch->episode = $episode;
-                    $lastwatch->save();
-                    return View::make('child.alerts', array('msg_type' => 'success', 'msg' => 'Added episode ' . $episode . ' to last watched anime! ' . $mal_msg . '' . $hum_msg));
-                }
-            }
-        }
-    }
-
     public static function manageListAccount($site, $username, $password)
     {
         if (Sentry::check()) {

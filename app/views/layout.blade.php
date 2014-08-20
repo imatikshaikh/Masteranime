@@ -8,7 +8,7 @@
     <meta name="description" content=<?php if (isset($description)) {
         echo '"' . $description . '"';
     } else {
-        echo '"Masterani allows you to watch anime in HD and SD! Features XBMC, Plex & auto-updating MyAnimeList or Hummingbird library!"';
+        echo '"Masterani allows you to watch anime in HD (720p) and SD (480p)! Features XBMC, Plex and auto-updating MyAnimeList or Hummingbird library!"';
     } ?>>
     <!-- for Facebook -->
     <meta property="og:image" content={{
@@ -180,10 +180,11 @@
             <a href="{{ URL::to('/') }}" class="pull-left">{{ HTML::image('img/masteranime_logo.png', 'masteranime
                 logo') }}</a>
 
-            <p class="pull-left">© 2014 MASTERANI by Nex. All Rights Reserved.</p>
+            <p class="pull-left">© 2014 MASTERANI. All Rights Reserved.</p>
             <ul class="met_footer_menu pull-right">
                 {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
-                {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME LIST"))) }}
+                {{ HTML::menu_link(array(array("route" => "/anime", "text" => "ANIME LIST"))) }}
+                {{ HTML::menu_link(array(array("route" => "/anime/chart", "text" => "ANIME CHART"))) }}
             </ul>
         </div>
     </div>

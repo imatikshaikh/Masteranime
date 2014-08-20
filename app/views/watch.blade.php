@@ -26,7 +26,7 @@
             var anime_id = $(this).find("input[name='anime_id']").val();
             $.ajax({
                 type: "POST",
-                url: "../../../../anime/favorite",
+                url: "../../../../userlib/favorite",
                 data: { user_id: user_id, anime_id: anime_id },
                 timeout: 10000,
                 success: function (data) {
@@ -73,7 +73,7 @@
             echo '<div id="video"><iframe frameborder="0" scrolling="no" width="100%" height="510px" src="' . $mirrors[0]->src . '" allowfullscreen></iframe></div>';
             echo '<div class="row-fluid"><div class="span12" id="controls-watch"><div id="favorite-anime" class="pull-left">';
             if (!empty($user)) {
-                if (AnimeFavorite::isFavorite($user->id, $anime->id)) {
+                if (UserLibrary::getFavorite($anime->id, $user->id)) {
                     echo ' <a data-toggle="tooltip" title="remove from favorites"><input type="hidden" name="user_id" value="' . $user->id . '"><input type="hidden" name="anime_id" value="' . $anime->id . '"><span class="icon-heart icon-large met_gray_icon"></span></a>';
                 } else {
                     echo '<a data-toggle="tooltip" title="add to favorites"><input type="hidden" name="user_id" value="' . $user->id . '"><input type="hidden" name="anime_id" value="' . $anime->id . '"><span class="icon-heart icon-large"></span></a>';
@@ -139,33 +139,24 @@
         </div>
     </div>
 </div>
-@if (Sentry::check())
 <?php
 $end = 1;
 if (empty($next) && $anime->status != 1) {
     $end = 2;
 }
-echo '
-    <script type="text/javascript">
+echo '<script type="text/javascript">
         $(document).ready(function() {
             setTimeout(function () {
                 $.ajax({
                     type: "POST",
-                    url: "../../../../anime/lastwatched",
-                    data: {  anime_id: ' . $anime->id . ', episode: ' . $episode . ', completed: ' . $end . ' },
+                    url: "../../../../userlib/watched",
+                    data: {  anime_id: ' . $anime->id . ', episode_id: ' . $episode . ', completed: ' . $end . ' },
                     timeout: 10000
+                }).done(function(data) {
+                    $("#video").prepend(data);
                 });
             }, 420000);
         });
     </script>';
 ?>
-@else
-<script type="text/javascript">
-    $(document).ready(function () {
-        setTimeout(function () {
-            $("#video").prepend('<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><a href="http://www.masterani.me/account">Sign-in</a> or <a href="http://www.masterani.me/account/register">Sign-up</a></strong> to track up to 10 last watched animes! (supports updating MAL/hummingbird)</div>');
-        }, 420000);
-    });
-</script>
-@endif
 @stop

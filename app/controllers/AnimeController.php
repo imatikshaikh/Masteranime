@@ -17,7 +17,7 @@ class AnimeController extends BaseController
 
     public function getChart()
     {
-        return View::make('chart', array('title' => 'Anime chart', 'description' => 'Masterani chart shows estimated time when ongoing animes will be released.'));
+        return View::make('chart', array('title' => 'Anime chart', 'description' => 'Masterani chart shows the estimated time when airing anime will be released.'));
     }
 
     public function getLatest()
@@ -31,7 +31,7 @@ class AnimeController extends BaseController
         if (empty($anime)) {
             return App::abort(404);
         }
-        return View::make('anime', array('anime' => $anime, 'description' => 'All information you should know about ' . $anime->name, 'title' => $anime->name . ' : Watch in HD'));
+        return View::make('anime', array('anime' => $anime, 'description' => $anime->name . ' trailer, episodes and information in HD (720p) or SD (480p)!', 'title' => 'Watch ' . $anime->name . ' in HD or SD'));
     }
 
     public function getUpdate()

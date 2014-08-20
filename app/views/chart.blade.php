@@ -16,7 +16,7 @@
             <div class="span12 scrolled__item">
                 <div class="clearfix">
                     <h3 class="met_title_with_childs pull-left">ANIME CHART
-                        <span class="met_subtitle">TIME TILL NEXT EPISODE RELEASE (ESTIMATED)</span>
+                        <span class="met_subtitle">ESTIMATED TIME TILL NEXT EPISODE RELEASES</span>
                     </h3>
                 </div>
                 <div class="row-fluid">
@@ -31,7 +31,7 @@
                                 if (!empty($latest)) {
                                     $today = new DateTime();
                                     $future = new DateTime($latest->created_at);
-                                    $future->add(new DateInterval("PT169H"));
+                                    $future->add(new DateInterval("PT168H"));
                                     $interval = $future->diff($today);
                                     if ($future > $today) {
                                         $date = $interval->format('%d%H');

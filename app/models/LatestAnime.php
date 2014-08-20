@@ -63,7 +63,7 @@ class Latest extends Eloquent
             <div class="met_recent_works_carousel clearfix scrolled met_mainpage_portfolio">';
                 foreach ($eps as $ep) {
                     $result .= '<div class="met_recent_work scrolled__item';
-                    if (AnimeFavorite::isFavorite($id, $ep->anime_id)) {
+                    if (UserLibrary::getFavorite($ep->anime_id, $id)) {
                         $result .= ' favorite';
                     }
                     $result .= ' threedcharacters">';
@@ -83,7 +83,7 @@ class Latest extends Eloquent
                 $result .= '<ul class="nav nav-tabs nav-stacked latest-list" style="overflow: visible;">';
                 foreach ($eps as $ep) {
                     $result .= '<li class="item';
-                    if (AnimeFavorite::isFavorite($id, $ep->anime_id)) {
+                    if (UserLibrary::getFavorite($ep->anime_id, $id)) {
                         $result .= ' favorite';
                     }
                     $result .= '"><a href="' . URL::to('watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", "/", "?"), "_", $ep->name)) . '/' . $ep->episode . '">' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p>' . $ep->name . ' - ep. ' . $ep->episode . '<p><h4>' . Latest::time_elapsed_string($ep->created_at) . '</h4></a></li>';

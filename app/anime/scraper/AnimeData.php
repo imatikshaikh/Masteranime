@@ -204,79 +204,11 @@ class AnimeDataScraper
         $anime->end_date = $data["end_date"];
         $anime->description = $data["synopsis"];
         $anime->mal_total_eps = $data["total_eps"];
-        $anime->status = AnimeMisc::setStatus($data["status"]);
-        $anime->type = AnimeMisc::setType($data["type"]);
+        $anime->status = AnimeWrappper::getStatusInt($data["status"]);
+        $anime->type = AnimeWrappper::getTypeInt($data["type"]);
         $anime->genres = $data["genres"];
         $anime->screencaps = $data["screencaps"];
         $anime->youtube_trailer_id = $data["youtube_trailer_id"];
         $anime->save();
     }
-
-}
-
-class AnimeMisc
-{
-
-    public static function  getStatus($status)
-    {
-        switch ($status) {
-            case 1:
-                return 'Ongoing';
-
-            default:
-                return 'Completed';
-        }
-    }
-
-    public static function getType($type)
-    {
-        switch ($type) {
-            case 3:
-                return 'Special';
-
-            case 2:
-                return 'Movie';
-
-            case 1:
-                return 'OVA';
-
-            default:
-                return 'TV';
-        }
-    }
-
-    public static function  setStatus($status)
-    {
-        switch ($status) {
-            case 'Finished Airing':
-                return 0;
-
-            case 'Currently Airing':
-                return 1;
-
-            default:
-                return 0;
-        }
-    }
-
-    public static function setType($type)
-    {
-        switch ($type) {
-            case 'Special':
-                return 3;
-
-            case 'Movie':
-                return 2;
-
-            case 'OVA':
-                return 1;
-
-            case 'TV':
-                return 0;
-
-            default:
-                return 0;
-        }
-    }
-
 }

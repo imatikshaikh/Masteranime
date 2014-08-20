@@ -8,7 +8,8 @@
         "guzzlehttp/guzzle": "~4.0",
         "cartalyst/sentry": "2.1.*",
         "fabpot/goutte": "~2.0",
-        "roumen/sitemap": "dev-master"
+        "roumen/sitemap": "dev-master",
+        "doctrine/dbal": "~2.3"
     },
     "autoload": {
         "classmap": [
@@ -18,7 +19,6 @@
             "app/database/migrations",
             "app/database/seeds",
             "app/tests/TestCase.php",
-            "app/mal",
             "app/anime",
             "app/connect_details.php"
         ]
