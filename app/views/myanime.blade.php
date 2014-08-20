@@ -19,7 +19,7 @@
         <?php
         echo '<div class="clearfix"><h3 class="met_title_with_childs pull-left">LAST WATCHED<span class="met_subtitle">ANIME YOU HAVE WATCHED RECENTLY</span></h3></div>';
         $all = UserLibrary::whereRaw('user_id = ? and last_watched_episode > ?', array(Sentry::getUser()->id, ''))->orderBy('last_watched_time', 'DESC')->take(10)->get();
-        if (!empty($all)) {
+        if (count($all) > 0) {
             echo '<ul class="nav nav-tabs nav-stacked latest-list">';
             foreach ($all as $watched) {
                 $anime = Anime::findOrFail($watched->anime_id);

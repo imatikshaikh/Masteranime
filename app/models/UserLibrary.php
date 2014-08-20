@@ -4,7 +4,7 @@ class UserLibrary extends Eloquent
 {
 
     protected $table = 'user_anime_library';
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'id';
     protected $fillable = array('user_id', 'anime_id', 'is_fav');
 
     public static function getFavorite($anime, $user)
