@@ -121,7 +121,8 @@
                 <span class="met_color"><a href="{{ URL::to("/anime/226/Fullmetal_Alchemist:_Brotherhood") }}">All episodes</a>
                     <a
                         class="pull-right"
-                        href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist:_Brotherhood/reviews">Steins;Gate
+                        href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist:_Brotherhood/reviews">Fullmetal
+                        Alchemist: Brotherhood
                         reviews</a></span>
             <br><br>
             </p>
@@ -129,7 +130,7 @@
     </div>
 </div>
 <hr>
-<div class="row-fluid hidden-phone" style="margin-bottom: 20px;">
+<div class="row-fluid visible-desktop" style="margin-bottom: 20px;">
     <div class="span12">
         <h3 class="met_title_with_childs pull-left">RECOMMENDED ANIME
             <span class="met_subtitle">POPULAR/ONGOING ANIME</span>
