@@ -55,74 +55,44 @@
 <div id="search-results"></div>
 <div class="row-fluid" style="margin-bottom: 20px;">
     <div class="span12">
-        <div class="clearfix">
-            <h3 class="met_title_with_childs pull-left">LATEST ANIME
-                <span class="met_subtitle">LATEST EPISODE UPDATES</span>
-            </h3>
-            <ul id="met_filters_list" class="met_filters met_mainpage_portfolio_filters">
-                <li><a href="#"><input hidden="true" name="type" value="gallery"><span class="icon-th"></span></a></li>
-                <li><a href="#"><input hidden="true" name="type" value="list"><span class="icon-th-list"></span></a>
-                </li>
-            </ul>
-            <ul class="met_filters met_mainpage_portfolio_filters pull-right">
-                <li><a href="#" data-filter=".favorite">FAVORITE</a></li>
-                <li><a href="#" data-filter="*" class="met_color3">SHOW ALL</a></li>
-            </ul>
-        </div>
-        <div id="recent-released">
-            <?php
-            $value = Cookie::get(MasterAnime::$cookie_recent_layout);
-            if (isset($value) && $value != 'list') {
-                echo Latest::getLatest(array("start" => 0, "end" => 12), false);
-            } else {
-                echo Latest::getLatest();
-            }
-            ?>
+        <h3 class="met_title_with_childs pull-left">RECENT ANIME
+            <span class="met_subtitle">ANIME RECENTLY RELEASED</span>
+        </h3>
+
+        <div class="clearfix"></div>
+        <div class="row-fluid">
+            {{ Latest::getLatest() }}
         </div>
     </div>
 </div>
 <hr>
 <div class="row-fluid" style="margin-bottom: 20px;">
     <div class="span12">
-        <h3 class="met_title_with_childs pull-left">ANIME OF THE WEEK</h3>
+        <h3 class="met_title_with_childs pull-left">ANIME OF THE WEEK
+            <span class="met_subtitle">NANA</span>
+        </h3>
     </div>
     <div class="row-fluid">
-        <div class="span6">
-            {{ HTML::image('img/animeoftheweek/Fullmetal_Alchemist_Brotherhood.png', 'anime of the week: Fullmetal
-            Alchemist: Brotherhood',
+        <div class="span6 text-center">
+            {{ HTML::image('img/animeoftheweek/nana.png', 'anime of the week: Nana',
             ["class" =>
             "met_br_tl met_br_tr met_br_bl met_br_br"]) }}
         </div>
         <div class="span6">
-            <a href="{{ URL::to("/anime/226/Fullmetal_Alchemist:_Brotherhood") }}"><h3 class="met_big_title">Fullmetal
-                Alchemist: Brotherhood</h3>
+            <a href="{{ URL::to("/anime/272/Nana") }}"><h3 class="met_big_title">Nana</h3>
             </a>
 
             <p>
 
-            <p>In this world there exist alchemists, people who study and perform the art of alchemical transmutation—to
-                manipulate objects and transform one object into another. They are bounded by the basic law of alchemy:
-                in order to gain something you have to sacrifice something of the same value.
-            </p>
-
-            <p>
-                The main character is the famous alchemist Edward Elric—also known as the Fullmetal Alchemist—who almost
-                lost his little brother, Alphonse, in an alchemical accident. Edward managed to attach his brother's
-                soul to a large suit of armor. While he did manage to save his brother's life, he paid the terrible
-                price of his limbs.
-            </p>
-
-            <p>
-                To get back what they've lost, the brothers embark on a journey to find the Philosopher's Stone that is
-                said to amplify the powers of an alchemist enormously. However on the way, they start uncovering a
-                conspiracy that could endanger the entire nation, and they realize the misfortunes brought upon by the
-                Philosopher's Stone.
-            </p>
-                <span class="met_color"><a href="{{ URL::to("/anime/226/Fullmetal_Alchemist:_Brotherhood") }}">All episodes</a>
+            <p>Komatsu Nana moves to Tokyo, following after her boyfriend Shouji to gain a life she has always dreamed
+                of. On a train bound for Tokyo, she meets Osaki Nana, the vocalist for the punk rock band "Blast", also
+                moving to Tokyo to achieve her dreams of becoming a professional. Sharing the same name, the two of them
+                perhaps through a twist of fate, ended up becoming flat mates in Tokyo, where together they support each
+                other through each of their love lives and careers.</p>
+                <span class="met_color"><a href="{{ URL::to("/anime/272/Nana") }}">All episodes</a>
                     <a
                         class="pull-right"
-                        href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist:_Brotherhood/reviews">Fullmetal
-                        Alchemist: Brotherhood
+                        href="http://myanimelist.net/anime/877/Nana/reviews">Nana
                         reviews</a></span>
             <br><br>
             </p>
@@ -130,22 +100,6 @@
     </div>
 </div>
 <hr>
-<div class="row-fluid visible-desktop" style="margin-bottom: 20px;">
-    <div class="span12">
-        <h3 class="met_title_with_childs pull-left">RECOMMENDED ANIME
-            <span class="met_subtitle">POPULAR/ONGOING ANIME</span>
-        </h3>
-
-        <div class="row-fluid">
-            <div class="span12">
-                <div class="row-fluid">
-                    {{ MasterAnime::printPopularAnime(); }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<hr class="hidden-phone">
 <div class="row-fluid scrolled">
     <div class="span12">
         <h3 class="met_title_with_childs clearfix">DISQUS

@@ -18,7 +18,7 @@ class Latest extends Eloquent
                         'anime_id' => $anime->id,
                         'name' => $anime->name,
                         'episode' => $episode,
-                        'img' => Anime::getThumbnail($anime)
+                        'img' => Anime::getCover($anime)
                     )
                 );
             }
@@ -31,7 +31,7 @@ class Latest extends Eloquent
         if (!empty($eps)) {
             foreach ($eps as $ep) {
                 $anime = Anime::findOrFail($ep->anime_id);
-                $ep->img = Anime::getThumbnail($anime);
+                $ep->img = Anime::getCover($anime);
                 $ep->save();
             }
             return 'updated thumbnails';
@@ -49,57 +49,23 @@ class Latest extends Eloquent
         return null;
     }
 
-    public static function getLatest($total = array("start" => 0, "end" => 12), $galerry = true)
+    public static function getLatest($total = array("start" => 0, "end" => 12))
     {
         $result = "";
         $eps = Latest::getLatestRows($total);
-        if (!empty($eps)) {
-            $id = 0;
-            if (Sentry::check()) {
-                $id = Sentry::getUser()->id;
-            }
-            if ($galerry) {
-                $result .= '<div class="met_recent_works_carousel_wrap">
-            <div class="met_recent_works_carousel clearfix scrolled met_mainpage_portfolio">';
-                foreach ($eps as $ep) {
-                    $result .= '<div class="met_recent_work scrolled__item';
-                    if (UserLibrary::getFavorite($ep->anime_id, $id)) {
-                        $result .= ' favorite';
-                    }
-                    $result .= ' threedcharacters">';
-                    $result .= '<a href="' . URL::to('/watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", "/", "?"), '_', $ep->name) . '/' . $ep->episode) . '" class="met_recent_work_picture_area">
-                    ' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array("class" => "image-latest")) . '<span><span><i class="icon-film icon-large"></i></span></span></a><aside class="clearfix"></aside>
-                    <a href="' . URL::to('/watch/anime/' . $ep->anime_id . '/' . $ep->name . '/' . $ep->episode) . '" class="met_recent_work_double_title">';
-                    if (strlen($ep->name) > 30) {
-                        $name = substr($ep->name, 0, 30);
-                        $result .= '<h3 data-toggle="tooltip" title="' . $ep->name . '">' . $name . '.. - ep. ' . $ep->episode . '</h3>';
-                    } else {
-                        $result .= '<h3>' . $ep->name . ' - ep. ' . $ep->episode . '</h3>';
-                    }
-                    $result .= '<h4>' . Latest::time_elapsed_string($ep->created_at) . '</h4></a></div>';
+        if (count($eps) > 0) {
+            foreach ($eps as $ep) {
+                $result .= '<a href="' . URL::to('/watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", " / ", " ? "), '_', $ep->name) . '/' . $ep->episode) . '">
+                <div class="span3 anime_card" data-toggle="tooltip" title="' . $ep->name . '">
+                    <div class="top_title">ep. ' . $ep->episode . ' - ' . Latest::time_elapsed_string($ep->created_at) . '</div>
+                    ' . HTML::image($ep->img, $ep->name) . '<p>';
+                if (strlen($ep->name) > 25) {
+                    $name = substr($ep->name, 0, 25);
+                    $result .= $name . '...';
+                } else {
+                    $result .= $ep->name;
                 }
-                $result .= '</div></div>';
-            } else {
-                $result .= '<ul class="nav nav-tabs nav-stacked latest-list" style="overflow: visible;">';
-                foreach ($eps as $ep) {
-                    $result .= '<li class="item';
-                    if (UserLibrary::getFavorite($ep->anime_id, $id)) {
-                        $result .= ' favorite';
-                    }
-                    $result .= '"><a href="' . URL::to('watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", "/", "?"), "_", $ep->name)) . '/' . $ep->episode . '">' . HTML::image($ep->img, 'thumbnail_' . $ep->name, array('class' => 'border-radius-left')) . '<p>' . $ep->name . ' - ep. ' . $ep->episode . '<p><h4>' . Latest::time_elapsed_string($ep->created_at) . '</h4></a></li>';
-                }
-                $result .= '</ul>';
-                $result .= '<script type="text/javascript">
-                            $(document).ready(function () {
-                                var $container = $(\'.latest-list\').isotope({
-                                    itemSelector: \'.item\'
-                                });
-                                $(\'.met_filters a\').click(function () {
-                                    var filterValue = $(this).attr(\'data-filter\');
-                                    $container.isotope({ filter: filterValue });
-                                });
-                            });
-                        </script>';
+                $result .= '</p></div></a >';
             }
         }
         return $result;

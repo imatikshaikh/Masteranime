@@ -1158,7 +1158,7 @@ footer > .met_content > .row-fluid {
 	Twitter Ticker
  ------------------------------*/
 .met_twitter_ticker {
-    height: 125px;
+    height: 175px;
     overflow: hidden;
     position: relative;
 }

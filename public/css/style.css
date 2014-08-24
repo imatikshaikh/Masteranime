@@ -2,6 +2,71 @@ body {
     background-color: #171717;
 }
 
+.anime_card {
+    max-width: 178px;
+    background-color: #212121;
+    color: #D8D8D8;
+    -webkit-transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    box-shadow: #272727 0px 2px 0px;
+    -webkit-box-shadow: #272727 0px 2px 0px;
+    -moz-box-shadow: #272727 0px 2px 0px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.anime_card > img {
+    max-height: 257px;
+    max-width: 178px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+}
+
+.anime_card > .top_title {
+    max-width: 174px;
+    width: 174px;
+    padding: 5px 2px;
+    font-size: 11px;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 13px;
+    font-family: 'Roboto Condensed';
+    overflow: hidden;
+    text-align: center;
+    background-image: url('../img/trans_bg.png');
+    position: absolute;
+    float: left;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+}
+
+.anime_card > p {
+    margin: 2px 4px;
+}
+
+a > .anime_card {
+    text-decoration: none;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+a:hover > .anime_card > p {
+    text-decoration: none;
+}
+
 #disqus_thread {
     color: #d8d8d8;
     text-shadow: none;
