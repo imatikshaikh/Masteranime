@@ -61,7 +61,25 @@
 
         <div class="clearfix"></div>
         <div class="row-fluid">
-            {{ Latest::getLatest() }}
+            <?php
+            $latest_eps = Latest::getLatestRows(["paginate" => 12]);
+            if (!empty($latest_eps) && count($latest_eps) > 0) {
+                foreach ($latest_eps as $latest_ep) {
+                    echo View::make('child.card_anime', array(
+                        "anime_id" => $latest_ep->anime_id,
+                        "anime_name" => $latest_ep->name,
+                        "anime_episode" => $latest_ep->episode,
+                        "anime_img" => $latest_ep->img,
+                        "time" => $latest_ep->created_at
+                    ));
+                }
+            }
+            ?>
+            <div class="row-fluid">
+                <div class="span12">
+                    {{ $latest_eps->links(); }}
+                </div>
+            </div>
         </div>
     </div>
 </div>

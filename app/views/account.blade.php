@@ -44,6 +44,7 @@
             echo '<div class="btn-group">
                     <a href="' . URL::to('anime/update/thumbnails') . '" type="button" data-toggle="tooltip" title="update thumbnails" class="met_button border-radius-right border-radius-left"><span class="icon-picture"></span></a>
                     <a href="' . URL::to('anime/scraper/all') . '" type="button" data-toggle="tooltip" title="scrape anime with no eps" class="met_button border-radius-right border-radius-left"><span class="icon-download-alt"></span></a>
+                    <a href="' . URL::to('/anime/manage/ongoing') . '" type="button" data-toggle="tooltip" title="update ongoing anime" class="met_button border-radius-right border-radius-left"><span class="icon-repeat"></span></a>
                 </div></div>';
         }
         echo '<div class="row-fluid"><div class="span12"><h3 class="met_title_with_childs">ANIMELIST ACCOUNTS<span class="met_subtitle">MYANIMELIST/HUMMINGBIRD</span></h3><hr></div>

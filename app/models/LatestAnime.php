@@ -25,9 +25,9 @@ class Latest extends Eloquent
         }
     }
 
-    public static function updateThumbnails($total = array("start" => 0, "end" => 12))
+    public static function updateThumbnails()
     {
-        $eps = Latest::getLatestRows($total);
+        $eps = Latest::getLatestRows(null);
         if (!empty($eps)) {
             foreach ($eps as $ep) {
                 $anime = Anime::findOrFail($ep->anime_id);
@@ -39,17 +39,15 @@ class Latest extends Eloquent
         return 'latest episodes is empty!';
     }
 
-    public static function getLatestRows($total)
+    public static function getLatestRows($settings)
     {
-        if (isset($total["start"]) && isset($total["end"])) {
-            return Latest::orderBy('created_at', 'DESC')->orderby(DB::raw('CAST(episode AS SIGNED)'), 'DESC')->skip($total["start"])->take($total["end"])->get();
-        } else if (isset($total["end"])) {
-            return Latest::orderBy('created_at', 'DESC')->orderby(DB::raw('CAST(episode AS SIGNED)'), 'DESC')->take($total["end"])->get();
-        }
-        return null;
+        $query = Latest::where('created_at', '>', \Carbon\Carbon::today()->subWeek())->orderBy('created_at', 'DESC')->orderby(DB::raw('CAST(episode AS SIGNED)'), 'DESC');
+        if (isset($settings["paginate"]))
+            return $query->paginate($settings["paginate"]);
+        return $query->get();
     }
 
-    public static function getLatest($total = array("start" => 0, "end" => 12))
+    public static function getLatest($total = array("start" => 0, "end" => 120))
     {
         $result = "";
         $eps = Latest::getLatestRows($total);
@@ -59,8 +57,8 @@ class Latest extends Eloquent
                 <div class="span3 anime_card" data-toggle="tooltip" title="' . $ep->name . '">
                     <div class="top_title">ep. ' . $ep->episode . ' - ' . Latest::time_elapsed_string($ep->created_at) . '</div>
                     ' . HTML::image($ep->img, $ep->name) . '<p>';
-                if (strlen($ep->name) > 25) {
-                    $name = substr($ep->name, 0, 25);
+                if (strlen($ep->name) > 23) {
+                    $name = substr($ep->name, 0, 23);
                     $result .= $name . '...';
                 } else {
                     $result .= $ep->name;

@@ -164,6 +164,8 @@ Route::post('/watch/anime/mirror', function () {
 Route::post('/anime/update', 'AnimeController@getUpdate');
 Route::get('/anime/scraper/{id}', 'AnimeController@getScraper');
 
+/*Anime manage routes*/
+Route::get('/anime/manage/ongoing', 'AnimeManageController@updateOngoing');
 /*Anime routes*/
 Route::get('/anime', 'AnimeController@getIndex');
 Route::get('/anime/latest', 'AnimeController@getLatest');
