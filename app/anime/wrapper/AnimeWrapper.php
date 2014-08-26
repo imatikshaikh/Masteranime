@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Lorenzo
  * Date: 13/08/14
  * Time: 9:37
  */
-
-class AnimeWrappper {
+class AnimeWrappper
+{
 
     public static function  getStatusString($status)
     {

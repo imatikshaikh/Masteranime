@@ -6,7 +6,7 @@ class AnimeManageController extends BaseController
     public function updateOngoing()
     {
         if (Sentry::check() && Sentry::getUser()->isSuperUser()) {
-            $series = Anime::where('status', 1)->where('updated_at', '>', \Carbon\Carbon::today()->subDay())->get(array('mal_id', 'hum_id', 'name'));
+            $series = Anime::where('status', 1)->where('updated_at', '<', \Carbon\Carbon::today()->subDay())->get(array('mal_id', 'hum_id', 'name'));
             if (count($series) > 0) {
                 $scraper = new AnimeDataScraper();
                 $r = '';
