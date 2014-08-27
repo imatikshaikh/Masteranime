@@ -63,16 +63,6 @@ Route::get('/debug', function () {
 });
 
 /*Update & manage routes*/
-Route::get('/anime/update/thumbnails', function () {
-    if (Sentry::check()) {
-        $user = Sentry::getUser();
-        if ($user->isSuperUser()) {
-            return Latest::updateThumbnails();
-        }
-        return 'must be super user';
-    }
-    return 'not logged in.';
-});
 Route::post('/anime/managelistaccount', function () {
     if (Request::ajax()) {
         return MasterAnime::manageListAccount(Input::get("site"), Input::get("username"), Input::get("password"));
@@ -166,6 +156,7 @@ Route::get('/anime/scraper/{id}', 'AnimeController@getScraper');
 
 /*Anime manage routes*/
 Route::get('/anime/manage/ongoing', 'AnimeManageController@updateOngoing');
+Route::get('/anime/manage/thumbnails', 'AnimeManageController@updateThumbnails');
 /*Anime routes*/
 Route::get('/anime', 'AnimeController@getIndex');
 Route::get('/anime/latest', 'AnimeController@getLatest');
@@ -182,7 +173,7 @@ Route::any('/account/settings', 'AccountController@getIndex');
 Route::get('/account/myanime', 'AccountController@getMyanime');
 Route::get('/account/logout', 'AccountController@getLogout');
 Route::any('/account/register', 'AccountController@getRegister');
-/*API ROUTES*/
+/*API routes*/
 Route::get('/api/anime/all', 'ApiController@getAll');
 Route::get('/api/anime/ongoing', 'ApiController@getOngoing');
 Route::get('/api/anime/search/{keyword}', 'ApiController@getSearch');

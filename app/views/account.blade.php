@@ -42,7 +42,7 @@
                 Form::submit('update', array('class' => 'btn btn-success btn-lg', 'style' => 'margin-right: 10px;')) . '' .
                 Form::close() . '</div>';
             echo '<div class="btn-group">
-                    <a href="' . URL::to('anime/update/thumbnails') . '" type="button" data-toggle="tooltip" title="update thumbnails" class="met_button border-radius-right border-radius-left"><span class="icon-picture"></span></a>
+                    <a href="' . URL::to('/anime/manage/thumbnails') . '" type="button" data-toggle="tooltip" title="update thumbnails" class="met_button border-radius-right border-radius-left"><span class="icon-picture"></span></a>
                     <a href="' . URL::to('anime/scraper/all') . '" type="button" data-toggle="tooltip" title="scrape anime with no eps" class="met_button border-radius-right border-radius-left"><span class="icon-download-alt"></span></a>
                     <a href="' . URL::to('/anime/manage/ongoing') . '" type="button" data-toggle="tooltip" title="update ongoing anime" class="met_button border-radius-right border-radius-left"><span class="icon-repeat"></span></a>
                 </div></div>';
