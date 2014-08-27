@@ -58,8 +58,7 @@ class Latest extends Eloquent
                     <div class="top_title">ep. ' . $ep->episode . ' - ' . Latest::time_elapsed_string($ep->created_at) . '</div>
                     ' . HTML::image($ep->img, $ep->name) . '<p>';
                 if (strlen($ep->name) > 23) {
-                    $name = substr($ep->name, 0, 23);
-                    $result .= $name . '...';
+                    $result .= substr($ep->name, 0, 23) . '..';
                 } else {
                     $result .= $ep->name;
                 }
