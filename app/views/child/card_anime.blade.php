@@ -13,7 +13,7 @@
     {{ HTML::image($anime_img, $anime_name) }}
     <p>
         @if (strlen($anime_name) > 23)
-        {{ substr($anime_name, 0, 23) }}
+        {{ substr($anime_name, 0, 23) }}..
         @else
         {{ $anime_name }}
         @endif
