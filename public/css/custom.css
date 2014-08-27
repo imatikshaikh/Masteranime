@@ -181,6 +181,12 @@ h1.logo {
     z-index: 3;
 }
 
+.met_content_footer {
+    width: 1170px;
+    margin: 0 auto;
+    z-index: 3;
+}
+
 section.met_content {
     clear: left;
 }

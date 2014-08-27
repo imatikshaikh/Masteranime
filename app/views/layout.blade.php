@@ -174,9 +174,9 @@
 </div>
 
 @if ((isset($footer) && $footer) || !isset($footer))
-<footer class="clearfix">
+<footer class="clearfix visible-desktop">
     <div class="met_footer_footer clearfix">
-        <div class="met_content">
+        <div class="met_content_footer">
             <a href="{{ URL::to('/') }}" class="pull-left">{{ HTML::image('img/masteranime_logo.png', 'masteranime
                 logo') }}</a>
 
