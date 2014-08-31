@@ -13,8 +13,8 @@ $trans = $environment->getTranslator();
             <?php
             if ($paginator->getCurrentPage() > 1)
                 echo $presenter->getPrevious($trans->trans('pagination.previous'));
-
-            echo $presenter->getNext($trans->trans('pagination.next'));
+            if ($paginator->getLastPage() == $paginator->getCurrentPage())
+                echo $presenter->getNext($trans->trans('pagination.next'));
             ?>
         </ul>
     </div>
