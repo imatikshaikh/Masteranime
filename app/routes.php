@@ -69,6 +69,13 @@ Route::post('/anime/managelistaccount', function () {
     }
     return 'AJAX requests only';
 });
+Route::get('/disable/announcement', function () {
+    if (Request::ajax()) {
+        Cookie::queue('masterani_announcement', '1', 1440);
+        return 'Announcement has been disabled for a day!';
+    }
+    return 'AJAX requests only';
+});
 Route::post('/anime/recent', function () {
     if (Request::ajax()) {
         if (Input::has('type')) {
