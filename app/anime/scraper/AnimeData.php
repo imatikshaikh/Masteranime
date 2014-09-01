@@ -57,10 +57,10 @@ class AnimeDataScraper
         return false;
     }
 
-    public function addMAL($user, $anime, $episode, $status = 1)
+    public function addMAL($user, $anime, $episode = 0, $status = 1)
     {
         if (is_object($user)) {
-            $xml = '<entry><episode>' . $episode . '</episode><status>' . $status . '</status></entry>';
+            $episode == 0 ? $xml = '<entry><status>' . $status . '</status><tags>by masterani.me</tags></entry>' : $xml = '<entry><episode>' . $episode . '</episode><status>' . $status . '</status><tags>by masterani.me</tags></entry>';
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $this->mal_base_url . 'animelist/add/' . $anime->mal_id . '.xml');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -77,7 +77,7 @@ class AnimeDataScraper
                     curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
                     curl_setopt($ch, CURLOPT_USERPWD, $user->mal_username . ':' . $user->mal_password);
                     curl_setopt($ch, CURLOPT_POSTFIELDS, ["data" => $xml]);
-                    $response = curl_exec($ch);
+                    curl_exec($ch);
                     curl_close($ch);
                     return '- Myanimelist: Anime has been added to your list.';
                 case 'Invalid credentials':
@@ -113,16 +113,17 @@ class AnimeDataScraper
         return false;
     }
 
-    public function addHummingbird($user, $anime, $episode, $status = 1)
+    public function addHummingbird($user, $anime, $episode = 0, $status = 1)
     {
         if (is_object($user)) {
             try {
                 $client = new Client();
                 $client = $client->getClient();
-                $status = $status == 1 ? "currently-watching" : "completed";
+                $status = $status == 1 ? "currently-watching" : $status == 4 ? "dropped" : "completed";
+                $query = $episode == 0 ? ['auth_token' => $user->hum_auth, 'status' => $status, 'notes' => 'Added by http://www.masterani.me/'] : ['auth_token' => $user->hum_auth, 'episodes_watched' => $episode, 'status' => $status, 'notes' => 'Added by http://www.masterani.me/'];
                 $response = $client->post('https://hummingbirdv1.p.mashape.com/libraries/' . $anime->hum_id, [
                     'headers' => ['X-Mashape-Authorization' => ConnectDetails::$mashape_key],
-                    'query' => ['auth_token' => $user->hum_auth, 'episodes_watched' => $episode, 'status' => $status, 'notes' => 'Added by http://www.masterani.me/']
+                    'query' => $query
                 ]);
                 if ($response->getStatusCode() === "201" || $response->getStatusCode() === "200") {
                     if ($response->json())

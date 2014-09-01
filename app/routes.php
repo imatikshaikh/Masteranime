@@ -174,6 +174,7 @@ Route::get('/watch/anime/{id}/{name}/{episode}', 'AnimeController@getEpisode');
 /*User library routes*/
 Route::post('/userlib/favorite', 'UserLibraryController@addFavorite');
 Route::post('/userlib/watched', 'UserLibraryController@addWatched');
+Route::post('/userlib/drop', 'UserLibraryController@addDropped');
 /*Account routes*/
 Route::any('/account', 'AccountController@getIndex');
 Route::any('/account/settings', 'AccountController@getIndex');

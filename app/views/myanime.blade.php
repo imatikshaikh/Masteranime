@@ -18,17 +18,60 @@
     .gray_title {
         color: #595959
     }
+
+    .last-watched {
+        margin-left: 0;
+    }
+
+    .last-watched > li {
+        width: 100%;
+        list-style: none;
+        border-bottom: 1px solid #494b4b;
+        margin-bottom: 5px;
+    }
+
+    .last-watched > li > p {
+        color: #D9D9D9;
+        float: left;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .last-watched > li > .time {
+        color: #595959;
+        font-size: 10px;
+        float: left;
+        margin-left: 15px;
+        margin-top: 13px;
+    }
+
+    .last-watched > li > .nav-pills {
+        float: right;
+    }
+
+    .last-watched > li > .nav-pills > .space {
+        margin-left: 20px;
+    }
+
+    .nav-pills > li {
+        height: 20px;
+    }
+
+    .nav-pills > li > a {
+        height: 15px;
+    }
 </style>
 @stop
 @section('custom-js')
 @parent
 <script type="text/javascript">
-    var filters = [];
+    var filters = [':not(.finished)'];
 
     $(document).ready(function () {
-        var $container = $('.latest-list').isotope({
+        var $container = $('.last-watched').isotope({
             itemSelector: '.item'
         });
+        $container.isotope({ filter: filters.join(", ") });
         $('#filters input[type="checkbox"]').on('click', function () {
             var filterValue = $(this).attr('value');
             if (filters.length > 0) {
@@ -54,7 +97,7 @@
         </div>
         <div id="filters">
             <label class="checkbox">
-                <input value=".next" type="checkbox"> Not finished
+                <input value=":not(.finished)" type="checkbox" checked> Hide finished
             </label>
         </div>
     </div>
@@ -65,34 +108,12 @@
                 LAST WATCHED<span class="met_subtitle">ANIME YOU HAVE WATCHED RECENTLY</span>
             </h3>
         </div>
-        <?php
-        $series = UserLibrary::where('user_id', Sentry::getUser()->id)->where('last_watched_episode', '>', '')->where('last_watched_time', '>', \Carbon\Carbon::today()->subMonth())->orderBy('last_watched_time', 'DESC')->paginate(10);
-        ?>
-        @if (!empty($series) && count($series) > 0)
-        <ul class="nav nav-tabs nav-stacked latest-list">
+        <div id="list-anime-watched">
             <?php
-            foreach ($series as $watched) {
-                $anime = Anime::findOrFail($watched->anime_id, array('name', 'thumbnail', 'cover', 'mal_image'));
-                $img = Anime::getThumbnail($anime);
-                $next = MasterAnime::getNextEpisode($watched->anime_id, $watched->last_watched_episode);
-                if ($next > 0) {
-                    echo '<a href="' . URL::to('/watch/anime/' . $watched->anime_id . '/' . str_replace(array(" ", "/", "?"), '_', $anime->name) . '/' . $next) . '" data-toggle="tooltip" title="next episode:' . $next . '"><li class="item next">' . HTML::image($img, 'thumbnail_' . $anime->name, array('class' => 'border-radius-left')) . '<p>' . $anime->name . ' - ep. ' . $watched->last_watched_episode . '<p><h4>seen ' . Latest::time_elapsed_string($watched->last_watched_time) . '</h4></a></li>';
-                } else {
-                    echo '<a href="' . URL::to('/watch/anime/' . $watched->anime_id . '/' . str_replace(array(" ", "/", "?"), '_', $anime->name)) . '" data-toggle="tooltip" title="View episode index, at final episode."><li class="item">' . HTML::image($img, 'thumbnail_' . $anime->name, array('class' => 'border-radius-left')) . '<p>' . $anime->name . ' - ep. ' . $watched->last_watched_episode . '<p><h4>seen ' . Latest::time_elapsed_string($watched->last_watched_time) . '</h4></a></li>';
-                }
-            }
+            $series = UserLibrary::where('user_id', Sentry::getUser()->id)->where('last_watched_episode', '>', '')->where('library_status', '!=', 4)->where('last_watched_time', '>', \Carbon\Carbon::today()->subMonth())->orderBy('last_watched_time', 'DESC')->paginate(20);
             ?>
-        </ul>
-        <div class="row-fluid">
-            <div class="span12">
-                {{ $series->links(); }}
-            </div>
+            {{ View::make('child.anime_watched', ['series' => $series]) }}
         </div>
-        @else
-        <p>
-            You haven't seen any anime yet. (Anime will be added to the list after being on the video page for 7mins)
-        </p>
-        @endif
         @else
         <h3 class="gray_title">Masterani features are only available for registered
             users <a

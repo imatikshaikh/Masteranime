@@ -47,18 +47,35 @@ class UserLibraryController extends BaseController
                         )
                     );
                     if (empty($watched->last_watched_episode) || $watched->last_watched_episode < $episode_id) {
-                        $mal_msg = MasterAnime::addToMAL($anime_id, $episode_id, $completed);
-                        $hum_msg = MasterAnime::addToHummingbird($anime_id, $episode_id, $completed);
+                        MasterAnime::addSocialList($anime_id, $episode_id, $completed);
                         $watched->last_watched_episode = $episode_id;
                         $date = new \DateTime;
                         $watched->last_watched_time = $date;
                         $watched->save();
-                        return View::make('child.alerts', array('msg_type' => 'success', 'msg' => 'Added episode ' . $episode_id . ' to last watched anime! ' . $mal_msg . '' . $hum_msg));
+                        return View::make('child.alerts', array('msg_type' => 'success', 'msg' => 'Added episode ' . $episode_id . ' to last watched anime!'));
                     }
                 }
             }
         } else {
             return View::make('child.alerts', array('msg_type' => 'info', 'msg' => '<a href="http://www.masterani.me/account">Sign-in</a> or <a href="http://www.masterani.me/account/register">Sign-up</a></strong> to track up to 10 last watched animes! (supports updating MAL/hummingbird)'));
         }
+    }
+
+    public function addDropped()
+    {
+        $anime_id = Input::get("anime_id");
+        if (Sentry::check()) {
+            $row = UserLibrary::firstOrNew(
+                array(
+                    'user_id' => Sentry::getUser()->id,
+                    'anime_id' => $anime_id
+                )
+            );
+            $row->library_status = 4;
+            $row->save();
+            MasterAnime::addSocialList($anime_id, 0, 4);
+            return 'true';
+        }
+        return 'false';
     }
 }

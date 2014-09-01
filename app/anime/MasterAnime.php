@@ -95,24 +95,20 @@ class MasterAnime
         }
     }
 
-    public static function addToMAL($animeid, $episode, $completed)
+    public static function addSocialList($anime_id, $episode, $status)
     {
-        if (!empty($animeid) && Sentry::check() && Sentry::getuser()->mal_password != null) {
-            $anime = Anime::findOrFail($animeid);
-            $c = new AnimeDataScraper();
-            return $c->addMAL(Sentry::getUser(), $anime, $episode, $completed);
+        if (Sentry::check()) {
+            $anime = Anime::findOrFail($anime_id);
+            $scrubbler = new AnimeDataScraper();
+            if (!empty(Sentry::getUser()->mal_password)) {
+                $scrubbler->addMAL(Sentry::getUser(), $anime, $episode, $status);
+            }
+            if (!empty(Sentry::getUser()->hum_auth)) {
+                $scrubbler->addHummingbird(Sentry::getUser(), $anime, $episode, $status);
+            }
+            return true;
         }
-        return '';
-    }
-
-    public static function addToHummingbird($animeid, $episode, $completed)
-    {
-        if (!empty($animeid) && Sentry::check() && Sentry::getUser()->hum_auth != null) {
-            $anime = Anime::findOrFail($animeid);
-            $c = new AnimeDataScraper();
-            return $c->addHummingbird(Sentry::getUser(), $anime, $episode, $completed);
-        }
-        return '';
+        return false;
     }
 
     public static function manageListAccount($site, $username, $password)
