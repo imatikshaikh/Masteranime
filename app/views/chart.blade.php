@@ -60,7 +60,7 @@
                             "anime_episode" => ((int)$serie["episode"] + 1),
                             "anime_img" => Anime::getCover($serie["anime"]),
                             "time" => $time,
-                            "chart" => true
+                            "display" => "chart"
                         ));
                     }
                     ?>

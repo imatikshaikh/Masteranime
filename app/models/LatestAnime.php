@@ -47,27 +47,6 @@ class Latest extends Eloquent
         return $query->get();
     }
 
-    public static function getLatest($total = array("start" => 0, "end" => 120))
-    {
-        $result = "";
-        $eps = Latest::getLatestRows($total);
-        if (count($eps) > 0) {
-            foreach ($eps as $ep) {
-                $result .= '<a href="' . URL::to('/watch/anime/' . $ep->anime_id . '/' . str_replace(array(" ", " / ", " ? "), '_', $ep->name) . '/' . $ep->episode) . '">
-                <div class="span3 anime_card" data-toggle="tooltip" title="' . $ep->name . '">
-                    <div class="top_title">ep. ' . $ep->episode . ' - ' . Latest::time_elapsed_string($ep->created_at) . '</div>
-                    ' . HTML::image($ep->img, $ep->name) . '<p>';
-                if (strlen($ep->name) > 23) {
-                    $result .= substr($ep->name, 0, 23) . '..';
-                } else {
-                    $result .= $ep->name;
-                }
-                $result .= '</p></div></a >';
-            }
-        }
-        return $result;
-    }
-
     public static function time_elapsed_string($datetime, $full = false)
     {
         $now = new DateTime;

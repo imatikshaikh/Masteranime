@@ -80,7 +80,8 @@
                         "anime_name" => $latest_ep->name,
                         "anime_episode" => $latest_ep->episode,
                         "anime_img" => $latest_ep->img,
-                        "time" => $latest_ep->created_at
+                        "time" => $latest_ep->created_at,
+                        "display" => "latest"
                     ));
                 }
             }
@@ -97,30 +98,34 @@
 <div class="row-fluid" style="margin-bottom: 20px;">
     <div class="span12">
         <h3 class="met_title_with_childs pull-left">ANIME OF THE WEEK
-            <span class="met_subtitle">NANA</span>
+            <span class="met_subtitle">Hellsing Ultimate</span>
         </h3>
     </div>
     <div class="row-fluid">
         <div class="span6 text-center">
-            {{ HTML::image('img/animeoftheweek/nana.png', 'anime of the week: Nana',
+            {{ HTML::image('img/animeoftheweek/hellsing.png', 'anime of the week: Hellsing Ultimate',
             ["class" =>
             "met_br_tl met_br_tr met_br_bl met_br_br"]) }}
         </div>
         <div class="span6">
-            <a href="{{ URL::to("/anime/272/Nana") }}"><h3 class="met_big_title">Nana</h3>
+            <a href="{{ URL::to("/anime/233/Hellsing_Ultimate") }}"><h3 class="met_big_title">Hellsing Ultimate</h3>
             </a>
 
             <p>
 
-            <p>Komatsu Nana moves to Tokyo, following after her boyfriend Shouji to gain a life she has always dreamed
-                of. On a train bound for Tokyo, she meets Osaki Nana, the vocalist for the punk rock band "Blast", also
-                moving to Tokyo to achieve her dreams of becoming a professional. Sharing the same name, the two of them
-                perhaps through a twist of fate, ended up becoming flat mates in Tokyo, where together they support each
-                other through each of their love lives and careers.</p>
-                <span class="met_color"><a href="{{ URL::to("/anime/272/Nana") }}">All episodes</a>
+            <p>Hellsing, a secret organization of the British government, has long been battling supernatural threats to
+                keep the people safe from creatures of the night. The current leader, Integra Wingates Hellsing controls
+                her own personal army to eliminate the undead beings, but even her highly trained soldiers pale in
+                comparison to her most trusted vampire exterminator, a man by the name of Alucard, who is actually a
+                powerful vampire himself. Along with Integra's mysterious butler and Alucard's new vampire minion, Seras
+                Victoria, The Hellsing Organization must face not only regular ghouls and vampires, but a rivaling
+                secret organization from the Vatican, and Millennium, an enigmatic group of madmen spawned by a certain
+                war over 50 years ago... A bloody battle between monsters is about to begin. The dead are dancing, and
+                all hell is singing...</p>
+                <span class="met_color"><a href="{{ URL::to("/anime/233/Hellsing_Ultimate") }}">All episodes</a>
                     <a
                         class="pull-right"
-                        href="http://myanimelist.net/anime/877/Nana/reviews">Nana
+                        href="http://myanimelist.net/anime/777/Hellsing_Ultimate/reviews">Hellsing Ultimate
                         reviews</a></span>
             <br><br>
             </p>
