@@ -119,8 +119,21 @@ class AnimeDataScraper
             try {
                 $client = new Client();
                 $client = $client->getClient();
-                $status = $status == 1 ? "currently-watching" : $status == 4 ? "dropped" : "completed";
-                $query = $episode == 0 ? ['auth_token' => $user->hum_auth, 'status' => $status, 'notes' => 'Added by http://www.masterani.me/'] : ['auth_token' => $user->hum_auth, 'episodes_watched' => $episode, 'status' => $status, 'notes' => 'Added by http://www.masterani.me/'];
+                switch ($status) {
+                    case 1:
+                        $statusstr = "currently-watching";
+                        break;
+                    case 2:
+                        $statusstr = "completed";
+                        break;
+                    case 4:
+                        $statusstr = "dropped";
+                        break;
+                    default:
+                        $statusstr = "currently-watching";
+                        break;
+                }
+                $query = $episode == 0 ? ['auth_token' => $user->hum_auth, 'status' => $statusstr, 'notes' => 'Added by http://www.masterani.me/'] : ['auth_token' => $user->hum_auth, 'episodes_watched' => $episode, 'status' => $statusstr, 'notes' => 'Added by http://www.masterani.me/'];
                 $response = $client->post('https://hummingbirdv1.p.mashape.com/libraries/' . $anime->hum_id, [
                     'headers' => ['X-Mashape-Authorization' => ConnectDetails::$mashape_key],
                     'query' => $query
