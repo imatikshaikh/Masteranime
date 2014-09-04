@@ -44,8 +44,7 @@
 
     <!-- CSS -->
     @section('custom-css')
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300|Roboto+Condensed|Roboto' rel='stylesheet'
-          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300|Roboto+Condensed|Roboto' rel='stylesheet' type='text/css'>
     {{ HTML::style('css/bootstrap.css') }}
     {{ HTML::style('css/font-awesome.min.css') }}
     <!--[if IE 7]>
@@ -125,23 +124,18 @@
                             <ul class="dl-menu">
                                 {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
                                 {{ HTML::menu_link (array( array("route" => "/animehd", "text" => "XBMC / Plex"))) }}
-                                {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME"), array("route" =>
-                                "anime",
-                                "text" => "ANIME LIST"), array("route" =>
-                                "anime/latest", "text" => "LATEST ANIME"), array("route" => "anime/chart", "text" =>
-                                "ANIME
-                                CHART")), true) }}
-                                <?php
-                                if (Sentry::check()) {
-                                    $user = Sentry::getUser();
-                                    echo HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . $user->username), array("route" => 'account', "text" => 'settings'), array("route" => 'account/myanime', "text" => 'myanime'), array("route" => 'account/logout', "text" => 'LOG OUT')), true);
-                                } else {
-                                    echo HTML::menu_link(array(array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account/register', "text" => 'SIGN UP')), true);
-                                }
-                                ?>
+                                {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME"), array("route" => "anime", "text" => "ANIME LIST"), array("route" => "anime/latest", "text" => "LATEST ANIME"), array("route" => "anime/chart", "text" =>"ANIME CHART")), true) }}
+                                @if(Sentry::check())
+                                @if (Sentry::getUser()->isSuperUser())
+                                {{ HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . Sentry::getUser()->username), array("route" => 'account', "text" => 'settings'), array("route" => '/account/moderation/panel', "text" => 'MOD PANEL'), array("route" => 'account/myanime', "text" => 'myanime'), array("route" => 'account/logout', "text" => 'LOG OUT')), true) }}
+                                @else
+                                {{ HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . Sentry::getUser()->username), array("route" => 'account', "text" => 'settings'), array("route" => 'account/myanime', "text" => 'myanime'), array("route" => 'account/logout', "text" => 'LOG OUT')), true) }}
+                                @endif
+                                @else
+                                {{ HTML::menu_link(array(array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account/register', "text" => 'SIGN UP')), true); }}
+                                @endif
                             </ul>
                         </div>
-                        <!-- /dl-menuwrapper -->
                     </div>
                 </div>
             </div>
@@ -155,19 +149,17 @@
                     <div class="met_header_search_box"></div>
                     <ul class="met_main_menu pull-right scrolled">
                         {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
-                        {{ HTML::menu_link (array( array("route" => "/animehd", "text" => "XBMC / Plex"))) }}
-                        {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME"), array("route" => "anime",
-                        "text" => "ANIME LIST"), array("route" =>
-                        "anime/latest", "text" => "LATEST ANIME"), array("route" => "anime/chart", "text" => "ANIME
-                        CHART"))) }}
-                        <?php
-                        if (Sentry::check()) {
-                            $user = Sentry::getUser();
-                            echo HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . $user->username), array("route" => 'account', "text" => 'settings'), array("route" => 'account/myanime', "text" => 'myanime'), array("route" => 'account/logout', "text" => 'LOG OUT')));
-                        } else {
-                            echo HTML::menu_link(array(array("route" => 'account', "text" => 'SIGN IN'), array("route" => 'account/register', "text" => 'SIGN UP')));
-                        }
-                        ?>
+                        {{ HTML::menu_link (array( array("route" => "/animehd", "text" => "XBMC / PLEX"))) }}
+                        {{ HTML::menu_link(array(array("route" => "/anime", "text" => "ANIME"), array("route" => "/anime", "text" => "ANIME LIST"), array("route" => "/anime/latest", "text" => "LATEST ANIME"), array("route" => "/anime/chart", "text" => "ANIME CHART"))) }}
+                        @if(Sentry::check())
+                        @if (Sentry::getUser()->isSuperUser())
+                        {{ HTML::menu_link(array(array("route" => '/account', "text" => 'ACCOUNT - ' . Sentry::getUser()->username), array("route" => '/account', "text" => 'SETTINGS'), array("route" => '/account/moderation/panel', "text" => 'MOD PANEL'), array("route" => '/account/myanime', "text" => 'MY ANIME'), array("route" => '/account/logout', "text" => 'LOG OUT'))) }}
+                        @else
+                        {{ HTML::menu_link(array(array("route" => '/account', "text" => 'ACCOUNT - ' . Sentry::getUser()->username), array("route" => '/account', "text" => 'SETTINGS'), array("route" => '/account/myanime', "text" => 'MY ANIME'), array("route" => '/account/logout', "text" => 'LOG OUT'))) }}
+                        @endif
+                        @else
+                        {{ HTML::menu_link(array(array("route" => '/account', "text" => 'SIGN IN'), array("route" => '/account', "text" => 'SIGN IN'), array("route" => '/account/register', "text" => 'SIGN UP'))); }}
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -184,8 +176,7 @@
 <footer class="clearfix visible-desktop">
     <div class="met_footer_footer clearfix">
         <div class="met_content_footer">
-            <a href="{{ URL::to('/') }}" class="pull-left">{{ HTML::image('img/masteranime_logo.png', 'masteranime
-                logo') }}</a>
+            <a href="{{ URL::to('/') }}" class="pull-left">{{ HTML::image('img/masteranime_logo.png', 'masteranime logo') }}</a>
 
             <p class="pull-left">© 2014 MASTERANI. All Rights Reserved.</p>
             <ul class="met_footer_menu pull-right">

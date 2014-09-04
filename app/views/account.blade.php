@@ -23,30 +23,6 @@
     <?php
     if (Sentry::check()) {
         $user = Sentry::getUser();
-        if ($user->isSuperUser()) {
-            echo '<div class="row-fluid"><div class="span12"><h3 class="met_title_with_childs">ANIME MANAGE PANEL<span class="met_subtitle">SUPERUSER WEBSITE PANEL</span></h3><hr>';
-            echo '' .
-                Form::open(array('action' => 'add_scrapeurl', 'class' => 'form-inline')) . '
-                    <label style="margin-right: 10px;">add scraper suffix</label>' .
-                Form::text('anime_id', $value = null, array('class' => 'input-large', 'placeholder' => 'anime id', 'style' => 'margin-right: 10px;')) . '' .
-                Form::text('suffix_animerush', $value = null, array('class' => 'input-large', 'placeholder' => 'suffix ar', 'style' => 'margin-right: 10px;')) . '' .
-                Form::text('suffix_rawranime', $value = null, array('class' => 'input-large', 'placeholder' => 'suffix ra', 'style' => 'margin-right: 10px;')) . '' .
-                Form::text('othername', $value = null, array('class' => 'input-large', 'placeholder' => 'othername', 'style' => 'margin-right: 10px;')) . '' .
-                Form::submit('update', array('class' => 'btn btn-success btn-lg', 'style' => 'margin-right: 10px;')) . '' .
-                Form::close() . '</div>';
-            echo '' .
-                Form::open(array('action' => 'add_thumb', 'class' => 'form-inline')) . '
-                    <label style="margin-right: 10px;">add thumbnail</label>' .
-                Form::text('anime_id', $value = null, array('class' => 'input-large', 'placeholder' => 'anime id', 'style' => 'margin-right: 10px;')) . '' .
-                Form::text('thumbnail', $value = null, array('class' => 'input-large', 'placeholder' => 'path', 'style' => 'margin-right: 10px;')) . '' .
-                Form::submit('update', array('class' => 'btn btn-success btn-lg', 'style' => 'margin-right: 10px;')) . '' .
-                Form::close() . '</div>';
-            echo '<div class="btn-group">
-                    <a href="' . URL::to('/anime/manage/thumbnails') . '" type="button" data-toggle="tooltip" title="update thumbnails" class="met_button border-radius-right border-radius-left"><span class="icon-picture"></span></a>
-                    <a href="' . URL::to('anime/scraper/all') . '" type="button" data-toggle="tooltip" title="scrape anime with no eps" class="met_button border-radius-right border-radius-left"><span class="icon-download-alt"></span></a>
-                    <a href="' . URL::to('/anime/manage/ongoing') . '" type="button" data-toggle="tooltip" title="update ongoing anime" class="met_button border-radius-right border-radius-left"><span class="icon-repeat"></span></a>
-                </div></div>';
-        }
         echo '<div class="row-fluid"><div class="span12"><h3 class="met_title_with_childs">ANIMELIST ACCOUNTS<span class="met_subtitle">MYANIMELIST/HUMMINGBIRD</span></h3><hr></div>
 <p>If you connect with myanimelist or hummingbird all anime you view will be auto added to your list, so you have don\'t have to worry about managing your list.</p>
                 <div class="row-fluid">

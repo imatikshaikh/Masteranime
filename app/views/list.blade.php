@@ -55,22 +55,6 @@
 </script>
 @stop
 @section('content')
-<?php
-if (Sentry::check()) {
-    $user = Sentry::getUser();
-    if ($user->isSuperUser()) {
-        echo '<div class="center-text">' .
-            Form::open(array('action' => 'AnimeController@getUpdate', 'class' => 'form-inline')) . '
-                    <label style="margin-right: 10px;">Anime ID, keyword & optional hum_id</label>' .
-            Form::text('mal_id', $value = null, array('class' => 'input-small', 'required' => '', 'style' => 'margin-right: 10px;')) . '' .
-            Form::text('keyword', $value = null, array('class' => 'input-large', 'required' => '', 'style' => 'margin-right: 10px;')) . '' .
-            Form::text('hum_id', $value = null, array('class' => 'input-large', 'style' => 'margin-right: 10px;')) . '' .
-            Form::submit('update', array('class' => 'btn btn-success btn-lg', 'style' => 'margin-right: 10px;')) . '' .
-            Form::close() . '</div>';
-    }
-}
-?>
-
 <div class="row-fluid " style="margin-bottom: 10px">
     <div class="span12 met_small_block">
         <div class="clearfix">

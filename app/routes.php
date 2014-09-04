@@ -146,7 +146,6 @@ Route::get('/anime/scraper/{id}', function ($id) {
     }
     return 'Not allowed!';
 });
-Route::post('/anime/scraper/url', array('as' => 'add_scrapeurl', 'uses' => 'AccountController@updateScrapeUrl'));
 Route::post('/anime/update/thumbnail', array('as' => 'add_thumb', 'uses' => 'AccountController@updateThumbnail'));
 Route::post('/watch/anime/mirror', function () {
     if (Request::ajax()) {
@@ -162,8 +161,12 @@ Route::post('/anime/update', 'AnimeController@getUpdate');
 Route::get('/anime/scraper/{id}', 'AnimeController@getScraper');
 
 /*Anime manage routes*/
+Route::get('/account/moderation/panel', 'AnimeManageController@getModPanel');
 Route::get('/anime/manage/ongoing', 'AnimeManageController@updateOngoing');
 Route::get('/anime/manage/thumbnails', 'AnimeManageController@updateThumbnails');
+Route::post('/anime/manage/mirror', array('as' => 'manage_single_mirror', 'uses' => 'AnimeManageController@updateMirror'));
+Route::post('/anime/manage/single', array('as' => 'manage_single_anime', 'uses' => 'AnimeManageController@updateAnime'));
+Route::post('/anime/manage/scraper', array('as' => 'add_scrapeurl', 'uses' => 'AnimeManageController@updateScraper'));
 /*Anime routes*/
 Route::get('/anime', 'AnimeController@getIndex');
 Route::get('/anime/latest', 'AnimeController@getLatest');

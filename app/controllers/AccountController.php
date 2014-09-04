@@ -87,22 +87,6 @@ class AccountController extends BaseController
         return Redirect::to('account');
     }
 
-    public static function updateScrapeUrl()
-    {
-        if (Input::has('anime_id')) {
-            $url = ScrapeUrl::firstOrNew(array('anime_id' => Input::get('anime_id')));
-            if (Input::has('suffix_animerush'))
-                $url->suffix_animerush = Input::get('suffix_animerush');
-            if (Input::has('suffix_rawranime'))
-                $url->suffix_rawranime = Input::get('suffix_rawranime');
-            if (Input::has('othername'))
-                $url->othername = Input::get('othername');
-            $url->save();
-            return $url;
-        }
-        return 'anime_id not set';
-    }
-
     public static function updateThumbnail()
     {
         if (Input::has('anime_id')) {
@@ -115,5 +99,4 @@ class AccountController extends BaseController
         }
         return 'anime_id not set';
     }
-
 }
