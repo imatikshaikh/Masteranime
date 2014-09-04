@@ -60,7 +60,7 @@ class AnimeDataScraper
     public function addMAL($user, $anime, $episode = 0, $status = 1)
     {
         if (is_object($user)) {
-            $episode == 0 ? $xml = '<entry><status>' . $status . '</status><tags>by masterani.me</tags></entry>' : $xml = '<entry><episode>' . $episode . '</episode><status>' . $status . '</status><tags>by masterani.me</tags></entry>';
+            $episode == 0 ? $xml = '<entry><status>' . $status . '</status></entry>' : $xml = '<entry><episode>' . $episode . '</episode><status>' . $status . '</status></entry>';
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $this->mal_base_url . 'animelist/add/' . $anime->mal_id . '.xml');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
