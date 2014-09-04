@@ -92,7 +92,7 @@ class AnimeManageController extends BaseController
             $src = Input::get('src');
             $host = Input::get('host');
             $quality = Input::get('quality');
-            $anime = Anime::findOrFail($anime_id)->get('id', 'name');
+            $anime = Anime::findOrFail($anime_id, array('id', 'name'));
             Mirror::create([
                 "anime_id" => $anime->id,
                 "episode" => $episode,
