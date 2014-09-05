@@ -74,12 +74,6 @@
 @stop
 
 @section('content')
-@if (empty(Cookie::get('masterani_announcement')))
-<div id="announcement" class="alert alert-info alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Chance to win Riot kayle skin & Riot ward skin! (League of Legends)</strong><br> Follow our<a href="https://twitter.com/masteranidotme" style="color: #3a87ad; text-decoration: underline;">twitter</a> and get a chance to win! 2 winners will be announced at 5/9/2014 randomly picked from the followers.
-</div>
-@endif
 <div class="row-fluid" style="margin-bottom: 20px;">
     <div class="span12">
         {{ $update_msg or '' }}
