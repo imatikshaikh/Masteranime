@@ -2,3 +2,4 @@ User-agent: *
 Disallow: /phpmyadmin
 Disallow: /account/moderation/panel
 Disallow: /account/myanime
+Disallow: /donate
