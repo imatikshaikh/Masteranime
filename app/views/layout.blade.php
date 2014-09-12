@@ -4,44 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Masterani - {{ $title or 'Watch anime in HD'}}</title>
-    <link rel="icon" type="image/ico" href="{{ URL::to('favicon.ico') }}"/>
-    <meta name="description" content=<?php if (isset($description)) {
-        echo '"' . $description . '"';
-    } else {
-        echo '"Masterani allows you to watch anime in HD (720p) and SD (480p)! Features XBMC, Plex and auto-updating MyAnimeList or Hummingbird library!"';
-    } ?>>
+    <link rel="icon" type="image/ico" href="{{ URL::to('favicon.ico') }}">
+    <meta name="description" content="{{ $description or 'Masterani allows you to watch anime in HD (720p) and SD (480p)! Features XBMC, Plex and auto-updating MyAnimeList or Hummingbird library!'}}">
     <!-- for Facebook -->
-    <meta property="og:image" content={{
-    $social_image or asset('img/masteranime_logo.png') }}/>
-    <meta property="og:title" content=<?php if (isset($title)) {
-        echo '"' . $title . '"';
-    } else {
-        '"Masterani - Watch anime in HD"';
-    } ?>/>
-    <meta property="og:description" content=<?php if (isset($description)) {
-        echo '"' . $description . '"';
-    } else {
-        echo '"Masterani allows you to watch anime in HD and SD! Features XBMC, Plex & auto-updating MyAnimeList or Hummingbird library!"';
-    } ?>/>
-    <meta property="og:url" content=<?php echo '"' . URL::current() . '"' ?>/>
+    <meta property="og:image" content="{{$social_image or asset('img/masteranime_logo.png') }}">
+    <meta property="og:title" content="{{ $title or 'Masterani - Watch anime in HD' }}">
+    <meta property="og:description" content="{{ $description or 'Masterani allows you to watch anime in HD (720p) and SD (480p)! Features XBMC, Plex and auto-updating MyAnimeList or Hummingbird library!'}}">
+    <meta property="og:url" content="{{ URL::current() }}">
     <meta property="og:site_name" content="Masterani"/>
     <meta property="og:type" content="website"/>
-
     <!-- for Twitter -->
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content=<?php if (isset($title)) {
-        echo '"' . $title . '"';
-    } else {
-        '"Masterani - Watch anime in HD"';
-    } ?>/>
-    <meta name="twitter:description" content=<?php if (isset($description)) {
-        echo '"' . $description . '"';
-    } else {
-        echo '"Masterani allows you to watch anime in HD and SD! Features XBMC, Plex & auto-updating MyAnimeList or Hummingbird library!"';
-    } ?>/>
-    <meta name="twitter:image" content={{
-    $social_image or asset('img/masteranime_logo.png') }} />
-
+    <meta name="twitter:title" content="{{ $title or 'Masterani - Watch anime in HD' }}">
+    <meta name="twitter:description" content="{{ $description or 'Masterani allows you to watch anime in HD (720p) and SD (480p)! Features XBMC, Plex and auto-updating MyAnimeList or Hummingbird library!'}}">
+    <meta name="twitter:image" content="{{$social_image or asset('img/masteranime_logo.png') }}">
     <!-- CSS -->
     @section('custom-css')
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300|Roboto+Condensed|Roboto' rel='stylesheet' type='text/css'>
@@ -63,7 +39,6 @@
     {{ HTML::style('css/lte-ie8.css') }}
     <![endif]-->
     @show
-
 
     <!-- Scripts-->
     @section('custom-js')
@@ -123,8 +98,9 @@
                             <button>Open Menu</button>
                             <ul class="dl-menu">
                                 {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
-                                {{ HTML::menu_link (array( array("route" => "/animehd", "text" => "XBMC / Plex"))) }}
                                 {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME"), array("route" => "anime", "text" => "ANIME LIST"), array("route" => "anime/latest", "text" => "LATEST ANIME"), array("route" => "anime/chart", "text" =>"ANIME CHART")), true) }}
+                                {{ HTML::menu_link (array( array("route" => "/lists", "text" => "LISTS"))) }}
+                                {{ HTML::menu_link (array(array("route" => "/donate", "text" => "ABOUT"), array("route" => "/donate", "text" => "DONATE"), array("route" => "/animehd", "text" => "XBMC / PLEX")), true) }}
                                 @if(Sentry::check())
                                 @if (Sentry::getUser()->isSuperUser())
                                 {{ HTML::menu_link(array(array("route" => 'account', "text" => 'account - ' . Sentry::getUser()->username), array("route" => 'account', "text" => 'settings'), array("route" => '/account/moderation/panel', "text" => 'MOD PANEL'), array("route" => 'account/myanime', "text" => 'myanime'), array("route" => 'account/logout', "text" => 'LOG OUT')), true) }}
@@ -149,8 +125,9 @@
                     <div class="met_header_search_box"></div>
                     <ul class="met_main_menu pull-right scrolled">
                         {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
-                        {{ HTML::menu_link (array( array("route" => "/animehd", "text" => "XBMC / PLEX"))) }}
-                        {{ HTML::menu_link(array(array("route" => "/anime", "text" => "ANIME"), array("route" => "/anime", "text" => "ANIME LIST"), array("route" => "/anime/latest", "text" => "LATEST ANIME"), array("route" => "/anime/chart", "text" => "ANIME CHART"))) }}
+                        {{ HTML::menu_link(array(array("route" => "/anime", "text" => "ANIME"), array("route" => "/anime", "text" => "ALL ANIME"), array("route" => "/anime/latest", "text" => "LATEST ANIME"), array("route" => "/anime/chart", "text" => "ANIME CHART"))) }}
+                        {{ HTML::menu_link (array( array("route" => "/lists", "text" => "LISTS"))) }}
+                        {{ HTML::menu_link (array(array("route" => "/donate", "text" => "ABOUT"), array("route" => "/donate", "text" => "DONATE"), array("route" => "/animehd", "text" => "XBMC / PLEX"))) }}
                         @if(Sentry::check())
                         @if (Sentry::getUser()->isSuperUser())
                         {{ HTML::menu_link(array(array("route" => '/account', "text" => 'ACCOUNT - ' . Sentry::getUser()->username), array("route" => '/account', "text" => 'SETTINGS'), array("route" => '/account/moderation/panel', "text" => 'MOD PANEL'), array("route" => '/account/myanime', "text" => 'MY ANIME'), array("route" => '/account/logout', "text" => 'LOG OUT'))) }}

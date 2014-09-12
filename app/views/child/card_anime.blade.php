@@ -1,7 +1,7 @@
-@if (!empty($display) && !empty($anime_id) && !empty($anime_name) && !empty($anime_episode) && !empty($anime_img) && !empty($time))
+@if (!empty($display) && !empty($anime_id) && !empty($anime_name) && !empty($anime_img))
 @if ($display == "latest")
 <a href="{{ URL::to('/watch/anime/' . $anime_id . '/' . str_replace(array(" ", "/", "?"), '_', $anime_name) . '/' . $anime_episode) }}">
-@elseif ($display == "chart")
+@elseif ($display == "chart" || $display == "list")
 <a href="{{ URL::to('/anime/' . $anime_id . '/' . str_replace(array(" ", "/", "?"), '_', $anime_name)) }}">
 @endif
 <div class="span3 anime_card" data-toggle="tooltip" title="{{ $anime_name }}">
