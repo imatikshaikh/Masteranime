@@ -1,6 +1,5 @@
 <?php
 HTML::macro('menu_link', function ($routes, $phone = false) {
-    /*$active = ''; if( Request::path() == $route ) {$active = ' class="active"';}*/
     $count = count($routes);
     if ($count > 1) {
         $list = '<li>' . link_to($routes[0]["route"], $routes[0]["text"]) . '<ul style="left: 0;" class="';
@@ -30,10 +29,10 @@ App::missing(function ($exception) {
 Route::get('/', function () {
     return View::make('home');
 });
-Route::get('/animehd', function () {
-    return View::make('animehd');
+Route::get('/donate', function () {
+    return View::make('donate');
 });
-Route::get('/xbmc', function () {
+Route::get('/animehd', function () {
     return View::make('animehd');
 });
 Route::get('/sitemap', function () {
@@ -146,7 +145,6 @@ Route::get('/anime/scraper/{id}', function ($id) {
     }
     return 'Not allowed!';
 });
-Route::post('/anime/update/thumbnail', array('as' => 'add_thumb', 'uses' => 'AccountController@updateThumbnail'));
 Route::post('/watch/anime/mirror', function () {
     if (Request::ajax()) {
         $mirror = Mirror::find(Input::get('id'));
@@ -157,13 +155,17 @@ Route::post('/watch/anime/mirror', function () {
     }
     return 'AJAX requests only.';
 });
-Route::post('/anime/update', 'AnimeController@getUpdate');
 Route::get('/anime/scraper/{id}', 'AnimeController@getScraper');
-
+/*User anime lists*/
+Route::get('/lists', 'ListController@getIndex');
+Route::get('/lists/search', 'ListController@getSearch');
+Route::get('/lists/create/new', 'ListController@getNewList');
+Route::get('/lists/{id}', 'ListController@getList');
+Route::get('/lists/{id}/{name}', 'ListController@getList');
+Route::post('/lists/new/submit', 'ListController@submitNewList');
 /*Anime manage routes*/
 Route::get('/account/moderation/panel', 'AnimeManageController@getModPanel');
 Route::get('/anime/manage/ongoing', 'AnimeManageController@updateOngoing');
-Route::get('/anime/manage/thumbnails', 'AnimeManageController@updateThumbnails');
 Route::post('/anime/manage/mirror', array('as' => 'manage_single_mirror', 'uses' => 'AnimeManageController@updateMirror'));
 Route::post('/anime/manage/single', array('as' => 'manage_single_anime', 'uses' => 'AnimeManageController@updateAnime'));
 Route::post('/anime/manage/scraper', array('as' => 'add_scrapeurl', 'uses' => 'AnimeManageController@updateScraper'));
