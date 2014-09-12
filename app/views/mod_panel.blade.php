@@ -3,12 +3,12 @@
 @section('custom-css')
 @parent
 <style type="text/css">
-    .mod-buttons > a {
+    .mod_buttons > a {
         display: block;
         margin-bottom: 20px;
     }
 
-    .mod-buttons > a:hover {
+    .mod_buttons > a:hover {
         text-decoration: none;
     }
 
@@ -67,7 +67,7 @@
                 ACTIONS
             </h3>
             <hr>
-            <div class="mod-buttons">
+            <div class="mod_buttons">
                 <a href="{{{ URL::to('anime/scraper/all') }}}" type="button" data-toggle="tooltip" title="scrape anime with no eps" class="met_button border-radius-right border-radius-left"><span class="icon-download-alt"></span></a>
                 <a href="{{{ URL::to('/anime/manage/ongoing') }}}" type="button" data-toggle="tooltip" title="update ongoing anime" class="met_button border-radius-right border-radius-left"><span class="icon-repeat"></span></a>
             </div>

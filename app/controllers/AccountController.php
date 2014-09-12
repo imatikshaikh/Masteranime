@@ -3,7 +3,7 @@
 class AccountController extends BaseController
 {
 
-    public static function getIndex()
+    public function getIndex()
     {
         if (Sentry::check()) {
             return View::make('account', ['title' => 'Settings']);
@@ -48,12 +48,12 @@ class AccountController extends BaseController
         }
     }
 
-    public static function getMyanime()
+    public function getMyanime()
     {
         return View::make('myanime', ['title' => 'Myanime']);
     }
 
-    public static function getRegister()
+    public function getRegister()
     {
         if (Sentry::check()) {
             return Redirect::to('account');
@@ -81,22 +81,9 @@ class AccountController extends BaseController
         }
     }
 
-    public static function getLogout()
+    public function getLogout()
     {
         Sentry::logout();
         return Redirect::to('account');
-    }
-
-    public static function updateThumbnail()
-    {
-        if (Input::has('anime_id')) {
-            $id = Input::get('anime_id');
-            $anime = Anime::findOrFail($id);
-            $path = Input::get('thumbnail');
-            $anime->thumbnail = $path;
-            $anime->save();
-            return 'Updated ' . $id . ': ' . $path;
-        }
-        return 'anime_id not set';
     }
 }

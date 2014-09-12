@@ -12,7 +12,7 @@ class AnimeController extends BaseController
                 $is_admin = true;
             }
         }
-        return View::make('list', array('title' => 'Animelist'))->nest('anime_list', 'child.all_anime', array('is_admin' => $is_admin));
+        return View::make('list', array('title' => 'All anime'))->nest('anime_list', 'child.all_anime', array('is_admin' => $is_admin));
     }
 
     public function getChart()
@@ -32,34 +32,6 @@ class AnimeController extends BaseController
             return App::abort(404);
         }
         return View::make('anime', array('anime' => $anime, 'description' => $anime->name . ' trailer, episodes and information in HD (720p) or SD (480p)!', 'title' => 'Watch ' . $anime->name . ' in HD or SD'));
-    }
-
-    public function getUpdate()
-    {
-        $keyword = Input::get('keyword');
-        $id = Input::get('mal_id');
-        $hum_id = Input::get('hum_id');
-        if (!empty($keyword) && !empty($id)) {
-            $db = new AnimeDataScraper();
-            if (empty($hum_id)) {
-                $result = $db->get($id, $keyword);
-            } else {
-                $result = $db->get($id, $keyword, $hum_id);
-            }
-            if (!empty($result)) {
-                $db->save($result);
-                return View::make('list', array('title' => 'Animelist'))
-                    ->nest('anime_list', 'child.all_anime')
-                    ->nest('update_msg', 'child.alerts', array('msg_type' => 'success', 'msg' => 'You succesfully updated <strong>' . $result["title"] . '</strong> to the masterani.me database.'));
-            }
-        } else {
-            return View::make('list', array('title' => 'Animelist'))
-                ->nest('anime_list', 'child.all_anime')
-                ->nest('update_msg', 'child.alerts', array('msg_type' => 'warning', 'msg' => 'Please fill in both fields to update an anime.'));
-        }
-        return View::make('list', array('title' => 'Animelist'))
-            ->nest('anime_list', 'child.all_anime')
-            ->nest('update_msg', 'child.alerts', array('msg_type' => 'warning', 'msg' => 'Anime was not found.' . var_dump($result)));
     }
 
     public function getScraper($id)
