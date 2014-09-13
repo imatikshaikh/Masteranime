@@ -1,5 +1,10 @@
 @extends('layout', ["title" => 'Anime list: ' .  e($list->title), "description" => e($list->description)])
 
+@section('custom-js')
+@parent
+{{ HTML::script('/js/jquery.lazyload.min.js') }}
+@stop
+
 @section('content')
 <?php $anime_ids = explode(",", $list->anime_ids); ?>
 <div class="row-fluid" style="margin-bottom: 20px">
@@ -18,12 +23,18 @@
                     <h3 class="met_title_with_childs pull-left">ANIME LIST
                         <span class="met_subtitle">IN TOTAL {{{ count($anime_ids) }}} ANIMES</span></h3>
                 </div>
-                <div class="row-fluid">
+                <div class="row-fluid" style="margin: 0;">
                     @foreach($anime_ids as $anime_id)
                     <?php $anime = Anime::findOrFail($anime_id, array('id', 'name', 'mal_image')); ?>
                     {{ View::make('child.card_anime', array("anime_id" => $anime->id, "anime_name" => $anime->name, "anime_episode" => 0, "anime_img" => $anime->mal_image, "display" => "list")) }}
                     @endforeach
                 </div>
+                <script type="text/javascript">
+                    $("img.lazy").lazyload({
+                        effect: "fadeIn",
+                        threshold: 100
+                    });
+                </script>
             </div>
         </div>
     </div>

@@ -10,8 +10,11 @@
     @elseif ($display == "chart")
     <div class="top_title">{{ $time }}</div>
     @endif
+    @if ($display == "list")
+    <img class="lazy" data-original="{{$anime_img}}" alt="{{$anime_name}}">
+    @else
     <img src="{{$anime_img}}" alt="{{$anime_name}}">
-
+    @endif
     <p>
         @if (strlen($anime_name) > 23)
         {{ substr($anime_name, 0, 23) }}..
