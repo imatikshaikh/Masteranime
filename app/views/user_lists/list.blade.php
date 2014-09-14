@@ -9,6 +9,12 @@
 <?php $anime_ids = explode(",", $list->anime_ids); ?>
 <div class="row-fluid" style="margin-bottom: 20px">
     <div class="span12">
+        @if (UserList::canEdit($list->user_id))
+        <form method="post" action="{{{ URL::to('/lists/update') }}}">
+            <input name="list_id" type="hidden" value="{{{ $list->id }}}">
+            <input class="pull-right met_button border-radius-right border-radius-left" type="submit" value="Edit this list">
+        </form>
+        @endif
         <h1>{{{ $list->title }}}</h1>
 
         <p>{{{ $list->description }}}</p>

@@ -12,8 +12,9 @@ class ListController extends BaseController
     {
         if (is_numeric($id)) {
             $list = UserList::find($id);
-            if (!empty($list))
+            if (!empty($list)) {
                 return View::make('user_lists.list', array('list' => $list));
+            }
         }
         return App::abort(404);
     }
@@ -28,6 +29,56 @@ class ListController extends BaseController
             }
         }
         return View::make('user_lists.home', array("search" => false));
+    }
+
+    public function getUpdateList()
+    {
+        $list = UserList::findOrFail(Input::get('list_id'));
+        if (!empty($list) && UserList::canEdit($list->user_id))
+            return View::make('user_lists.update', array('list' => $list));
+        return Redirect::to('/account');
+    }
+
+    public function submitUpdateList()
+    {
+        $list = UserList::findOrFail(Input::get('list_id'));
+        if (!empty($list) && UserList::canEdit($list->user_id)) {
+            $title = Input::get('title');
+            $description = Input::get('description');
+            $anime_ids = Input::get('anime_ids');
+            if (!empty($title) && !empty($description)) {
+                if (!empty($anime_ids)) {
+                    $arr_count = count($anime_ids) - 1;
+                    $total_count = 0;
+                    $count = 0;
+                    $ids = "";
+                    foreach ($anime_ids as $anime_id) {
+                        if (is_numeric($anime_id)) {
+                            if ($arr_count == $total_count) {
+                                $ids .= $anime_id;
+                            } else {
+                                $ids .= $anime_id . ",";
+                            }
+                            $count++;
+                        }
+                        $total_count++;
+                    }
+                    if ($count < 7) {
+                        return View::make('user_lists.home')->nest('update_msg', 'child.alerts', array('msg' => 'Minimum 7 animes in the list! (No maximum limit)'));
+                    }
+                    $list->title = $title;
+                    $list->description = $description;
+                    $list->anime_ids = $ids;
+                    $list->save();
+                    return View::make('user_lists.home')->nest('update_msg', 'child.alerts', array('msg_type' => 'success', 'msg' => 'Anime list has been created!'));
+                } else {
+                    return View::make('user_lists.home')->nest('update_msg', 'child.alerts', array('msg' => 'No anime selected!'));
+                }
+            } else {
+                return View::make('user_lists.home')->nest('update_msg', 'child.alerts', array('msg' => 'Please, fill in the title/description!'));
+            }
+        }
+        return Redirect::to('/account');
     }
 
     public function getNewList()

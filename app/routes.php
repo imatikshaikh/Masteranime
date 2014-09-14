@@ -160,9 +160,11 @@ Route::get('/anime/scraper/{id}', 'AnimeController@getScraper');
 Route::get('/lists', 'ListController@getIndex');
 Route::get('/lists/search', 'ListController@getSearch');
 Route::get('/lists/create/new', 'ListController@getNewList');
+Route::post('/lists/update', 'ListController@getUpdateList');
+Route::post('/lists/update/submit', 'ListController@submitUpdateList');
+Route::post('/lists/new/submit', 'ListController@submitNewList');
 Route::get('/lists/{id}', 'ListController@getList');
 Route::get('/lists/{id}/{name}', 'ListController@getList');
-Route::post('/lists/new/submit', 'ListController@submitNewList');
 /*Anime manage routes*/
 Route::get('/account/moderation/panel', 'AnimeManageController@getModPanel');
 Route::get('/anime/manage/ongoing', 'AnimeManageController@updateOngoing');
