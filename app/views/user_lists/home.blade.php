@@ -1,4 +1,4 @@
-@extends('layout', ["footer" => false, "title" => "Anime lists", "description" => "All user-made anime lists compiled in one library so you can find new awesome anime!"])
+@extends('layout', ["title" => "Anime lists", "description" => "All user-made anime lists compiled in one library so you can find new awesome anime!"])
 
 @section('custom-css')
 @parent
@@ -116,7 +116,7 @@
     <hr>
     @endif
     @endif
-    <?php $lists = isset($search) && !empty($search) ? $search : DB::table('user_lists')->orderby('updated_at', 'DESC')->paginate(25); ?>
+    <?php $lists = isset($search) && !empty($search) ? $search : DB::table('user_lists')->orderby('updated_at', 'DESC')->paginate(10); ?>
     @if (!empty($lists))
     @foreach($lists as $list)
     <?php
