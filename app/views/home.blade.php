@@ -88,35 +88,25 @@
 <div class="row-fluid" style="margin-bottom: 20px;">
     <div class="span12">
         <h3 class="met_title_with_childs pull-left">ANIME OF THE WEEK
-            <span class="met_subtitle">Hellsing Ultimate</span>
+            <span class="met_subtitle">Guilty Crown</span>
         </h3>
     </div>
     <div class="row-fluid">
         <div class="span6 text-center">
-            {{ HTML::image('img/animeoftheweek/hellsing.png', 'anime of the week: Hellsing Ultimate',
+            {{ HTML::image('img/animeoftheweek/guilty_crown.jpg', 'anime of the week: Guilty Crown',
             ["class" =>
             "met_br_tl met_br_tr met_br_bl met_br_br"]) }}
         </div>
         <div class="span6">
-            <a href="{{ URL::to("/anime/233/Hellsing_Ultimate") }}"><h3 class="met_big_title">Hellsing Ultimate</h3>
-            </a>
-
-            <p>
-
-            <p>Hellsing, a secret organization of the British government, has long been battling supernatural threats to
-                keep the people safe from creatures of the night. The current leader, Integra Wingates Hellsing controls
-                her own personal army to eliminate the undead beings, but even her highly trained soldiers pale in
-                comparison to her most trusted vampire exterminator, a man by the name of Alucard, who is actually a
-                powerful vampire himself. Along with Integra's mysterious butler and Alucard's new vampire minion, Seras
-                Victoria, The Hellsing Organization must face not only regular ghouls and vampires, but a rivaling
-                secret organization from the Vatican, and Millennium, an enigmatic group of madmen spawned by a certain
-                war over 50 years ago... A bloody battle between monsters is about to begin. The dead are dancing, and
-                all hell is singing...</p>
-                <span class="met_color"><a href="{{ URL::to("/anime/233/Hellsing_Ultimate") }}">All episodes</a>
-                    <a
-                        class="pull-right"
-                        href="http://myanimelist.net/anime/777/Hellsing_Ultimate/reviews">Hellsing Ultimate
-                        reviews</a></span>
+            <a href="{{ URL::to("/anime/371/Guilty_Crown") }}"><h3 class="met_big_title">Guilty Crown</h3></a>
+            <p>The story takes place in Tokyo in 2039, after the outbreak of the "Apocalypse Virus" during what became known as the "Lost Christmas" of 2029. Since then, Japan has been under the control of the multinational organization called GHQ.<br>
+                Ouma Shu is a 17 year-old boy who mistakenly obtains a rare and great power. He can use this power, "The Right Hand of the King," to extract "voids," or tools/weapons that are the manifestations of peoples' hearts.<br>
+                He has been rather shy since a childhood tragedy, but both his personality and life change forever when he meets a girl named Yuzuriha Inori, a member of the rebel group called "Funeral Parlor," whose members seek the restoration of self-government in Japan via the ousting of GHQ..<br>
+            </p>
+                <span class="met_color">
+                    <a href="{{ URL::to("/anime/371/Guilty_Crown") }}">All episodes</a>
+                    <a class="pull-right" href="http://myanimelist.net/anime/10793/Guilty_Crown/reviews">Guilty Crown reviews</a>
+                </span>
             <br><br>
             </p>
         </div>
