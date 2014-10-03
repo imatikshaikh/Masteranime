@@ -25,13 +25,38 @@ class AnimeController extends BaseController
         return View::make('latest', array('title' => 'Latest anime'));
     }
 
+    public function getSearchGenre($genre)
+    {
+        if (in_array($genre, AnimeWrapper::$genres)) {
+            $results = Anime::whereRaw('genres LIKE ?', array('%' . $genre . '%'))->paginate(50);
+            return View::make('anime.search', array('results' => $results, 'search' => $genre));
+        }
+        return View::make('anime.search');
+    }
+
+    public function getSearch()
+    {
+        if (Input::has('query')) {
+            $search = Input::get('query');
+            if (!empty($search) && strlen($search) >= 3 && $search != ' ') {
+                $results = Anime::whereRaw('name LIKE ? or english_name LIKE ? or name_synonym_2 LIKE ? or name_synonym_3 LIKE ?', array('%' . $search . '%', '%' . $search . '%', '%' . $search . '%', '%' . $search . '%'))->paginate(20);
+                if (count($results) == 1) {
+                    return Redirect::to('/anime/' . $results[0]->id . '/' . str_replace(array(" ", "/", "?"), "_", $results[0]->name));
+                }
+                return View::make('anime.search', array('results' => $results, 'search' => $search));
+            }
+            return View::make('anime.search');
+        }
+        return View::make('anime.search');
+    }
+
     public function getAnime($id)
     {
         $anime = Anime::find($id);
         if (empty($anime)) {
             return App::abort(404);
         }
-        return View::make('anime', array('anime' => $anime, 'description' => $anime->name . ' trailer, episodes and information in HD (720p) or SD (480p)!', 'title' => 'Watch ' . $anime->name . ' in HD or SD'));
+        return View::make('anime.home', array('anime' => $anime,));
     }
 
     public function getScraper($id)

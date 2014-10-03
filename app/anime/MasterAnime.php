@@ -3,8 +3,6 @@
 class MasterAnime
 {
 
-    public static $cookie_recent_layout = "recent_layout_masteranime";
-
     public static function getEpisodes($id)
     {
         $episodes = array();
@@ -73,26 +71,6 @@ class MasterAnime
             }
         }
         return null;
-    }
-
-    public static function createRecentLayoutCookie($gallery)
-    {
-        Cookie::queue(MasterAnime::$cookie_recent_layout, $gallery, 43200);
-    }
-
-    public static function printPopularAnime()
-    {
-        shuffle(ConnectDetails::$popular_anime);
-        for ($i = 0; $i < ConnectDetails::$popular_amount; $i++) {
-            $serie = Anime::find(ConnectDetails::$popular_anime[$i]);
-            echo '<div class="span2 scrolled__item clearfix">
-                        <a href="' . URL::to('anime/' . $serie->id . '/' . str_replace(array(" ", "/"), "_", $serie->name)) . '" class="met_our_team_photo">' . HTML::image(Anime::getCover($serie), $serie->name . '_thumbnail') . '</a>
-
-                        <div class="met_our_team_name met_color clearfix" style="font-size: 12px;">
-                            ' . $serie->name . '
-                        </div>
-                    </div>';
-        }
     }
 
     public static function addSocialList($anime_id, $episode, $status)

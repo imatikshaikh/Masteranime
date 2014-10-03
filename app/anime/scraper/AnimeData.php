@@ -18,8 +18,12 @@ class AnimeDataScraper
                 $client->setAuth($account["username"], $account["password"]);
             }
             $response = $client->request('GET', $this->mal_base_url . '' . $query);
-            $xml = simplexml_load_string($response->html());
-            return $xml;
+            try {
+                $xml = simplexml_load_string($response->html());
+                return $xml;
+            } catch (Exception $e) {
+                $e->getMessage();
+            }
         }
         return null;
     }
@@ -218,8 +222,8 @@ class AnimeDataScraper
         $anime->end_date = $data["end_date"];
         $anime->description = $data["synopsis"];
         $anime->mal_total_eps = $data["total_eps"];
-        $anime->status = AnimeWrappper::getStatusInt($data["status"]);
-        $anime->type = AnimeWrappper::getTypeInt($data["type"]);
+        $anime->status = AnimeWrapper::getStatusInt($data["status"]);
+        $anime->type = AnimeWrapper::getTypeInt($data["type"]);
         $anime->genres = $data["genres"];
         $anime->screencaps = $data["screencaps"];
         $anime->youtube_trailer_id = $data["youtube_trailer_id"];
