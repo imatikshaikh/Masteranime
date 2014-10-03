@@ -3739,7 +3739,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav-tabs {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #595959;
 }
 
 .nav-tabs > li {
@@ -3758,15 +3758,14 @@ input[type="submit"].btn.btn-mini {
 
 .nav-tabs > li > a:hover,
 .nav-tabs > li > a:focus {
-    border-color: #eeeeee #eeeeee #dddddd;
+    border-color: #595959;
 }
 
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover,
 .nav-tabs > .active > a:focus {
-    color: #555555;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    color: #D8D8D8;
+    border: 1px solid #595959;
     border-bottom-color: transparent;
     cursor: default;
 }

@@ -61,15 +61,6 @@
         color: #3a87ad;
         text-decoration: underline;
     }
-
-    .ads {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .ads > a:hover {
-        text-decoration: none;
-    }
 </style>
 @stop
 
@@ -115,18 +106,13 @@
                             @endif
                         </div>
                     </div>
-                    <!--<div class="row-fluid ads">
-                        <div class="span12">
-
-                        </div>
-                    </div>-->
                 </div>
             </div>
 
             <div class="span3">
-                <h3 class="met_big_title">Mirrors</h3>
-
                 <div class="row-fluid">
+                    <h3 class="met_big_title">Mirrors</h3>
+
                     <div class="span12">
                         <ul class="nav nav-tabs nav-stacked">
                             @foreach($mirrors as $mirror)
@@ -144,13 +130,11 @@
                             </li>
                             @endforeach
                         </ul>
+                        <div class="ads">
+                            <iframe src="http://g.admedia.com/banner.php?type=graphical-iframe&pid=3511128&size=300x250&page_url=[encoded_page_url]" width="300" height="250" frameborder="0" scrolling="no" allowtransparency="yes"></iframe>
+                        </div>
                     </div>
                 </div>
-                <!--<div class="row-fluid ads">
-                    <div class="span12">
-
-                    </div>
-                </div>-->
             </div>
         </div>
         @else
@@ -179,10 +163,8 @@
             })();
         </script>
         <noscript>Please enable JavaScript to view the
-            <a href="http://disqus.com/?ref_noscript">comments
-                powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span
-                class="logo-disqus">Disqus</span></a>
+            <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
     </div>
 </div>

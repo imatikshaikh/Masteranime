@@ -156,6 +156,10 @@ Route::post('/watch/anime/mirror', function () {
     return 'AJAX requests only.';
 });
 Route::get('/anime/scraper/{id}', 'AnimeController@getScraper');
+/*BETA WATCH*/
+Route::get('/beta/watch', function () {
+    return View::make('watch.home');
+});
 /*User anime lists*/
 Route::get('/lists', 'ListController@getIndex');
 Route::get('/lists/search', 'ListController@getSearch');
@@ -175,6 +179,8 @@ Route::post('/anime/manage/scraper', array('as' => 'add_scrapeurl', 'uses' => 'A
 Route::get('/anime', 'AnimeController@getIndex');
 Route::get('/anime/latest', 'AnimeController@getLatest');
 Route::get('/anime/chart', 'AnimeController@getChart');
+Route::get('/anime/search/{genre}', 'AnimeController@getSearchGenre');
+Route::get('/anime/search', 'AnimeController@getSearch');
 Route::get('/anime/{id}', 'AnimeController@getAnime');
 Route::get('/anime/{id}/{name}', 'AnimeController@getAnime');
 Route::get('/watch/anime/{id}/{name}/{episode}', 'AnimeController@getEpisode');
@@ -182,6 +188,7 @@ Route::get('/watch/anime/{id}/{name}/{episode}', 'AnimeController@getEpisode');
 Route::post('/userlib/favorite', 'UserLibraryController@addFavorite');
 Route::post('/userlib/watched', 'UserLibraryController@addWatched');
 Route::post('/userlib/drop', 'UserLibraryController@addDropped');
+Route::post('/userlib/plan_to_watch', 'UserLibraryController@addPlanToWatch');
 /*Account routes*/
 Route::any('/account', 'AccountController@getIndex');
 Route::any('/account/settings', 'AccountController@getIndex');
@@ -197,6 +204,14 @@ Route::get('/api/anime/{id}', 'ApiController@getAnime');
 Route::get('/api/anime/{id}/{episode}', 'ApiController@getEpisode');
 Route::post('/api/anime/account/lastwatched', 'ApiController@setLastwatched');
 Route::post('/api/anime/account/validate', 'ApiController@getValidate');
+Route::post('/api/anime/video', function () {
+    if (Request::ajax() && Input::has('id')) {
+        $id = Input::get('id');
+        if (is_numeric($id)) {
+            return View::make('api.video', array('mirror' => Mirror::find($id)));
+        }
+    }
+});
 
 
 

@@ -2,6 +2,30 @@ body {
     background-color: #171717;
 }
 
+@media (max-width: 767px) {
+    .search_form > .met_button {
+        width: 30%;
+    }
+
+    .search_form > #search {
+        width: 70%;
+    }
+}
+
+@media (min-width: 767px) {
+    .search_form > .met_button {
+        width: 10%;
+    }
+
+    .search_form > #search {
+        width: 90%;
+    }
+}
+
+.ads {
+    text-align: center;
+}
+
 .anime_card {
     max-width: 178px;
     background-color: #212121;

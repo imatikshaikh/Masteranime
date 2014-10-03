@@ -10,7 +10,7 @@
     @elseif ($display == "chart")
     <div class="top_title">{{ $time }}</div>
     @endif
-    @if ($display == "list")
+    @if ($display == "list" && !isset($off_lazy))
     <img class="lazy" data-original="{{$anime_img}}" alt="{{$anime_name}}">
     @else
     <img src="{{$anime_img}}" alt="{{$anime_name}}">
