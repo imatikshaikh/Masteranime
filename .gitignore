@@ -1,6 +1,7 @@
 .idea
 /app/connect_details.php
 /bootstrap/compiled.php
+/public/img/animeoftheweek
 /vendor
 composer.phar
 composer.lock
