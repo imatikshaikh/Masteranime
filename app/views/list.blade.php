@@ -1,5 +1,18 @@
 @extends('layout', ['description' => 'All anime available at Masterani!'])
 
+@section('custom-css')
+@parent
+<style type="text/css">
+    #filters > label {
+        font-size: 16px;
+    }
+
+    #filters > label > input {
+        margin-top: 2px;
+    }
+</style>
+@stop
+
 @section('custom-js')
 @parent
 <script type="text/javascript">
@@ -54,15 +67,13 @@
     });
 </script>
 @stop
+
 @section('content')
 <div class="row-fluid " style="margin-bottom: 10px">
     <div class="span12 met_small_block">
         <div class="clearfix">
-            <form class="met_contact_form">
-                <div class="met_long_container">
-                    <input autocomplete="off" id="search" type="text" size="50" class="met_input_text"
-                           placeholder="search anime (min. 3 characters)">
-                </div>
+            <form class="search_form met_contact_form" method="get" action="{{ URL::to('/anime/search') }}">
+                <input class="met_input_text" id="search" name="query" autocomplete="off" type="text" maxlength="50" placeholder="anime name/synonyms.."><input class="met_button" type="submit" value="Search">
             </form>
         </div>
     </div>

@@ -1,59 +1,23 @@
 @extends('layout')
 
-@section('custom-js')
+@section('custom-css')
 @parent
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('input#search').keyup(function (e) {
-            e.preventDefault();
-            var keyword = $(this).val();
-            if (keyword !== ' ' && keyword.length >= 3) {
-                $.ajax({
-                    type: "POST",
-                    url: "anime/search",
-                    data: { keyword: keyword },
-                    timeout: 2000,
-                    success: function (data) {
-                        $("#search-results").empty().append(data);
-                    }
-                });
-            } else {
-                $("#search-results").empty();
-            }
-        });
-        $('ul#met_filters_list a').on('click', function (e) {
-            e.preventDefault();
-            var type = $(this).find('input[name="type"]').val();
-            if (type === "gallery" || type === "list") {
-                $.ajax({
-                    type: "POST",
-                    url: "anime/recent",
-                    data: { type: type },
-                    timeout: 2000,
-                    success: function (data) {
-                        $("#recent-released").empty().append(data);
-                    }
-                });
-            }
-        });
-    });
-</script>
+<style type="text/css">
+    .row-fluid {
+        margin-bottom: 20px;
+    }
+</style>
 @stop
+
 @section('content')
-<div class="row-fluid" style="margin-bottom: 15px">
-    <div class="span12 met_small_block">
-        <div class="clearfix">
-            <form class="met_contact_form">
-                <div class="met_long_container">
-                    <input autocomplete="off" id="search" type="text" size="50" class="met_input_text"
-                           placeholder="search anime (min. 3 characters)">
-                </div>
-            </form>
-        </div>
+<div class="row-fluid" style="margin-bottom: 10px;">
+    <div class="span12">
+        <form class="search_form met_contact_form" method="get" action="{{ URL::to('/anime/search') }}">
+            <input class="met_input_text" id="search" name="query" autocomplete="off" type="text" maxlength="50" placeholder="anime name/synonyms.."><input class="met_button" type="submit" value="Search">
+        </form>
     </div>
 </div>
-<div id="search-results"></div>
-<div class="row-fluid" style="margin-bottom: 20px;">
+<div class="row-fluid">
     <div class="span12">
         <h3 class="met_title_with_childs pull-left">RECENT ANIME
             <span class="met_subtitle">ANIME RECENTLY RELEASED</span>
@@ -85,27 +49,24 @@
     </div>
 </div>
 <hr>
-<div class="row-fluid" style="margin-bottom: 20px;">
+<div class="row-fluid">
     <div class="span12">
         <h3 class="met_title_with_childs pull-left">ANIME OF THE WEEK
-            <span class="met_subtitle">Guilty Crown</span>
+            <span class="met_subtitle">High School DxD</span>
         </h3>
     </div>
     <div class="row-fluid">
         <div class="span6 text-center">
-            {{ HTML::image('img/animeoftheweek/guilty_crown.jpg', 'anime of the week: Guilty Crown',
+            {{ HTML::image('img/animeoftheweek/highschool_dxd.jpg', 'anime of the week: High School DxD',
             ["class" =>
             "met_br_tl met_br_tr met_br_bl met_br_br"]) }}
         </div>
         <div class="span6">
-            <a href="{{ URL::to("/anime/371/Guilty_Crown") }}"><h3 class="met_big_title">Guilty Crown</h3></a>
-            <p>The story takes place in Tokyo in 2039, after the outbreak of the "Apocalypse Virus" during what became known as the "Lost Christmas" of 2029. Since then, Japan has been under the control of the multinational organization called GHQ.<br>
-                Ouma Shu is a 17 year-old boy who mistakenly obtains a rare and great power. He can use this power, "The Right Hand of the King," to extract "voids," or tools/weapons that are the manifestations of peoples' hearts.<br>
-                He has been rather shy since a childhood tragedy, but both his personality and life change forever when he meets a girl named Yuzuriha Inori, a member of the rebel group called "Funeral Parlor," whose members seek the restoration of self-government in Japan via the ousting of GHQ..<br>
-            </p>
+            <a href="{{ URL::to("/anime/223/High_School_DxD") }}"><h3 class="met_big_title">High School DxD</h3></a>
+            <p>Issei Hyodo is your average perverted high school student whose one wish in life is to have his own harem, but he's got to be one of the unluckiest guys around. He goes on his first date with a girl only to get brutally attacked and killed when it turns out the girl is really a vicious fallen angel. To top it all off, he's later reincarnated as a devil by his gorgeous senpai who tells him that she is also a devil and now his master! One thing's for sure, his peaceful days are over. In a battle between devils and angels, who will win? </p>
                 <span class="met_color">
-                    <a href="{{ URL::to("/anime/371/Guilty_Crown") }}">All episodes</a>
-                    <a class="pull-right" href="http://myanimelist.net/anime/10793/Guilty_Crown/reviews">Guilty Crown reviews</a>
+                    <a href="{{ URL::to("/anime/223/High_School_DxD") }}">All episodes</a>
+                    <a class="pull-right" href="http://myanimelist.net/anime/11617/High_School_DxD/reviews">High School DxD reviews</a>
                 </span>
             <br><br>
             </p>

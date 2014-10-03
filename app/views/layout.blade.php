@@ -98,7 +98,7 @@
                             <button>Open Menu</button>
                             <ul class="dl-menu">
                                 {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
-                                {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME"), array("route" => "anime", "text" => "ANIME LIST"), array("route" => "anime/latest", "text" => "LATEST ANIME"), array("route" => "anime/chart", "text" =>"ANIME CHART")), true) }}
+                                {{ HTML::menu_link(array(array("route" => "anime", "text" => "ANIME"), array("route" => "anime", "text" => "ANIME LIST"), array("route" => "anime/latest", "text" => "LATEST ANIME"), array("route" => "anime/chart", "text" =>"ANIME CHART"), array("route" => "/anime/search", "text" => "GENRES")), true) }}
                                 {{ HTML::menu_link (array( array("route" => "/lists", "text" => "LISTS"))) }}
                                 {{ HTML::menu_link (array(array("route" => "/donate", "text" => "ABOUT"), array("route" => "/donate", "text" => "DONATE"), array("route" => "/animehd", "text" => "XBMC / PLEX")), true) }}
                                 @if(Sentry::check())
@@ -125,7 +125,7 @@
                     <div class="met_header_search_box"></div>
                     <ul class="met_main_menu pull-right scrolled">
                         {{ HTML::menu_link (array( array("route" => "/", "text" => "HOME") ) ) }}
-                        {{ HTML::menu_link(array(array("route" => "/anime", "text" => "ANIME"), array("route" => "/anime", "text" => "ALL ANIME"), array("route" => "/anime/latest", "text" => "LATEST ANIME"), array("route" => "/anime/chart", "text" => "ANIME CHART"))) }}
+                        {{ HTML::menu_link(array(array("route" => "/anime", "text" => "ANIME"), array("route" => "/anime", "text" => "ALL ANIME"), array("route" => "/anime/latest", "text" => "LATEST ANIME"), array("route" => "/anime/chart", "text" => "ANIME CHART"), array("route" => "/anime/search", "text" => "GENRES"))) }}
                         {{ HTML::menu_link (array( array("route" => "/lists", "text" => "LISTS"))) }}
                         {{ HTML::menu_link (array(array("route" => "/donate", "text" => "ABOUT"), array("route" => "/donate", "text" => "DONATE"), array("route" => "/animehd", "text" => "XBMC / PLEX"))) }}
                         @if(Sentry::check())
@@ -143,7 +143,6 @@
         </div>
     </header>
 
-    @yield('anime-header')
     <section class="met_content clearfix" style="margin-top: 30px;">
         @yield('content')
     </section>

@@ -50,7 +50,7 @@ class AccountController extends BaseController
 
     public function getMyanime()
     {
-        return View::make('myanime', ['title' => 'Myanime']);
+        return View::make('user.myanime', ['title' => 'Myanime']);
     }
 
     public function getRegister()

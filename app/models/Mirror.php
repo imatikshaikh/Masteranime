@@ -7,6 +7,26 @@ class Mirror extends Eloquent
     protected $table = 'mirrors';
     protected $fillable = ['anime_id', 'episode', 'src', 'host', 'subbed', 'quality'];
 
+    public function scopeAnime($query, $anime_id)
+    {
+        return $query->where('anime_id', '=', $anime_id);
+    }
+
+    public function scopeEpisode($query, $episode)
+    {
+        return $query->where('episode', '=', $episode);
+    }
+
+    public function scopeSubbed($query)
+    {
+        return $query->where('subbed', '=', 1);
+    }
+
+    public function scopeDubbed($query)
+    {
+        return $query->where('subbed', '=', 0);
+    }
+
     public static function add_mirror($anime_id, $episodes, $force = false)
     {
         $txt = '';

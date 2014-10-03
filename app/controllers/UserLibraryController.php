@@ -5,9 +5,40 @@
  * User: Lorenzo
  * Date: 13/08/14
  * Time: 9:53
+ *
+ * 6 = Plan to watch
  */
 class UserLibraryController extends BaseController
 {
+
+    public function updateLibrary($user_id, $anime_id, $library_status)
+    {
+        $anime = Anime::findOrFail($anime_id, array("id", "name"));
+        $row = UserLibrary::firstOrNew(
+            array(
+                'user_id' => $user_id,
+                'anime_id' => $anime->id
+            )
+        );
+        $row->library_status = $library_status;
+        $row->save();
+        return $anime->name;
+    }
+
+    public function addPlanToWatch()
+    {
+        if (Input::has("anime_id") && Sentry::check()) {
+            $anime_id = Input::get("anime_id");
+            $user_id = Sentry::getUser()->id;
+            if (UserLibrary::user($user_id)->anime($anime_id)->status(6)->exists()) {
+                $anime = $this->updateLibrary($user_id, $anime_id, 0);
+                return View::make('child.alerts', array('msg' => 'Removed from plan to watch: ' . $anime));
+            }
+            $anime = $this->updateLibrary($user_id, $anime_id, 6);
+            return View::make('child.alerts', array('msg_type' => 'info', 'msg' => 'You plan to watch: ' . $anime));
+        }
+        return View::make('child.alerts', array('msg_type' => 'info', 'msg' => 'Please Sign-in/Sign-up to use this function!'));
+    }
 
     public function addFavorite()
     {
@@ -15,13 +46,14 @@ class UserLibraryController extends BaseController
         $anime = Input::get('anime_id');
         $favorite = UserLibrary::getFavorite($anime, $user);
         if (empty($favorite)) {
-            UserLibrary::create(
+            $row = UserLibrary::firstOrNew(
                 array(
                     'user_id' => $user,
-                    'anime_id' => $anime,
-                    'is_fav' => true
+                    'anime_id' => $anime
                 )
             );
+            $row->is_fav = true;
+            $row->save();
             return '<a data-toggle="tooltip" title="remove from favorites"><input type="hidden" name="user_id" value="' . $user . '"><input type="hidden" name="anime_id" value="' . $anime . '"><span class="icon-heart icon-large met_gray_icon"></span></a>';
         } else {
             $favorite->delete();

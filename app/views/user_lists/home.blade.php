@@ -60,26 +60,6 @@
         max-height: 87px;
         margin: 5px;
     }
-
-    @media (max-width: 767px) {
-        .search_form > .met_button {
-            width: 30%;
-        }
-
-        .search_form > #search {
-            width: 70%;
-        }
-    }
-
-    @media (min-width: 767px) {
-        .search_form > .met_button {
-            width: 10%;
-        }
-
-        .search_form > #search {
-            width: 90%;
-        }
-    }
 </style>
 @stop
 @section('content')
@@ -102,7 +82,7 @@
             </div>
         </div>
         <form class="search_form met_contact_form" method="get" action="{{ URL::to('/lists/search') }}">
-            <input id="search" name="query" autocomplete="off" type="text" size="50" class="met_input_text" placeholder="search for a list (min. 3 chars)"><input class="met_button" type="submit">
+            <input id="search" name="query" autocomplete="off" type="text" size="50" class="met_input_text" placeholder="search for a list (min. 3 chars)"><input class="met_button" type="submit" value="Find">
         </form>
     </div>
 </div>
