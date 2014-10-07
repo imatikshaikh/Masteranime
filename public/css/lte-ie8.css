@@ -1,7 +1,0 @@
-.met_portfolio_effect_3 .met_portfolio_item_mask{
-	filter: alpha(opacity=0)!important;
-}
-
-.met_portfolio_effect_3:hover .met_portfolio_item_mask{
-	filter: alpha(opacity=100)!important;
-}

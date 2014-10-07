@@ -27,16 +27,12 @@
     {{ HTML::style('css/font-awesome-ie7.min.css') }}
     <![endif]-->
     {{ HTML::style('css/style.css') }}
-    {{ HTML::style('css/animate.css') }}
-    {{ HTML::style('css/prettyPhoto.css') }}
-    {{ HTML::style('css/photoswipe.css') }}
     {{ HTML::style('css/dl-menu.css') }}
     {{ HTML::style('css/custom.css') }}
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300"/>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto"/>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Condensed"/>
-    {{ HTML::style('css/lte-ie8.css') }}
     <![endif]-->
     @show
 
